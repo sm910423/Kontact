@@ -17,6 +17,7 @@ $white-c: darken($white, 12%);
 $white-d: darken($white, 24%);
 
 $black: rgba(#000000, .8);
+$black-real: #000000;
 $black-a: lighten($black, 10%);
 $black-b: lighten($black, 20%);
 $black-c: lighten($black, 40%);
@@ -25,6 +26,7 @@ $black-d: lighten($black, 60%);
 $theme-color-1: #fff89c;
 $theme-color-2: #ae75e7;
 $theme-color-3: #5e5874;
+$theme-color-4: #de2228;
 
 $fore-color-1: #00157e;
 $fore-color-2: #387ef5;
@@ -58,8 +60,8 @@ $colors: (
     contrast: $fore-color-1
   ),
   header:(
-    base: $theme-color-1,
-    contrast: $fore-color-1
+    base: $black-real,
+    contrast: $white
   ),
   header-alt:(
     base: $theme-color-2,
@@ -78,8 +80,12 @@ $colors: (
     contrast: $black-b
   ),
   tabs-navigation:(
-    base: $theme-color-1,
+    base: $white-a,
     contrast: $fore-color-2
+  ),
+  tabs-navigation-alt:(
+    base: $theme-color-4,
+    contrast: $white
   )
 );
 

@@ -1,16 +1,10 @@
-<ion-header class="login-header auth-header">
-  <ion-navbar>
-    <ion-title>Sign in</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content class="login-content auth-content">
   <ion-row class="intro-image-row">
     <ion-col center width-64 no-padding>
-      <preload-image [ratio]="{w:1, h:1}" src="./assets/images/mark.png" alt="app logo" title="ion2FullApp"></preload-image>
+      <preload-image [ratio]="{w:1, h:0.5}" src="./assets/images/title.png" alt="welcome back" title="welcome back"></preload-image>
     </ion-col>
   </ion-row>
-  <form class="auth-form" [formGroup]="login" (ngSubmit)="doLogin()">
+  <form class="auth-form" [formGroup]="login">
     <ion-item>
       <ion-input type="email" placeholder="Email" formControlName="usersEmail" required email></ion-input>
     </ion-item>
@@ -19,16 +13,17 @@
         <ion-input type="password" placeholder="Password" formControlName="usersPassword" show-hide-input></ion-input>
       </ion-item>
     </show-hide-container>
-    <button ion-button block class="auth-action-button login-button" type="submit">Log in</button>
-    <!-- <button ion-button block class="auth-action-button login-button" type="submit" [disabled]="!login.valid">Log in</button> -->
+    <!-- <button ion-button block class="auth-action-button" (click)="doLogin()" [disabled]="!login.valid">Log in</button> -->
+    <button ion-button block class="auth-action-button" (click)="doLogin()">Log in</button>
+    <button ion-button clear block class="back-btn" (click)="goBack()">Back</button>
   </form>
   <ion-row class="alt-options">
-    <ion-col no-padding width-50>
-      <button ion-button block clear class="forgot-button" (click)="goToForgotPassword()">Forgot Password?</button>
+    <ion-col no-padding text-center width-100>
+      <span class="forgot-button" (click)="goToForgotPassword()">I forgot my password</span>
     </ion-col>
-    <ion-col no-padding width-50>
+    <!-- <ion-col no-padding width-50>
       <button ion-button block clear class="signup-button" (click)="goToSignup()">Sign up!</button>
-    </ion-col>
+    </ion-col> -->
   </ion-row>
   <!-- <p class="auth-divider">
     Or

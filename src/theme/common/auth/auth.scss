@@ -5,55 +5,60 @@
 
 .auth-content
 {
-	padding: 16px 6%;
-	background-color: color($colors, background, base);
-
 	.scroll-content
 	{
 		padding: 16px 6%;
 	}
-
+	
 	.auth-title
 	{
 		color: $theme-color-2;
 		margin-top: 10px;
 		margin-bottom: 25px;
 	}
-
+	
 	.auth-form
 	{
+		padding: 0px 10%;
 		ion-item {
-			@include basic-input-style(color($colors, background, base), $black, $black-c);
-
+			@include basic-input-style(transparent, $white, $white-b);
+			margin: 0px 0px 14px 0px;
+			
 			&.item
 			{
 				input[type="password"].text-input
 				{
-					padding-right: 6rem;
+					padding-right: 2rem;
 				}
 			}
-		}
 
+			.text-input
+			{
+				margin: 11px 0px 0px 0px;
+			}
+		}
+		
 		.auth-action-button
 		{
 			margin: 0px;
-			margin-top: 20px;
-
+			margin-top: 10%;
+			
 			@include call-to-action-button-styles(color($colors, button, base), color($colors, button, contrast));
 		}
-
+		
 		.show-hide-password
 		{
+			margin-bottom: 40px !important;
 			.type-toggle
 			{
-				color: $white-d;
+				color: $white-b;
 				margin: 0px;
 				padding: 0px 6px;
 				text-align: right;
 			}
 		}
 	}
-
+	
 	.auth-divider
 	{
 		font-size: 1.6rem;

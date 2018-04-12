@@ -1,4 +1,5 @@
 <ion-content class="walkthrough-content">
+  <button ion-button primary class="start-btn" (click)="goToLogin()">Get Started</button>
   <ion-slides #slider (ionSlideDidChange)="onSlideChanged()" pager="true">
     <ion-slide class="slide-1">
     </ion-slide>
@@ -25,5 +26,4 @@
       </div> -->
     </ion-slide>
   </ion-slides>
-  <button ion-button primary class="start-btn">Get Started</button>
 </ion-content>

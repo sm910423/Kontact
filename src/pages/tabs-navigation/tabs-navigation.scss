@@ -17,11 +17,12 @@ tabs-navigation {
 		.tab-button:hover:not(.disable-hover),
 		.tab-button[aria-selected=true]
 		{
-			color: $fore-color-1;
+			background-color: color($colors, tabs-navigation-alt, base);
+			color: color($colors, tabs-navigation-alt, contrast);
 			
 			.tab-button-icon
 			{
-				color: $fore-color-1;
+				color: color($colors, tabs-navigation-alt, contrast);
 			}
 		}
 	}

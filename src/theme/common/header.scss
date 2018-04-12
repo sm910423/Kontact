@@ -1,8 +1,12 @@
 @mixin header-styles($background, $color){
+	background-color: $background;
+	padding-left: 10px;
+	padding-right: 10px;
+
 	.toolbar-background
 	{
 		border: none !important;
-		background-color: $background;
+		background-color: transparent;
 	}
 
 	.toolbar-title,

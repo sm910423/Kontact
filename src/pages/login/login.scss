@@ -1,16 +1,28 @@
 login-page {
 	.login-content
 	{
+		background: url('../assets/images/login-bg.png') no-repeat fixed center;
+		
 		.intro-image-row
 		{
 			@include justify-content(center);
 			// margin-top: 90px;
-			margin-top: 5vh;
-			margin-bottom: 5vh;
+			margin-top: 13vh;
+			margin-bottom: 2vh;
+			// border: 1px solid $white;
+		}
+
+		.back-btn
+		{
+			margin-top: 20px;
+			border: 1px solid $white-a;
+			color: $white;
 		}
 
 		.alt-options
 		{
+			margin-top: 16vh;
+
 			.button
 			{
 				margin: 0px;
@@ -20,7 +32,8 @@ login-page {
 			
 			.forgot-button
 			{
-				color: $fore-color-1;
+				color: $white-a;
+				width: 100%;
 				
 				.button-inner
 				{

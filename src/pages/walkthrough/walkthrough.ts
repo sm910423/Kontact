@@ -33,7 +33,7 @@ export class WalkthroughPage {
   }
 
   goToLogin() {
-    this.nav.setRoot(LoginPage);
+    this.nav.push(LoginPage);
   }
 
   goToSignup() {

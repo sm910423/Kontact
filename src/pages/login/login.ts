@@ -77,5 +77,9 @@ export class LoginPage {
   goToForgotPassword() {
     this.nav.push(ForgotPasswordPage);
   }
+
+  goBack() {
+    this.nav.pop();
+  }
   
 }
