@@ -1,16 +1,52 @@
 signup-page {
 	.signup-content
 	{
-		.legal-stuff
+		background: url('../assets/images/login-bg.png') no-repeat;
+		background-position-x: 26%;
+		background-position-y: center;
+		background-size: 1268px 800px;
+		
+		.intro-image-row
 		{
-			color: $white-d;
-			text-align: center;
-			margin: 10px 12px;
+			@include justify-content(center);
+			// margin-top: 90px;
+			margin-top: 10vh;
+			margin-bottom: 0vh;
+			// border: 1px solid $white;
+		}
+		
+		.back-btn
+		{
+			margin-top: 16px;
+			border: 1px solid $white-a;
+			color: $white;
+		}
 
-			.legal-action
+		.auth-action-button
+		{
+			margin-top: 40px !important;
+		}
+	
+		.alt-options
+		{
+			margin-top: 7vh;
+			
+			.button
 			{
-				font-weight: 500;
-				color: $theme-color-2;
+				margin: 0px;
+				padding: 0px;
+				font-size: 1.4rem;
+			}
+			
+			.text-button
+			{
+				color: $white-a;
+				width: 100%;
+				
+				.button-inner
+				{
+					@include justify-content(flex-start);
+				}
 			}
 		}
 	}

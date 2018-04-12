@@ -44,7 +44,7 @@ page-main {
   }
   
   .main-content {
-    background-color: rgba(0, 0, 0, 0.95) !important;
+    background-color: $black-e !important;
     
     ion-scroll[scrollX] {
       white-space: nowrap;
@@ -64,7 +64,7 @@ page-main {
       padding: 0px;
       margin: 0px 0px 10px 0px !important;
       .item-inner {
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: $black-f;
         margin: 0px;
         padding: 0px 16px 7px 16px !important;
       }

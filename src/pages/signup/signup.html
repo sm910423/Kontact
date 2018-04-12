@@ -1,50 +1,33 @@
-<ion-header class="signup-header auth-header">
-  <ion-navbar>
-    <ion-title>Sign up</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content class="signup-content auth-content">
-  <form class="signup-form auth-form" [formGroup]="signup" (ngSubmit)="doSignup()">
-    <ion-item>
-      <ion-label>Email (*)</ion-label>
-      <ion-input text-right type="email" placeholder="Email" formControlName="email" required email></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Name (*)</ion-label>
-      <ion-input text-right type="text" placeholder="Name" formControlName="name"></ion-input>
-    </ion-item>
-    <show-hide-container>
-      <ion-item>
-        <ion-label>Password (*)</ion-label>
-        <ion-input text-right type="password" placeholder="Password" formControlName="password" show-hide-input></ion-input>
-      </ion-item>
-    </show-hide-container>
-    <show-hide-container>
-      <ion-item>
-        <ion-label>Confirm (*)</ion-label>
-        <ion-input text-right type="password" placeholder="Confirm password" formControlName="confirm_password" show-hide-input></ion-input>
-      </ion-item>
-    </show-hide-container>
-    <ion-item>
-      <ion-label>Mobile Number</ion-label>
-      <ion-input text-right type="tel" placeholder="Mobile Number" formControlName="mobile"></ion-input>
-    </ion-item>
-    <!-- <ion-item>
-      <ion-label>Date of Birth</ion-label>
-      <ion-datetime text-right (ionChange)="changeDate($event)" displayFormat="DD-MM-YYYY" placeholder="Select Date"></ion-datetime>
-    </ion-item> -->
-    <button ion-button block class="auth-action-button signup-button" type="submit" [disabled]="canDisable()">Sign up</button>
-  </form>
-  <ion-row class="alt-options">
-    <ion-col no-padding>
-      Already a member?<button ion-button block clear class="forgot-button" (click)="goToForgotPassword()">Log in</button>
+  <ion-row class="intro-image-row">
+    <ion-col center width-64 no-padding>
+      <preload-image [ratio]="{w:1, h:0.34}" src="./assets/images/title.png" alt="welcome back" title="welcome back"></preload-image>
     </ion-col>
   </ion-row>
-  
-  <!-- <p class="auth-divider">
-    Or
-  </p>
-  <button ion-button block class="facebook-auth-button" (click)="doFacebookSignup()">Sign up with Facebook</button>
-  <button ion-button block class="google-auth-button" (click)="doGoogleSignup()">Sign up with Google</button> -->
+  <form class="auth-form" [formGroup]="signup">
+    <ion-item>
+      <ion-input type="email" placeholder="Email" formControlName="email" required email></ion-input>
+    </ion-item>
+    <show-hide-container>
+      <ion-item>
+        <ion-input type="password" placeholder="Password" formControlName="password" show-hide-input></ion-input>
+      </ion-item>
+    </show-hide-container>
+    <show-hide-container>
+      <ion-item>
+        <ion-input type="password" placeholder="Password" formControlName="confirm_password" show-hide-input></ion-input>
+      </ion-item>
+    </show-hide-container>
+    <ion-item>
+      <ion-input type="phone" placeholder="Phone" formControlName="mobile" required></ion-input>
+    </ion-item>
+    <!-- <button ion-button block class="auth-action-button" (click)="doSignup()" [disabled]="!login.valid">Log in</button> -->
+    <button ion-button block class="auth-action-button" (click)="doSignup()">Sign Up</button>
+    <button ion-button clear block class="back-btn" (click)="goBack()">Back</button>
+  </form>
+  <ion-row class="alt-options">
+    <ion-col no-padding text-center width-100>
+      <span class="text-button" (click)="goToTerm()">Term</span>
+    </ion-col>
+  </ion-row>
 </ion-content>

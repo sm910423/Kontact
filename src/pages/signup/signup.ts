@@ -31,10 +31,9 @@ export class SignupPage {
     
     this.signup = new FormGroup({
       email: new FormControl('', Validators.required),
-      name: new FormControl('', Validators.required),
-      password: new FormControl('testte', Validators.compose([Validators.minLength(6), Validators.required])),
-      confirm_password: new FormControl('testte', Validators.required),
-      mobile: new FormControl('000000'),
+      password: new FormControl('', Validators.compose([Validators.minLength(6), Validators.required])),
+      confirm_password: new FormControl('', Validators.required),
+      mobile: new FormControl(''),
     });
     
     this.loading = this.loadingCtrl.create();
@@ -52,16 +51,10 @@ export class SignupPage {
     if (this.signup.getRawValue().password != this.signup.getRawValue().confirm_password) {
       this.messageProvider.showMessage("Passwords do not match. Please try again.");
     } else {
-      let formData: any = this.signup.getRawValue();
-      let jsonData: any = {};
-      jsonData.usersEmail = formData.email;
-      jsonData.usersName = formData.name;
-      jsonData.usersPassword = formData.password;
-      jsonData.usersMobile = formData.mobile;
-      jsonData.usersDOB = this.dob;
-      jsonData.signupType = "manual";
-      
-      this.signupViaHttp(jsonData);
+      this.loading = this.loadingCtrl.create();
+      this.loading.present();
+      this.loading.dismiss();
+      this.nav.setRoot(TabsNavigationPage);
     }
   }
   
@@ -100,5 +93,9 @@ export class SignupPage {
       this.loading.dismiss();
       this.messageProvider.showMessage("Sorry, There is any error");
     });
+  }
+  
+  goBack() {
+    this.nav.pop();
   }
 }
