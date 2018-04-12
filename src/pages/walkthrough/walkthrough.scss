@@ -1,13 +1,7 @@
 walkthrough-page {
-	.walkthrough-header
-	{
-		@include header-styles(color($colors, walkthrough-header, base), color($colors, walkthrough-header, contrast));
-	}
-
 	.walkthrough-content
 	{
-		// Default background when bouncing isn't disabled
-		background-color: color($colors, walkthrough, base);
+		background: url('../assets/images/welcome-bg.png') no-repeat fixed center;
 
 		.scroll-content
 		{
@@ -16,20 +10,24 @@ walkthrough-page {
 
 		ion-slide:nth-child(odd)
 		{
-			background-color: color($colors, walkthrough, base);
+			background-color: transparent;
 			color: color($colors, walkthrough, contrast);
 		}
 
 		ion-slide:nth-child(even)
 		{
-			background-color: color($colors, walkthrough-alt, base);
+			background-color: transparent;
 			color: color($colors, walkthrough-alt, contrast);
+		}
+
+		.swiper-pagination-bullets {
+			bottom: 100px !important;
 		}
 
 		.swiper-pagination-bullet
 		{
-		  background: $white;
-			opacity: .5;
+		  	background: $white;
+			opacity: .3;
 
 			&.swiper-pagination-bullet-active
 			{
@@ -38,7 +36,6 @@ walkthrough-page {
 		}
 
 		ion-slides {
-
 			ion-slide {
 				@include align-items(flex-start);
 			}
@@ -113,6 +110,15 @@ walkthrough-page {
 					}
 				}
 			}
+		}
+
+		.start-btn {
+			@include segment-text-styles($fore-color-2);
+			width: 200px;
+			height: 40px;
+			position: absolute;
+			bottom: 30px;
+			left: calc(50% - 100px);
 		}
 	}
 }
