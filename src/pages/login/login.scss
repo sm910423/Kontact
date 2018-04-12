@@ -1,0 +1,43 @@
+login-page {
+	.login-content
+	{
+		.intro-image-row
+		{
+			@include justify-content(center);
+			// margin-top: 90px;
+			margin-top: 5vh;
+			margin-bottom: 5vh;
+		}
+
+		.alt-options
+		{
+			.button
+			{
+				margin: 0px;
+				padding: 0px;
+				font-size: 1.4rem;
+			}
+			
+			.forgot-button
+			{
+				color: $fore-color-1;
+				
+				.button-inner
+				{
+					@include justify-content(flex-start);
+				}
+			}
+			
+			.signup-button
+			{
+				font-weight: 500;
+				color: $theme-color-2;
+				
+				.button-inner
+				{
+					@include justify-content(flex-end);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,66 @@
+tabs-navigation {
+	.tabbar
+	{
+		background: color($colors, tabs-navigation, base) !important;
+		border-top-color: darken(color($colors, tabs-navigation, base), 10%) !important;
+		
+		.tab-button
+		{
+			color: color($colors, tabs-navigation, contrast);
+			
+			.tab-button-icon
+			{
+				color: color($colors, tabs-navigation, contrast);
+			}
+		}
+		
+		.tab-button:hover:not(.disable-hover),
+		.tab-button[aria-selected=true]
+		{
+			color: $fore-color-1;
+			
+			.tab-button-icon
+			{
+				color: $fore-color-1;
+			}
+		}
+	}
+	
+	.fa-icons-general {
+		display: inline-block;
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: inherit;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		transform: translate(0, 0);
+	}
+	
+	.ion-ios-fa-search::before,
+	.ion-ios-fa-search-outline::before,
+	.ion-md-fa-search::before {
+		@extend .fa-icons-general;
+		content: "\f002";
+	}
+	
+	.ion-ios-fa-comments-alt::before,
+	.ion-ios-fa-comments-alt-outline::before,
+	.ion-md-fa-comments-alt::before {
+		@extend .fa-icons-general;
+		content: "\f4b6";
+	}
+	
+	.ion-ios-fa-clock::before,
+	.ion-ios-fa-clock-outline::before,
+	.ion-md-fa-clock::before {
+		@extend .fa-icons-general;
+		content: "\f017";
+	}
+	
+	.ion-ios-fa-star::before,
+	.ion-ios-fa-star-outline::before,
+	.ion-md-fa-star::before {
+		@extend .fa-icons-general;
+		content: "\f005";
+	}
+}

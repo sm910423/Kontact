@@ -1,0 +1,15 @@
+{
+  "name": "ion2-FullApp-PRO",
+  "app_id": "f0cf33a7",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://www.google.com/"
+    }
+  ],
+  "hooks": {}
+}

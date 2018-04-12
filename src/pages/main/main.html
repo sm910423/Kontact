@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left style="margin-left: 10px;">
+      <button ion-button icon-only (click)="showMenu()">
+        <!-- Categories&nbsp; -->
+        <!-- <i class="fa fa-bars" aria-hidden="true"></i> -->
+        <img src="./assets/images/menu-icon.png" width="22" height="22" />
+      </button>
+    </ion-buttons>
+    
+    <ion-searchbar #searchbox id="searchbox" class="search-places-bar" placeholder="Search Categories"></ion-searchbar>
+    
+    <ion-buttons end style="margin-right: 10px;">
+      <button ion-button icon-only>
+        <!-- Categories&nbsp; -->
+        <i class="fa fa-list" aria-hidden="true"></i>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher> -->
+  
+  <ion-item class="category-box" no-lines>
+    <ion-row>
+      <ion-col text-left>
+        Featured Businesses
+      </ion-col>
+      <ion-col text-right>
+        <span (click)="showViewAll(1)" class="view-all-button">View All></span>
+      </ion-col>
+    </ion-row>
+    <ion-scroll scrollX class="scroll-box">
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+    </ion-scroll>
+  </ion-item>
+  
+  <ion-item class="category-box" no-lines>
+    <ion-row>
+      <ion-col text-left>
+        Most Popular
+      </ion-col>
+      <ion-col text-right>
+        <span (click)="showViewAll(1)" class="view-all-button">View All></span>
+      </ion-col>
+    </ion-row>
+    <ion-scroll scrollX class="scroll-box">
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+    </ion-scroll>
+  </ion-item>
+  
+  <ion-item class="category-box" no-lines>
+    <ion-row>
+      <ion-col text-left>
+        New
+      </ion-col>
+      <ion-col text-right>
+        <span (click)="showViewAll(1)" class="view-all-button">View All></span>
+      </ion-col>
+    </ion-row>
+    <ion-scroll scrollX class="scroll-box">
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+    </ion-scroll>
+  </ion-item>
+  
+</ion-content>
