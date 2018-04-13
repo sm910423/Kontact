@@ -24,6 +24,7 @@ export class MainPage {
     public messageProvider: MessageProvider,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     public app: App,
   ) {
   }
@@ -52,7 +53,12 @@ export class MainPage {
   }
 
   goToCategory() {
-    this.navCtrl.push(CategoryPage);
+    // this.navCtrl.push(CategoryPage);
+    let categoryModal = this.modalCtrl.create(CategoryPage);
+    categoryModal.onDidDismiss(data => {
+      console.log(data);
+    });
+    categoryModal.present();
   }
   
 }
