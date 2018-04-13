@@ -52,7 +52,7 @@ export class MainPage {
     alert(index.toString());
   }
 
-  goToCategory() {
+  goToCategoryPage() {
     // this.navCtrl.push(CategoryPage);
     let categoryModal = this.modalCtrl.create(CategoryPage);
     categoryModal.onDidDismiss(data => {

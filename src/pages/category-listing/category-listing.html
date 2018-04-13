@@ -1,12 +1,28 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>CategoryListingPage</ion-title>
+<ion-header class="category-listing-header">
+  <ion-navbar hideBackButton>
+    <ion-row>
+      <ion-col width-50>
+        <ion-searchbar #searchbox id="searchbox" class="search-places" placeholder="Search"></ion-searchbar>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button class="categories-btn" (click)="goToCategoryPage()">
+          Categories&nbsp;
+          <i class="fa fa-list" aria-hidden="true"></i>
+        </button>
+      </ion-col>
+    </ion-row>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content class="category-listing-content">
+  <div class="back-box">
+    <p><span (click)="goBack()"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;{{ title }}</span></p>
+  </div>
+  <div class="category-listing-box">
+    <ion-row *ngFor="let list of lists">
+      <ion-col width-50 *ngFor="let item of list">
+        <img [src]="item.url" class="image-box" />
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

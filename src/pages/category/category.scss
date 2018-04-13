@@ -1,7 +1,7 @@
 page-category {
     .category-header {
-        border-bottom: 0.6px solid $black-c;
-
+        border-bottom: 1px solid $black-c;
+        
         ion-row {
             margin: 0px;
             padding: 0px;
@@ -62,48 +62,48 @@ page-category {
             color: $white;
         }
     }
-
+    
     .category-content {
         background-color: $black-e !important;
-
+        
         .category-box {
             padding: 0px 16px;
             color: $theme-color-1;
             font-size: 16px;
-            border-bottom: 0.6px solid $black-c;
+            border-bottom: 1px solid $black-c;
         }
-    }
-
-    .sub-category-box {
-        color: $white;
-        padding: 10px 0px;
-        font-size: 14px;
-
-        ion-row {
-            height: 40px;
-            margin: 0px;
-            padding: 13px 24px;
-
-            ion-col {
+        
+        .sub-category-box {
+            color: $white;
+            padding: 10px 0px;
+            font-size: 14px;
+            
+            ion-row {
+                height: 40px;
                 margin: 0px;
-                padding: 0px;
-                flex: 0 0 calc(100% - 60px);
-                max-width: calc(100% - 60px);
+                padding: 13px 24px;
+                
+                ion-col {
+                    margin: 0px;
+                    padding: 0px;
+                    flex: 0 0 calc(100% - 60px);
+                    max-width: calc(100% - 60px);
+                }
+                
+                ion-col:first-child {
+                    flex: 0 0 30px;
+                    max-width: 30px;
+                }
+                
+                ion-col:last-child {
+                    flex: 0 0 30px;
+                    max-width: 30px;
+                }
             }
-
-            ion-col:first-child {
-                flex: 0 0 30px;
-                max-width: 30px;
+            
+            ion-row:nth-child(even) {
+                background-color: $black-f;
             }
-
-            ion-col:last-child {
-                flex: 0 0 30px;
-                max-width: 30px;
-            }
-        }
-
-        ion-row:nth-child(even) {
-            background-color: $black-f;
         }
     }
 }

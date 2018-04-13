@@ -16,9 +16,7 @@
 
 <ion-content class="category-content">
   <div class="category-box">
-    <p>Featured Businesses</p>
-    <p>Most Popular Businesses</p>
-    <p>New</p>
+    <p *ngFor="let title of categories;" (click)="goToCategoryListingPage(title)">{{ title }}</p>
   </div>
   <div class="sub-category-box">
     <ion-row *ngFor="let category of subCategories" (click)="goToSubCategoryPage(category)">

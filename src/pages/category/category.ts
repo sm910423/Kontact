@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { SubCategoryPage } from '../sub-category/sub-category';
+import { CategoryListingPage } from '../category-listing/category-listing';
 
 @Component({
   selector: 'page-category',
   templateUrl: 'category.html',
 })
 export class CategoryPage {
+  categories:any;
   subCategories: any;
 
   constructor (
@@ -15,6 +17,7 @@ export class CategoryPage {
     public viewCtrl: ViewController,
     public modalCtrl: ModalController
   ) {
+    this.categories = ["Featured Businesses", "Most Popular Businesses", "New"];
     this.subCategories = [
       { icon: "fa-user", title: "Accounting" },
       { icon: "fa-car", title: "Automative/Cars" },
@@ -24,6 +27,10 @@ export class CategoryPage {
       { icon: "fa-building", title: "Building Supplies" },
       { icon: "fa-id-card", title: "Carpet" }
     ];
+  }
+
+  goToCategoryListingPage(title) {
+    this.navCtrl.push(CategoryListingPage, {title: title});
   }
 
   goToSubCategoryPage(sub) {

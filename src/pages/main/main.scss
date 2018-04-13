@@ -1,6 +1,6 @@
 page-main {
   .main-header {
-    border-bottom: 0.6px solid $black-c;
+    border-bottom: 1px solid $black-c;
 
     ion-row {
       margin: 0px;
@@ -81,7 +81,8 @@ page-main {
     
     .category-box {
       padding: 0px;
-      margin: 0px 0px 10px 0px !important;
+      margin: 0px 0px 1px 0px !important;
+      
       .item-inner {
         background-color: $black-f;
         margin: 0px;
