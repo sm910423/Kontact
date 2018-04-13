@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { SubCategoryPage } from '../sub-category/sub-category';
 
 @Component({
   selector: 'page-category',
@@ -11,7 +12,8 @@ export class CategoryPage {
   constructor (
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public modalCtrl: ModalController
   ) {
     this.subCategories = [
       { icon: "fa-user", title: "Accounting" },
@@ -22,6 +24,15 @@ export class CategoryPage {
       { icon: "fa-building", title: "Building Supplies" },
       { icon: "fa-id-card", title: "Carpet" }
     ];
+  }
+
+  goToSubCategoryPage(sub) {
+    // this.navCtrl.push(SubCategoryPage, {subCategory: sub});
+    let subCategoryModal = this.modalCtrl.create(SubCategoryPage, {subCategory: sub});
+    subCategoryModal.onDidDismiss(data => {
+      console.log(data);
+    });
+    subCategoryModal.present();
   }
 
   closePage() {
