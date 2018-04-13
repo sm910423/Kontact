@@ -9,6 +9,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { MainPage } from '../pages/main/main';
 import { CategoryPage } from '../pages/category/category';
+import { SubCategoryPage } from '../pages/sub-category/sub-category';
 
 import { PreloadImage } from '../components/preload-image/preload-image';
 import { BackgroundImage } from '../components/background-image/background-image';
@@ -39,6 +40,7 @@ import { MessageProvider } from '../providers/message/message';
     ForgotPasswordPage,
     MainPage,
     CategoryPage,
+    SubCategoryPage,
 
     PreloadImage,
     BackgroundImage,
@@ -64,6 +66,7 @@ import { MessageProvider } from '../providers/message/message';
     SignupPage,
     MainPage,
     CategoryPage,
+    SubCategoryPage,
   ],
   providers: [
 	  SplashScreen,
