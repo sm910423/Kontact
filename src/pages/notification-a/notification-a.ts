@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { NotificationBPage } from '../notification-b/notification-b';
 
 @Component({
   selector: 'page-notification-a',
@@ -13,4 +14,11 @@ export class NotificationAPage {
   ) {
   }
 
+  goToNextPage() {
+    this.navCtrl.push(NotificationBPage);
+  }
+
+  goBack() {
+    this.navCtrl.pop();
+  }
 }

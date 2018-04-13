@@ -1,3 +1,25 @@
 page-notification-a {
-
+    .notification-a-content {
+        background: url('../assets/images/notification-bg.png') no-repeat;
+        background-size: 1688px 800px;
+		background-position-x: 75%;
+		background-position-y: center;
+        
+        .allow-button {
+			margin-top: 75vh;
+            background-color: $theme-color-1;
+            color: $fore-color-2;
+            width: 200px;
+            margin-left: calc(50% - 100px);
+        }
+        
+		.back-btn
+		{
+			margin-top: 20px;
+			// border: 1px solid $white-a;
+            color: $white;
+            width: 120px;
+            margin-left: calc(50% - 60px);
+		}
+    }
 }

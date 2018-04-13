@@ -1,12 +1,10 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>NotificationBPage</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
+<ion-content class="notification-b-content">
+  <p class="title-box">
+      «Kontakt» Would Like to<br>Send You Notifications
+  </p>
+  <p class="comment-box">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
+  </p>
+  <button ion-button block class="allow-button" (click)="goToNextPage()">Allow</button>
+  <button ion-button clear block class="back-btn" (click)="goBack()">Don't Allow</button>
 </ion-content>

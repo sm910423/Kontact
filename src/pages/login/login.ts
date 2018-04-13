@@ -11,6 +11,7 @@ import { WalkthroughPage } from '../walkthrough/walkthrough';
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
 import { MainPage } from '../main/main';
+import { NotificationAPage } from '../notification-a/notification-a';
 
 @Component({
   selector: 'login-page',
@@ -80,6 +81,10 @@ export class LoginPage {
 
   goBack() {
     this.nav.pop();
+  }
+
+  goToNotificationPage() {
+    this.nav.push(NotificationAPage);
   }
   
 }
