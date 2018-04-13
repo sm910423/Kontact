@@ -3,23 +3,32 @@ page-main {
     ion-row {
       margin: 0px;
       padding: 0px;
-
+      
       ion-col:first-child {
         margin: 0px;
         padding: 0px 5px 0px 0px;
+        height: 48px !important;
       }
-
+      
       ion-col:last-child {
         margin: 0px;
         padding: 0px 0px 0px 5px;
+        height: 48px !important;
       }
     }
-
+    
     .search-places {
       margin: 6px 0px;
       padding: 0px;
       width: 100%;
+      border: none;
+      min-height: 36px;
       // height: 36px;
+      .searchbar-input-container {
+        border: none;
+        background-color: red; //asdlfkjlskadjflkasjdf
+      }
+      
       input {
         background-color: #000;
         border: 1px solid #fff;
@@ -28,14 +37,22 @@ page-main {
         height: 36px !important;
         padding: 6px 4px 6px 29px !important;
       }
-
+      
       .searchbar-search-icon {
-        left: 4px;
+        left: 6px;
         top: 8px;
+        width: 21px;
+        height: 21px;
+        background-size: 20px;
         color: #fff !important;
+        // background-color: #fff;
+      }
+      
+      .searchbar-ios {
+        margin-left: 4px !important;
       }
     }
-
+    
     .categories-btn {
       margin: 6px 0px !important;
       width: 100% !important;
@@ -68,12 +85,12 @@ page-main {
         margin: 0px;
         padding: 0px 16px 7px 16px !important;
       }
-
+      
       ion-row {
         ion-col:first-child {
           color: $white;
         }
-
+        
         ion-col:last-child {
           padding-top: 8px;
           font-size: 12px;

@@ -4,6 +4,7 @@ import { MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
+import { CategoryPage } from '../category/category';
 
 @Component({
   selector: 'page-main',
@@ -48,6 +49,10 @@ export class MainPage {
 
   showViewAll(index) {
     alert(index.toString());
+  }
+
+  goToCategory() {
+    this.navCtrl.push(CategoryPage);
   }
   
 }
