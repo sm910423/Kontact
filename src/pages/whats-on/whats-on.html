@@ -1,0 +1,82 @@
+<ion-header class="whats-on-header">
+  <ion-navbar>
+    <ion-title>What's On</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="whats-on-content">
+  <ion-item class="category-box" no-lines>
+    <ion-row>
+      <ion-col text-left>
+        Featured Businesses
+      </ion-col>
+      <ion-col text-right>
+        <span (click)="showViewAll('Featured Businesses')">View All></span>
+      </ion-col>
+    </ion-row>
+    <ion-scroll scrollX class="scroll-box">
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+    </ion-scroll>
+  </ion-item>
+  
+  <ion-item class="category-box" no-lines>
+    <ion-row>
+      <ion-col text-left>
+        Most Popular
+      </ion-col>
+      <ion-col text-right>
+        <span (click)="showViewAll('Most Popular')" class="view-all-button">View All></span>
+      </ion-col>
+    </ion-row>
+    <ion-scroll scrollX class="scroll-box">
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+    </ion-scroll>
+  </ion-item>
+  
+  <ion-item class="category-box" no-lines>
+    <ion-row>
+      <ion-col text-left>
+        New
+      </ion-col>
+      <ion-col text-right>
+        <span (click)="showViewAll('New')" class="view-all-button">View All></span>
+      </ion-col>
+    </ion-row>
+    <ion-scroll scrollX class="scroll-box">
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item1.jpg" class="image-box" />
+      </div>
+      <div class="scroll-item">
+        <img src="./assets/images/item2.jpg" class="image-box" />
+      </div>
+    </ion-scroll>
+  </ion-item>
+</ion-content>

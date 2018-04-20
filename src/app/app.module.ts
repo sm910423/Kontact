@@ -16,6 +16,7 @@ import { NotificationBPage } from '../pages/notification-b/notification-b';
 import { CommunityPage } from '../pages/community/community';
 import { CommunityListingPage } from '../pages/community-listing/community-listing';
 import { CommunityViewPage } from '../pages/community-view/community-view';
+import { WhatsOnPage } from '../pages/whats-on/whats-on';
 
 import { PreloadImage } from '../components/preload-image/preload-image';
 import { BackgroundImage } from '../components/background-image/background-image';
@@ -53,6 +54,7 @@ import { MessageProvider } from '../providers/message/message';
     CommunityPage,
     CommunityListingPage,
     CommunityViewPage,
+    WhatsOnPage,
 
     PreloadImage,
     BackgroundImage,
@@ -85,6 +87,7 @@ import { MessageProvider } from '../providers/message/message';
     CommunityPage,
     CommunityListingPage,
     CommunityViewPage,
+    WhatsOnPage,
   ],
   providers: [
 	  SplashScreen,
