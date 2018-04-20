@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
 import { CategoryPage } from '../category/category';
+import { CategoryListingPage } from '../category-listing/category-listing';
 
 @Component({
   selector: 'page-main',
@@ -48,8 +49,13 @@ export class MainPage {
     this.menuCtrl.open();
   }
 
-  showViewAll(index) {
-    alert(index.toString());
+  showViewAll(title) {
+    // this.navCtrl.push(CategoryListingPage, {title: title});
+    let categoryModal = this.modalCtrl.create(CategoryListingPage, {title: title});
+    categoryModal.onDidDismiss(data => {
+      console.log(data);
+    });
+    categoryModal.present();
   }
 
   goToCategoryPage() {

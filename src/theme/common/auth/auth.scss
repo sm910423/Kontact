@@ -38,12 +38,24 @@
 			}
 		}
 		
+		.back-btn
+		{
+			font-size: 12px;
+			font-weight: 600;
+			margin-top: 20px;
+			height: 40px;
+			border: 1px solid $white-a;
+			color: $white;
+		}
+
 		.auth-action-button
 		{
-			margin: 0px;
-			margin-top: 10%;
-			
-			@include call-to-action-button-styles(color($colors, button, base), color($colors, button, contrast));
+			height: 40px;
+			font-size: 12px;
+			font-weight: 600;
+			margin-top: 40px;
+			color: $theme-color-1;
+			background-color: $theme-color-4;
 		}
 		
 		.show-hide-password

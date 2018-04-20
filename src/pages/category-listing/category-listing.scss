@@ -1,6 +1,7 @@
 page-category-listing {
+    
     .category-listing-header {
-        border-bottom: 1px solid $black-c;
+        border-bottom: 1px solid $border-color-1;
         
         ion-row {
             margin: 0px;
@@ -10,12 +11,16 @@ page-category-listing {
                 margin: 0px;
                 padding: 0px 5px 0px 0px;
                 height: 48px !important;
+                flex: 0 0 60%;
+                max-width: 60%;
             }
             
             ion-col:last-child {
                 margin: 0px;
                 padding: 0px 0px 0px 5px;
                 height: 48px !important;
+                flex: 0 0 40%;
+                max-width: 40%;
             }
         }
         
@@ -25,16 +30,16 @@ page-category-listing {
             width: 100%;
             border: none;
             min-height: 36px;
-            // height: 36px;
+            
             .searchbar-input-container {
                 border: none;
             }
             
             input {
-                background-color: #000;
-                border: 1px solid #fff;
+                font-size: 13px;
+                background-color: $theme-color-5;
                 border-radius: 4px;
-                color: #fff;
+                color: $theme-color-7;
                 height: 36px !important;
                 padding: 6px 4px 6px 29px !important;
             }
@@ -45,8 +50,7 @@ page-category-listing {
                 width: 21px;
                 height: 21px;
                 background-size: 20px;
-                color: #fff !important;
-                // background-color: #fff;
+                color: $white !important;
             }
             
             .searchbar-ios {
@@ -55,24 +59,43 @@ page-category-listing {
         }
         
         .categories-btn {
+            font-size: 13px;
             margin: 6px 0px !important;
             width: 100% !important;
             height: 36px !important;
-            background-color: $theme-color-4 !important;
-            color: $white;
         }
     }
     
     .category-listing-content {
-        background-color: $black-e !important;
+        background-color: $white !important;
+        
         .back-box {
-            padding: 0px 16px;
+            padding: 10px 16px 0px;
             color: $theme-color-1;
-            font-size: 16px;
+            font-size: 14px;
+            font-weight: 600;
         }
-
+        
         .category-listing-box {
             padding: 0px 12px;
+
+            ion-row:last-child {
+                height: calc(50vw);
+                margin-bottom: 20px;
+            }
+
+            .image-box {
+                width: calc(50vw - 12px);
+                height: calc(50vw - 12px - 10px);
+            }
+
+            .featured-image {
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                width: 39px;
+                height: 42px;
+            }
         }
     }
 }

@@ -30,7 +30,12 @@ export class CategoryPage {
   }
 
   goToCategoryListingPage(title) {
-    this.navCtrl.push(CategoryListingPage, {title: title});
+    // this.navCtrl.push(CategoryListingPage, {title: title});
+    let categoryListingModal = this.modalCtrl.create(CategoryListingPage, {title: title});
+    categoryListingModal.onDidDismiss(data => {
+      console.log(data);
+    });
+    categoryListingModal.present();
   }
 
   goToSubCategoryPage(sub) {

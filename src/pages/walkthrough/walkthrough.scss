@@ -114,7 +114,10 @@ walkthrough-page {
 		}
 
 		.start-btn {
-			@include segment-text-styles($fore-color-2);
+			@include segment-text-styles($theme-color-1);
+			background-color: $theme-color-4;
+			font-size: 12px;
+			font-weight: 600;
 			z-index: 100;
 			width: 200px;
 			height: 40px;

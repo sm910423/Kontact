@@ -25,14 +25,21 @@ $black-real: #000000;
 $black-e: rgb(10, 10, 10);
 $black-f: rgb(16, 16, 16);
 
-$theme-color-1: #fff89c;
+$theme-color-1: #4d7298;
 $theme-color-2: #ae75e7;
 $theme-color-3: #5e5874;
-$theme-color-4: #de2228;
+$theme-color-4: #fff89d;
+$theme-color-5: #e1dddd;
+$theme-color-6: #116ab4;
+$theme-color-7: #434343;
+
+$border-color-1: #f4f4f4;
 
 $fore-color-1: #00157e;
 $fore-color-2: #387ef5;
 $fore-color-3: #116ab4;
+
+// $theme-color-1: #fff89c;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -44,7 +51,7 @@ $fore-color-3: #116ab4;
 
 $colors: (
   // primary:    #387ef5,
-  primary:    #fff89c,
+  primary:    #4d7298,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -63,7 +70,7 @@ $colors: (
     contrast: $fore-color-1
   ),
   header:(
-    base: $black-real,
+    base: $white,
     contrast: $white
   ),
   header-alt:(
@@ -83,12 +90,12 @@ $colors: (
     contrast: $black-b
   ),
   tabs-navigation:(
-    base: $white-a,
-    contrast: $fore-color-2
+    base: $white,
+    contrast: $theme-color-1
   ),
   tabs-navigation-alt:(
     base: $theme-color-4,
-    contrast: $white
+    contrast: $theme-color-1
   )
 );
 
