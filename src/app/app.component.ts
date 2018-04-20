@@ -7,6 +7,8 @@ import { Storage } from '@ionic/storage';
 import { LoginPage } from '../pages/login/login';
 import { TabsNavigationPage } from '../pages/tabs-navigation/tabs-navigation';
 import { WalkthroughPage } from '../pages/walkthrough/walkthrough';
+import { AdvertisePage } from '../pages/advertise/advertise';
+import { AboutUsPage } from '../pages/about-us/about-us';
 
 @Component({
   selector: 'app-root',
@@ -37,12 +39,12 @@ export class MyApp {
     });
 
     this.pages = [
-      { title: 'Home', icon: 'home', component: null },
+      { title: 'Home', icon: 'home', component: TabsNavigationPage },
     ];
 
     this.pushPages = [
-      { title: 'About us', icon: 'home', component: null },
-      { title: 'Advertise with us', icon: 'home', component: null },
+      { title: 'About us', icon: 'home', component: AboutUsPage },
+      { title: 'Advertise with us', icon: 'home', component: AdvertisePage },
     ];
   }
 
