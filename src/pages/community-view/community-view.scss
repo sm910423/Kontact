@@ -1,0 +1,34 @@
+page-community-view {
+    .community-view-header {
+        border-bottom: 1px solid $border-color-1;
+    }
+
+    .community-view-content {
+        .title-row {
+            margin: 16px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .image-row {
+            width: 100%;
+        }
+
+        .comment-row {
+            margin: 16px;
+            font-size: 12px;
+        }
+
+        .auth-row {
+            padding: 0px;
+            margin: 16px;
+            color: $theme-color-1;
+            font-size: 12px;
+
+            ion-col {
+                margin: 0px;
+                padding: 0px;
+            }
+        }
+    }
+}

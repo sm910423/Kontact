@@ -32,8 +32,10 @@ $theme-color-4: #fff89d;
 $theme-color-5: #e1dddd;
 $theme-color-6: #116ab4;
 $theme-color-7: #434343;
+$theme-color-8: #de2228;
 
 $border-color-1: #f4f4f4;
+$border-color-2: #979797;
 
 $fore-color-1: #00157e;
 $fore-color-2: #387ef5;
@@ -71,7 +73,7 @@ $colors: (
   ),
   header:(
     base: $white,
-    contrast: $white
+    contrast: $theme-color-1
   ),
   header-alt:(
     base: $theme-color-2,

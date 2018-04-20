@@ -13,6 +13,9 @@ import { SubCategoryPage } from '../pages/sub-category/sub-category';
 import { CategoryListingPage } from '../pages/category-listing/category-listing';
 import { NotificationAPage } from '../pages/notification-a/notification-a';
 import { NotificationBPage } from '../pages/notification-b/notification-b';
+import { CommunityPage } from '../pages/community/community';
+import { CommunityListingPage } from '../pages/community-listing/community-listing';
+import { CommunityViewPage } from '../pages/community-view/community-view';
 
 import { PreloadImage } from '../components/preload-image/preload-image';
 import { BackgroundImage } from '../components/background-image/background-image';
@@ -47,6 +50,9 @@ import { MessageProvider } from '../providers/message/message';
     CategoryListingPage,
     NotificationAPage,
     NotificationBPage,
+    CommunityPage,
+    CommunityListingPage,
+    CommunityViewPage,
 
     PreloadImage,
     BackgroundImage,
@@ -76,6 +82,9 @@ import { MessageProvider } from '../providers/message/message';
     CategoryListingPage,
     NotificationAPage,
     NotificationBPage,
+    CommunityPage,
+    CommunityListingPage,
+    CommunityViewPage,
   ],
   providers: [
 	  SplashScreen,

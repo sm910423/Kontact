@@ -19,4 +19,9 @@
 
 ion-header {
 	@include header-styles(color($colors, header, base), color($colors, header, contrast));
+
+	ion-title {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
 }

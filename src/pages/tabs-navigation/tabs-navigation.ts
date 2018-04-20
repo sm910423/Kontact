@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MainPage } from '../main/main';
 import { NavController, NavParams } from 'ionic-angular';
+import { CommunityPage } from '../community/community';
 
 @Component({
   selector: 'tabs-navigation',
@@ -18,7 +19,7 @@ export class TabsNavigationPage {
     public navParams: NavParams
   ) {
     this.tab1Root = MainPage;
-    this.tab2Root = MainPage;
+    this.tab2Root = CommunityPage;
     this.tab3Root = MainPage;
     this.tab4Root = MainPage;
   }
