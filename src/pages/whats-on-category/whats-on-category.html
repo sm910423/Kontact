@@ -1,0 +1,27 @@
+<ion-header class="whats-on-category-header">
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goToBack()">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+      </button>
+    </ion-buttons>
+    <ion-title>What's On</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="whats-on-category-content">
+  <div class="back-box">
+    <p><span (click)="goBack()">{{ title }}</span></p>
+  </div>
+  <div class="category-listing-box">
+    <ion-row *ngFor="let list of lists">
+      <ion-col width-50 *ngFor="let item of list" (click)="goToWhatsOnDetailsPage()">
+        <img [src]="item.url" class="image-box" />
+        <img src="./assets/images/featured.png" class="featured-image" />
+        <p class="comment">{{item.comment}}</p>
+        <p class="date">{{item.date}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
+  
+</ion-content>

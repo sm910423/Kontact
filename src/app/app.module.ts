@@ -17,6 +17,8 @@ import { CommunityPage } from '../pages/community/community';
 import { CommunityListingPage } from '../pages/community-listing/community-listing';
 import { CommunityViewPage } from '../pages/community-view/community-view';
 import { WhatsOnPage } from '../pages/whats-on/whats-on';
+import { WhatsOnCategoryPage } from '../pages/whats-on-category/whats-on-category';
+import { WhatsOnDetailsPage } from '../pages/whats-on-details/whats-on-details';
 
 import { PreloadImage } from '../components/preload-image/preload-image';
 import { BackgroundImage } from '../components/background-image/background-image';
@@ -55,6 +57,8 @@ import { MessageProvider } from '../providers/message/message';
     CommunityListingPage,
     CommunityViewPage,
     WhatsOnPage,
+    WhatsOnCategoryPage,
+    WhatsOnDetailsPage,
 
     PreloadImage,
     BackgroundImage,
@@ -88,6 +92,8 @@ import { MessageProvider } from '../providers/message/message';
     CommunityListingPage,
     CommunityViewPage,
     WhatsOnPage,
+    WhatsOnCategoryPage,
+    WhatsOnDetailsPage,
   ],
   providers: [
 	  SplashScreen,

@@ -1,0 +1,50 @@
+page-whats-on-category {
+    .whats-on-category-header {
+        border-bottom: 1px solid $border-color-1;
+    }
+
+    .whats-on-category-content {
+        background-color: $white !important;
+        
+        .back-box {
+            padding: 10px 16px 0px;
+            color: $theme-color-1;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .category-listing-box {
+            padding: 0px 12px;
+            
+            ion-row:last-child {
+                margin-bottom: 20px;
+            }
+            
+            .image-box {
+                width: calc(50vw - 12px);
+                height: calc(50vw - 12px - 10px - 50px);
+            }
+            
+            .featured-image {
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                width: 39px;
+                height: 42px;
+            }
+
+            p {
+                font-size: 11px;
+                margin: 4px 4px;
+            }
+
+            .comment {
+                color: $theme-color-1;
+            }
+
+            .date {
+                color: $theme-color-7;
+            }
+        }
+    }
+}
