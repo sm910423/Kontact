@@ -8,12 +8,18 @@ import { CommunityViewPage } from '../community-view/community-view';
   templateUrl: 'community.html',
 })
 export class CommunityPage {
+  images: any;
 
   constructor (
     public navCtrl: NavController, 
     public navParams: NavParams,
     public modalCtrl: ModalController,
   ) {
+    this.images = [
+      {src: "./assets/images/item3.jpg", title: "Featured Business", location: "Poland"},
+      {src: "./assets/images/item5.jpg", title: "New", location: "Poland"},
+      {src: "./assets/images/item5.jpg", title: "Most Popular", location: "Poland"},
+    ];
   }
 
   goToCommunityListingPage() {

@@ -2,4 +2,39 @@ page-community {
     .community-header {
         border-bottom: 1px solid $border-color-1
     }
+    
+    .community-content {
+        .pins {
+            column-count: 2;
+            padding: 16px;
+            margin: 0px;
+            
+            .pin {
+                display: inline-block;
+                margin: 0px 0px 10px;
+                // padding: 5px;
+                width: calc((100vw - 32px - 16px) / 2);
+                max-width: calc((100vw - 32px - 16px) / 2);
+                
+                img {
+                    border-radius: 8px;
+                    width: calc((100vw - 32px - 16px) / 2);
+                    max-width: calc((100vw - 32px - 16px) / 2);
+                }
+
+                h2 {
+                    margin: 10px 0px 2px;
+                    color: $theme-color-7;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                p {
+                    margin: 4px 0px;
+                    color: $theme-color-8;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
 }
