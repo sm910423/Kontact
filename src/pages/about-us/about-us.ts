@@ -13,4 +13,7 @@ export class AboutUsPage {
   ) {
   }
 
+  goToBack() {
+    this.navCtrl.pop();
+  }
 }
