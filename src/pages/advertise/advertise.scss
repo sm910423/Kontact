@@ -1,3 +1,42 @@
 page-advertise {
+    .advertise-content {
+        .comment-row {
+            padding: 16px;
+            font-size: 12px;
+            text-align: center;
+            color: $theme-color-7;
+        }
 
+        ion-item {
+            padding: 0px;
+            width: 70%;
+            margin-left: 15%;
+
+            .item-inner {
+                padding: 0px !important;
+                border-bottom: 1px solid $border-color-4 !important;
+                height: 30px !important;
+                min-height: 30px !important;
+                color: $theme-color-7;
+                font-weight: bold;
+
+                ion-input {
+                    min-height: 20px;
+                }
+
+                .text-input {
+                    margin: 0px;
+                    width: 100%;
+                    text-align: center !important;
+                }
+            }
+        }
+
+        .send-button {
+            color: $white;
+            background-color: $theme-color-8;
+            width: 70%;
+            margin: 20px 15%;
+        }
+    }
 }
