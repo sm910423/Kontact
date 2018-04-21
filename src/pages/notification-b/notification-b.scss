@@ -7,14 +7,15 @@ page-notification-b {
         
         .title-box {
             margin-top: 33vh;
-            color: $fore-color-3;
+            color: $theme-color-1;
             font-size: 16px;
-            font-weight: '500';
+            font-weight: bold;
             text-align: center;
         }
 
         .comment-box {
             text-align: center;
+            color: $theme-color-7;
             width: 300px;
             margin-left: calc(50% - 150px);
             margin-top: -4px;
@@ -22,11 +23,16 @@ page-notification-b {
         
         .allow-button {
 			margin-top: 40px;
-            background-color: $theme-color-1;
-            color: $fore-color-3;
+            background-color: $theme-color-4;
+            color: $theme-color-1;
             width: 200px;
             margin-left: calc(50% - 100px);
-            border-radius: 4px;
+            // border-radius: 4px;
+        }
+        
+        button {
+            font-size: 14px;
+            font-weight: bold;
         }
         
 		.back-btn

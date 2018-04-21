@@ -3,19 +3,24 @@ page-notification-a {
         background: url('../assets/images/notification-bg.png') no-repeat;
         background-size: 1688px 800px;
 		background-position-x: 75%;
-		background-position-y: center;
+        background-position-y: center;
+        
+        button {
+            font-size: 14px;
+            font-weight: bold;
+        }
         
         .allow-button {
 			margin-top: 75vh;
-            background-color: $theme-color-1;
-            color: $fore-color-2;
+            background-color: $theme-color-4;
+            color: $theme-color-1;
             width: 200px;
             margin-left: calc(50% - 100px);
         }
         
 		.back-btn
 		{
-			margin-top: 20px;
+			margin-top: 10px;
 			// border: 1px solid $white-a;
             color: $white;
             width: 120px;

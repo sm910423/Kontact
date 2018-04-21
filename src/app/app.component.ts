@@ -9,6 +9,10 @@ import { TabsNavigationPage } from '../pages/tabs-navigation/tabs-navigation';
 import { WalkthroughPage } from '../pages/walkthrough/walkthrough';
 import { AdvertisePage } from '../pages/advertise/advertise';
 import { AboutUsPage } from '../pages/about-us/about-us';
+//will be removed
+import { NotificationAPage } from '../pages/notification-a/notification-a';
+import { NotificationBPage } from '../pages/notification-b/notification-b';
+//end
 
 @Component({
   selector: 'app-root',
@@ -45,6 +49,8 @@ export class MyApp {
     this.pushPages = [
       { title: 'About us', icon: 'home', component: AboutUsPage },
       { title: 'Advertise with us', icon: 'home', component: AdvertisePage },
+      { title: 'temp Notification 1', icon: 'home', component: NotificationAPage },
+      { title: 'temp Notification 2', icon: 'home', component: NotificationBPage },
     ];
   }
 
