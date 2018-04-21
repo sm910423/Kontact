@@ -63,6 +63,11 @@ page-sub-category {
             width: 100% !important;
             height: 36px !important;
             background-color: $theme-color-6;
+            
+            .fa {
+                position: absolute;
+                right: 10px;
+            }
         }
     }
     

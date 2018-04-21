@@ -50,7 +50,7 @@ export class MainPage {
     this.menuCtrl.open();
   }
 
-  showViewAll(title) {
+  goToCategoryListingPage(title) {
     // this.navCtrl.push(CategoryListingPage, {title: title});
     let categoryModal = this.modalCtrl.create(CategoryListingPage, {title: title});
     categoryModal.onDidDismiss(data => {
