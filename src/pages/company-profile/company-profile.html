@@ -1,0 +1,75 @@
+<ion-header class="company-profile-header">
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goToBack()">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+      </button>
+    </ion-buttons>
+    <ion-title>Accounting ABC</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="company-profile-content">
+  <ion-segment color="semi-dark" class="segments" [(ngModel)]="segments">
+    <ion-segment-button value="en">
+      English
+    </ion-segment-button>
+    <ion-segment-button value="ru">
+      Russian
+    </ion-segment-button>
+  </ion-segment>
+  
+  <img class="company-image" src="./assets/images/item1.jpg" />
+  
+  <ion-row class="action-row">
+    <ion-col>
+      <button ion-button class="mail-button"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+    </ion-col>
+    <ion-col>
+      <button ion-button class="call-button">
+        03 9099 2000
+        <i class="fa fa-phone" aria-hidden="true"></i>
+      </button>
+    </ion-col>
+  </ion-row>
+  
+  <p class="url-row">
+    <button ion-button clear (click)="goToWebsitePage()">www.accountingabc.com.au</button>
+  </p>
+  
+  <div *ngIf="segments == 'en'">
+    <p class="sub-title-row">
+      Services:
+    </p>
+    <p class="service-row">
+      - Lorem lpsum is simply dummy text.
+    </p>
+    <p class="service-row">
+      - Of the printing and typesetting industry.
+    </p>
+    <p class="service-row">
+      - Lorem lpsum has been the industry's standard.
+    </p>
+    <p class="service-row">
+      - Dummy text ever since the 1500s.
+    </p>
+  </div>
+  
+  <div *ngIf="segments == 'ru'">
+    <p class="sub-title-row">
+      Сервисы:
+    </p>
+    <p class="service-row">
+      - Lorem lpsum is simply dummy text.
+    </p>
+    <p class="service-row">
+      - Of the printing and typesetting industry.
+    </p>
+    <p class="service-row">
+      - Lorem lpsum has been the industry's standard.
+    </p>
+    <p class="service-row">
+      - Dummy text ever since the 1500s.
+    </p>
+  </div>
+</ion-content>

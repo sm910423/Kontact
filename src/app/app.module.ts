@@ -21,6 +21,9 @@ import { WhatsOnCategoryPage } from '../pages/whats-on-category/whats-on-categor
 import { WhatsOnDetailsPage } from '../pages/whats-on-details/whats-on-details';
 import { AdvertisePage } from '../pages/advertise/advertise';
 import { AboutUsPage } from '../pages/about-us/about-us';
+import { CompanyProfilePage } from '../pages/company-profile/company-profile';
+import { CallPage } from '../pages/call/call';
+import { WebsitePage } from '../pages/website/website';
 
 import { PreloadImage } from '../components/preload-image/preload-image';
 import { BackgroundImage } from '../components/background-image/background-image';
@@ -63,6 +66,9 @@ import { MessageProvider } from '../providers/message/message';
     WhatsOnDetailsPage,
     AdvertisePage,
     AboutUsPage,
+    CompanyProfilePage,
+    CallPage,
+    WebsitePage,
 
     PreloadImage,
     BackgroundImage,
@@ -100,6 +106,9 @@ import { MessageProvider } from '../providers/message/message';
     WhatsOnDetailsPage,
     AdvertisePage,
     AboutUsPage,
+    CompanyProfilePage,
+    CallPage,
+    WebsitePage,
   ],
   providers: [
 	  SplashScreen,

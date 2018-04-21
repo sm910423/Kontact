@@ -6,6 +6,7 @@ import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
 import { CategoryPage } from '../category/category';
 import { CategoryListingPage } from '../category-listing/category-listing';
+import { CompanyProfilePage } from '../company-profile/company-profile';
 
 @Component({
   selector: 'page-main',
@@ -56,6 +57,14 @@ export class MainPage {
       console.log(data);
     });
     categoryModal.present();
+  }
+
+  goToCompanyProfilePage() {
+    let modal = this.modalCtrl.create(CompanyProfilePage);
+    modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    modal.present();
   }
 
   goToCategoryPage() {

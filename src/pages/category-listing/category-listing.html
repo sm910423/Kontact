@@ -20,7 +20,7 @@
   </div>
   <div class="category-listing-box">
     <ion-row *ngFor="let list of lists">
-      <ion-col width-50 *ngFor="let item of list">
+      <ion-col width-50 *ngFor="let item of list" (click)="goToCompanyProfilePage()">
         <img [src]="item.url" class="image-box" />
         <img src="./assets/images/featured.png" class="featured-image" />
       </ion-col>

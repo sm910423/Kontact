@@ -1,0 +1,46 @@
+<ion-header class="website-header">
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goToBack()">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+      </button>
+    </ion-buttons>
+    <ion-title>Accounting ABC</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="website-content">
+  <img class="logo-image" src="./assets/images/menu-icon.png" />
+  <img class="company-image" src="./assets/images/item1.jpg" />
+  
+  <ion-segment color="semi-dark" class="segments" [(ngModel)]="segments">
+    <ion-segment-button value="about">
+      About
+    </ion-segment-button>
+    <ion-segment-button value="contacts">
+      Contacts
+    </ion-segment-button>
+  </ion-segment>
+  
+  <div *ngIf="segments=='about'">
+    <p class="sub-title-row">
+      About me
+    </p>
+    
+    <p class="content-row">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,      
+      When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    </p>
+  </div>
+  
+  <div *ngIf="segments=='contacts'">
+    <p class="sub-title-row">
+      Contacts
+    </p>
+    
+    <p class="content-row">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,      
+      When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    </p>
+  </div>
+</ion-content>
