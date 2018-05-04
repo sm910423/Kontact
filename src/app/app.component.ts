@@ -22,7 +22,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make LoginPage the root (or first) page
-  rootPage: any = WalkthroughPage;
+  rootPage: any;
 
   pages: Array<{title: string, icon: string, component: any}>;
   pushPages: Array<{title: string, icon: string, component: any}>;
@@ -40,6 +40,29 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.splashScreen.hide();
       this.statusBar.styleDefault();
+    });
+
+    this.storage.get("isNotFirstLoading").then(value => {
+      console.log("isNotFirstLoading", value);
+      this.storage.set("isNotFirstLoading", true);
+      if (value !== true) {
+        this.storage.set("visibleBackButton", true);
+        this.rootPage = WalkthroughPage;
+      } else {
+        this.storage.set("visibleBackButton", false);
+        this.storage.get("userInfo").then((value) => {
+          if (value && value.email && value.email.length > 0) {
+            this.rootPage = TabsNavigationPage;
+          } else {
+            this.rootPage = LoginPage;
+          }
+        }).catch(() => {
+          this.rootPage = LoginPage;
+        });
+      }
+    }).catch(err => {
+      this.storage.set("isNotFirstLoading", true);
+      this.rootPage = WalkthroughPage;
     });
 
     this.pages = [
@@ -66,7 +89,8 @@ export class MyApp {
 
   logout() {
     this.menu.close();
-    this.storage.set("users", null).then(data => {
+    this.storage.set("visibleBackButton", false);
+    this.storage.set("userInfo", null).then(data => {
       this.nav.setRoot(LoginPage);
     }).catch(err => {
       this.nav.setRoot(LoginPage);

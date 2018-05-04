@@ -19,8 +19,8 @@ import { NotificationAPage } from '../notification-a/notification-a';
 })
 export class LoginPage {
   login: FormGroup;
-  main_page: { component: any };
   loading: any;
+  visibleBackButton: boolean = true;
   
   constructor(
     public nav: NavController,
@@ -29,18 +29,17 @@ export class LoginPage {
     public storage: Storage,
     public messageProvider: MessageProvider
   ) {
-    // this.storage.get("isNotFirstLogin").then(data => {
-    //   if (data != true) {
-    //     this.nav.setRoot(WalkthroughPage);
-    //     this.storage.set("isNotFirstLogin", true);
-    //   }
-    // }).catch(err => {
-    //   this.nav.setRoot(WalkthroughPage);
-    //   this.storage.set("isNotFirstLogin", true);
-    // });
-    
-    this.main_page = { component: TabsNavigationPage };
-    
+    this.storage.get("visibleBackButton").then((value) => {
+      this.visibleBackButton = value === true ? true : false;
+    }).catch(() => {
+      this.visibleBackButton = true;
+    });
+    if (this.nav.first()) {
+      this.visibleBackButton = true;
+    } else {
+      this.visibleBackButton = false;
+    }
+
     this.login = new FormGroup({
       usersEmail: new FormControl('', Validators.required),
       usersPassword: new FormControl('', Validators.required)
@@ -63,6 +62,7 @@ export class LoginPage {
     this.httpProvider.login(json).then((data:any) => {
       this.loading.dismiss();
       if (data.status === 200) {
+        this.storage.set("userInfo", data.userinfo);
         this.nav.setRoot(TabsNavigationPage);
       } else if (data.status === 600) {
         this.messageProvider.showMessage("ERR_CUSTOMER_SIGNUP_FAILED");

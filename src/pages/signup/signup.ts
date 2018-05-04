@@ -63,6 +63,7 @@ export class SignupPage {
     this.httpProvider.signUp(json).then((data:any) => {
       this.loading.dismiss();
       if (data.status === 200) {
+        this.storage.set("userInfo", data.userinfo);
         this.nav.setRoot(TabsNavigationPage);
       } else if (data.status === 600) {
         this.messageProvider.showMessage("ERR_CUSTOMER_SIGNUP_FAILED");

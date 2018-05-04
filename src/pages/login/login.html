@@ -14,9 +14,8 @@
         <ion-input type="password" placeholder="Password" formControlName="usersPassword" show-hide-input></ion-input>
       </ion-item>
     </show-hide-container>
-    <!-- <button ion-button block class="auth-action-button" (click)="doLogin()" [disabled]="!login.valid">Log in</button> -->
-    <button ion-button block class="auth-action-button" (click)="doLogin()">LOGIN</button>
-    <button ion-button clear block class="back-btn" (click)="goBack()">BACK</button>
+    <button ion-button block class="auth-action-button" (click)="doLogin()" [disabled]="!signup.valid">LOGIN</button>
+    <button ion-button clear block class="back-btn" (click)="goBack()" *ngIf="visibleBackButton">BACK</button>
   </form>
   <ion-row class="alt-options">
     <ion-col no-padding text-center width-100>
