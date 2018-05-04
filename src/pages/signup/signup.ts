@@ -33,7 +33,7 @@ export class SignupPage {
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.compose([Validators.minLength(6), Validators.required])),
       confirm_password: new FormControl('', Validators.required),
-      mobile: new FormControl(''),
+      mobile: new FormControl('', Validators.required),
     });
     
     this.loading = this.loadingCtrl.create();
@@ -51,43 +51,35 @@ export class SignupPage {
     if (this.signup.getRawValue().password != this.signup.getRawValue().confirm_password) {
       this.messageProvider.showMessage("Passwords do not match. Please try again.");
     } else {
-      this.loading = this.loadingCtrl.create();
-      this.loading.present();
-      this.loading.dismiss();
-      this.nav.setRoot(TabsNavigationPage);
+      let rawValue = this.signup.getRawValue();
+      let jsonData: any = {email: rawValue.email, password: rawValue.password, phonenumber: rawValue.mobile};
+      this.signupViaHttp(jsonData);
     }
   }
   
   signupViaHttp(json) {
-    if (this.loading != null && this.loading != undefined) {
-      this.loading.dismiss();
-    }
+    this.loading = this.loadingCtrl.create();
     this.loading.present();
     this.httpProvider.signUp(json).then((data:any) => {
       this.loading.dismiss();
-      if (data.responseCode == "101") {
-        if (data.usersData != null && data.usersData != undefined) {
-          console.log(data.usersData)
-          this.storage.set("users", {usersId: data.usersData.usersId, token: data.usersData.token}).then(data => {
-            this.nav.setRoot(this.main_page.component);
-          }).catch(err => {
-            this.nav.setRoot(this.main_page.component);
-          });
-        }
-      } else if (data.responseCode == "102") {
-        this.messageProvider.showMessage("No User data");
-      } else if (data.responseCode == "103") {
-        this.messageProvider.showMessage("Account Creation Failed");
-      } else if (data.responseCode == "104") {
-        this.messageProvider.showMessage("Email Address already exists");
-        if (json.signupType == "manual") {
-          this.nav.push(ForgotPasswordPage);
-        }
-      } else if (data.responseCode == "105") {
-        this.messageProvider.showMessage("No email supplied");
-      } else if (data.responseCode == "106") {
-        this.messageProvider.showMessage("Select User Fail");
+      if (data.status === 200) {
+        this.nav.setRoot(TabsNavigationPage);
+      } else if (data.status === 600) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_SIGNUP_FAILED");
+      } else if (data.status === 601) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_EMAIL_DUPLICATE");
+      } else if (data.status === 602) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_INVALID_PASSWORD");
+      } else if (data.status === 603) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_NOT_FOUND");
+      } else if (data.status === 604) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_UPDATE_FAILED");
+      } else if (data.status === 605) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_INVALID_VERIFYCODE");
+      } else if (data.status === 606) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_FB_SIGNUP_REQUIRE");
       } else {
+        this.messageProvider.showMessage("UNKOWN_ERROR");
       }
     }).catch(err => {
       this.loading.dismiss();

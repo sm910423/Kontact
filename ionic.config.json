@@ -8,7 +8,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "https://www.google.com/"
+      "proxyUrl": "http://kontaktsite.wpengine.com/Backend/Kontakt_API/index.php"
     }
   ],
   "hooks": {}

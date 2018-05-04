@@ -39,6 +39,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 // import { Keyboard } from '@ionic-native/keyboard';
 import { IonicStorageModule } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal';
+
 
 import { HttpProvider } from '../providers/http/http';
 import { MessageProvider } from '../providers/message/message';
@@ -112,7 +114,8 @@ import { MessageProvider } from '../providers/message/message';
   ],
   providers: [
 	  SplashScreen,
-	  StatusBar,
+    StatusBar,
+    OneSignal,
     // Keyboard,
     HttpProvider, 
     MessageProvider, 

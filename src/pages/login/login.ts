@@ -51,9 +51,8 @@ export class LoginPage {
   
   doLogin() {
     let jsonData: any = {};
-    jsonData.usersEmail = this.login.getRawValue().usersEmail;
-    jsonData.usersPassword = this.login.getRawValue().usersPassword;
-    jsonData.loginType = "manual"
+    jsonData.email = this.login.getRawValue().usersEmail;
+    jsonData.password = this.login.getRawValue().usersPassword;
     
     this.loginViaHttp(jsonData);
   }
@@ -61,14 +60,31 @@ export class LoginPage {
   loginViaHttp(json) {
     this.loading = this.loadingCtrl.create();
     this.loading.present();
-    // this.httpProvider.login(json).then((data:any) => {
-    //   this.loading.dismiss();
-    // }).catch(err => {
-    //   this.loading.dismiss();
-    //   this.messageProvider.showMessage("Sorry, There is any error");
-    // });
-    this.loading.dismiss();
-    this.nav.setRoot(TabsNavigationPage);
+    this.httpProvider.login(json).then((data:any) => {
+      this.loading.dismiss();
+      if (data.status === 200) {
+        this.nav.setRoot(TabsNavigationPage);
+      } else if (data.status === 600) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_SIGNUP_FAILED");
+      } else if (data.status === 601) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_EMAIL_DUPLICATE");
+      } else if (data.status === 602) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_INVALID_PASSWORD");
+      } else if (data.status === 603) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_NOT_FOUND");
+      } else if (data.status === 604) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_UPDATE_FAILED");
+      } else if (data.status === 605) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_INVALID_VERIFYCODE");
+      } else if (data.status === 606) {
+        this.messageProvider.showMessage("ERR_CUSTOMER_FB_SIGNUP_REQUIRE");
+      } else {
+        this.messageProvider.showMessage("UNKOWN_ERROR");
+      }
+    }).catch(err => {
+      this.loading.dismiss();
+      this.messageProvider.showMessage("Sorry, There is any error");
+    });
   }
   
   goToSignup() {
@@ -78,11 +94,11 @@ export class LoginPage {
   goToForgotPassword() {
     this.nav.push(ForgotPasswordPage);
   }
-
+  
   goBack() {
     this.nav.pop();
   }
-
+  
   goToNotificationPage() {
     this.nav.push(NotificationAPage);
   }

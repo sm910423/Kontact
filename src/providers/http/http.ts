@@ -4,11 +4,12 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class HttpProvider {
-  SIGNUP       = "";
-  LOGIN        = "";
+  SERVER      = "http://kontaktsite.wpengine.com/Backend/Kontakt_API/index.php";
+  SIGNUP      = this.SERVER + "/user/user_signup";
+  LOGIN       = this.SERVER + "/user/user_login";
   
-  // SIGNUP       = "/api/SignUp";
-  // LOGIN        = "/api/Login";
+  // SIGNUP       = "/api/user/user_signup";
+  // LOGIN        = "/api/user/user_login";
   
   contentHeader: Headers = new Headers({"Content-Type": "application/json"});
   
@@ -19,7 +20,7 @@ export class HttpProvider {
   }
   
   signUp(json) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       this.contentHeader = new Headers({"Content-Type": "application/json"});
       this.http.post(this.SIGNUP, JSON.stringify(json), { headers : this.contentHeader }).map(res => res.json()).subscribe(data => {
         console.log("success");
@@ -28,13 +29,13 @@ export class HttpProvider {
       }, err => {
         console.log("error");
         console.log(JSON.stringify(err));
-        resolve(err);
+        reject(err);
       });
     });
   }
   
   login(json) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       this.http.post(this.LOGIN, JSON.stringify(json), {headers : this.contentHeader}).map(res => res.json()).subscribe(data => {
         console.log("login success");
         console.log(data);
@@ -42,7 +43,7 @@ export class HttpProvider {
       }, err => {
         console.log("login failure");
         console.log(err);
-        resolve(err);
+        reject(err);
       })
     });
   }
