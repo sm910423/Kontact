@@ -51,7 +51,7 @@ export class MyApp {
       } else {
         this.storage.set("visibleBackButton", false);
         this.storage.get("userInfo").then((value) => {
-          if (value && value.email && value.email.length > 0) {
+          if (value && value.user_email && value.user_email.length > 0) {
             this.rootPage = TabsNavigationPage;
           } else {
             this.rootPage = LoginPage;
