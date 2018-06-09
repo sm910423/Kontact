@@ -10,7 +10,6 @@ import { WalkthroughPage } from '../walkthrough/walkthrough';
 
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
-import { MainPage } from '../main/main';
 import { NotificationAPage } from '../notification-a/notification-a';
 
 @Component({
@@ -41,8 +40,8 @@ export class LoginPage {
     }
 
     this.login = new FormGroup({
-      usersEmail: new FormControl('', Validators.required),
-      usersPassword: new FormControl('', Validators.required)
+      usersEmail: new FormControl('test@test.com', Validators.required),
+      usersPassword: new FormControl('qwerasdf', Validators.required)
     });
     
     this.loading = this.loadingCtrl.create();
@@ -57,6 +56,7 @@ export class LoginPage {
   }
   
   loginViaHttp(json) {
+    console.log(json);
     this.loading = this.loadingCtrl.create();
     this.loading.present();
     this.httpProvider.login(json).then((data:any) => {

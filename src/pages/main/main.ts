@@ -16,6 +16,9 @@ import { OneSignal } from '@ionic-native/onesignal';
 export class MainPage {
   refresher: any;
   loading: any;
+  mostList: any = [];
+  featuredList: any = [];
+  newList: any = [];
   
   constructor (
     public platform: Platform,
@@ -31,20 +34,49 @@ export class MainPage {
     public app: App,
     public onesignal: OneSignal,
   ) {
-    this.platform.ready().then(() => {
-      if (this.platform.is('ios') || this.platform.is('android')) {
-        this.onesignal.startInit('3da23f43-b4e4-49c6-8ada-6e8b8452602e', '93392192219');
-        this.onesignal.inFocusDisplaying(this.onesignal.OSInFocusDisplayOption.None);
-        // this.onesignal.inFocusDisplaying(this.onesignal.OSInFocusDisplayOption.InAppAlert);
-        this.onesignal.handleNotificationReceived().subscribe((msg) => {
-          let msgStr: string = msg.payload.body;
-          this.messageProvider.showMessage(msgStr);
+    // this.platform.ready().then(() => {
+    //   if (this.platform.is('ios') || this.platform.is('android')) {
+    //     this.onesignal.startInit('3da23f43-b4e4-49c6-8ada-6e8b8452602e', '93392192219');
+    //     this.onesignal.inFocusDisplaying(this.onesignal.OSInFocusDisplayOption.None);
+    //     // this.onesignal.inFocusDisplaying(this.onesignal.OSInFocusDisplayOption.InAppAlert);
+    //     this.onesignal.handleNotificationReceived().subscribe((msg) => {
+    //       let msgStr: string = msg.payload.body;
+    //       this.messageProvider.showMessage(msgStr);
+    //     });
+    //     this.onesignal.handleNotificationOpened().subscribe(() => {
+    //       // this.reloadThreads(null);
+    //     });
+    //     this.onesignal.endInit();
+    //   }
+    // });
+
+    this.getData();
+  }
+
+  getData() {
+    this.newList = this.featuredList = this.mostList = [];
+    
+    this.storage.get("userInfo").then((data) => {
+      this.httpProvider.getAllCompanies({kind: "most", email: data.user_email}).then((value: any) => {
+        this.mostList = value.list;
+        this.mostList.forEach(element => {
+          element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
         });
-        this.onesignal.handleNotificationOpened().subscribe(() => {
-          // this.reloadThreads(null);
+      });
+
+      this.httpProvider.getAllCompanies({kind: "featured", email: data.user_email}).then((value: any) => {
+        this.featuredList = value.list;
+        this.featuredList.forEach(element => {
+          element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
         });
-        this.onesignal.endInit();
-      }
+      });
+
+      this.httpProvider.getAllCompanies({kind: "new", email: data.user_email}).then((value: any) => {
+        this.newList = value.list;
+        this.newList.forEach(element => {
+          element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
+        });
+      });
     });
   }
   

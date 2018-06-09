@@ -36,17 +36,8 @@
       </ion-col>
     </ion-row>
     <ion-scroll scrollX class="scroll-box">
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item1.jpg" class="image-box" />
-      </div>
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item2.jpg" class="image-box" />
-      </div>
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item1.jpg" class="image-box" />
-      </div>
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item2.jpg" class="image-box" />
+      <div class="scroll-item" (click)="goToCompanyProfilePage(company.id)" *ngFor="let company of featuredList">
+        <img [src]="company.image_url" class="image-box" />
       </div>
     </ion-scroll>
   </ion-item>
@@ -61,17 +52,8 @@
       </ion-col>
     </ion-row>
     <ion-scroll scrollX class="scroll-box">
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item2.jpg" class="image-box" />
-      </div>
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item1.jpg" class="image-box" />
-      </div>
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item2.jpg" class="image-box" />
-      </div>
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item1.jpg" class="image-box" />
+      <div class="scroll-item" (click)="goToCompanyProfilePage(company.id)" *ngFor="let company of mostList">
+        <img [src]="company.image_url" class="image-box" />
       </div>
     </ion-scroll>
   </ion-item>
@@ -86,17 +68,8 @@
       </ion-col>
     </ion-row>
     <ion-scroll scrollX class="scroll-box">
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item1.jpg" class="image-box" />
-      </div>
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item2.jpg" class="image-box" />
-      </div>
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item1.jpg" class="image-box" />
-      </div>
-      <div class="scroll-item" (click)="goToCompanyProfilePage()">
-        <img src="./assets/images/item2.jpg" class="image-box" />
+      <div class="scroll-item" (click)="goToCompanyProfilePage(company.id)" *ngFor="let company of newList">
+        <img [src]="company.image_url" class="image-box" />
       </div>
     </ion-scroll>
   </ion-item>
