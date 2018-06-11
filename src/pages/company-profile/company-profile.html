@@ -5,7 +5,7 @@
         <i class="fa fa-angle-left" aria-hidden="true"></i>
       </button>
     </ion-buttons>
-    <ion-title>Accounting ABC</ion-title>
+    <ion-title>{{ company.title }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -19,7 +19,9 @@
     </ion-segment-button>
   </ion-segment>
   
-  <img class="company-image" src="./assets/images/item1.jpg" />
+  <div *ngIf="company.title">
+    <img class="company-image" [src]="company.image_url" />
+  </div>
   
   <ion-row class="action-row">
     <ion-col>
@@ -27,14 +29,14 @@
     </ion-col>
     <ion-col>
       <button ion-button class="call-button">
-        03 9099 2000
+        {{ company.phone }}
         <i class="fa fa-phone" aria-hidden="true"></i>
       </button>
     </ion-col>
   </ion-row>
   
   <p class="url-row">
-    <button ion-button clear (click)="goToWebsitePage()">www.accountingabc.com.au</button>
+    <button ion-button clear (click)="goToWebsitePage()">{{ company.site }}</button>
   </p>
   
   <div *ngIf="segments == 'en'">
