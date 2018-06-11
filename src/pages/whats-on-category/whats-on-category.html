@@ -11,15 +11,15 @@
 
 <ion-content class="whats-on-category-content">
   <div class="back-box">
-    <p><span (click)="goBack()">{{ title }}</span></p>
+    <p><span>{{ title[kind] }}</span></p>
   </div>
   <div class="category-listing-box">
     <ion-row *ngFor="let list of lists">
-      <ion-col width-50 *ngFor="let item of list" (click)="goToWhatsOnDetailsPage()">
-        <img [src]="item.url" class="image-box" />
+      <ion-col width-50 *ngFor="let item of list" (click)="goToWhatsOnDetailsPage(item.id)">
+        <img [src]="item.image_url" class="image-box" />
         <img src="./assets/images/featured.png" class="featured-image" />
-        <p class="comment">{{item.comment}}</p>
-        <p class="date">{{item.date}}</p>
+        <p class="comment">{{item.title}}</p>
+        <p class="date">{{item.time}}</p>
       </ion-col>
     </ion-row>
   </div>

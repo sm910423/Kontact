@@ -35,7 +35,7 @@ export class CompanyProfilePage {
       this.http.getCompanyInfo(json).then((data: any) => {
         loading.dismiss();
         this.company = data.info;
-        this.company.image_url = this.http.SITE + "/uploads/" + this.company.title + "_image.png"
+        this.company.image_url = this.http.SITE + "/uploads/" + this.company.title + "_image.png";
       }).catch(() => {
         loading.dismiss();
       });

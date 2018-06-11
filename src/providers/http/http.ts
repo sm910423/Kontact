@@ -13,6 +13,8 @@ export class HttpProvider {
   LOGIN        = "/proxy_api/user/user_login";
   COMPANY_LIST = "/proxy_api/company/list";
   COMPANY      = "/proxy_api/company/details"
+  EVENT_LIST   = "/proxy_api/event/list";
+  EVENT        = "/proxy_api/event/details"
   
   contentHeader: Headers = new Headers({"Content-Type": "application/json"});
   
@@ -73,6 +75,34 @@ export class HttpProvider {
         resolve(data);
       }, err => {
         console.log("get company info failure");
+        console.log(err);
+        reject(err);
+      });
+    });
+  }
+
+  getAllEvents(json) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.EVENT_LIST, JSON.stringify(json), {headers: this.contentHeader}).map(res => res.json()).subscribe(data => {
+        console.log("get event list success");
+        console.log(data);
+        resolve(data);
+      }, err => {
+        console.log("get event list failure");
+        console.log(err);
+        reject(err);
+      });
+    });
+  }
+
+  getEventInfo(json) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.EVENT, JSON.stringify(json), {headers: this.contentHeader}).map(res => res.json()).subscribe(data => {
+        console.log("get event info success");
+        console.log(data);
+        resolve(data);
+      }, err => {
+        console.log("get event info failure");
         console.log(err);
         reject(err);
       });

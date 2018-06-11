@@ -14,7 +14,9 @@
     Happy Time Concert
   </p>
   
-  <img src="./assets/images/item1.jpg" class="image-row" />
+  <div *ngIf="event.image">
+    <img class="image-row" [src]="event.image_url" />
+  </div>
   
   <div class="rows-box">
     <ion-row class="auth-row">
@@ -22,7 +24,7 @@
         Where:
       </ion-col>
       <ion-col text-left>
-        Albert Park Lake
+        {{ event.place }}
       </ion-col>
       <ion-col text-right>
         Directions?
@@ -33,7 +35,7 @@
         When:
       </ion-col>
       <ion-col text-left>
-        13/4/2018 @ pm
+        {{ event.time }}
       </ion-col>
       <ion-col text-right>
         Add to Calendar
@@ -44,7 +46,7 @@
         Website:
       </ion-col>
       <ion-col text-left>
-        www.eventstuff.com.au
+        {{ event.website }}
       </ion-col>
     </ion-row>
   </div>
@@ -53,11 +55,6 @@
     Description
   </p>
   <p class="comment-row">
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-    1500s, when an unknown printer took a galley of type 
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the Industry's standard dummy text ever since the 1500s, 
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-    1500s, when an unknown printer took a galley of type 
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the Industry's standard dummy text ever since the 1500s, 
+    {{ event.content }}
   </p>
 </ion-content>

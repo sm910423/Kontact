@@ -17,7 +17,7 @@ export class CategoryPage {
     public viewCtrl: ViewController,
     public modalCtrl: ModalController
   ) {
-    this.categories = ["Featured Businesses", "Most Popular Businesses", "New"];
+    this.categories = [{title: "Featured Businesses", kind: "featured"}, {title: "Most Popular Businesses", kind: "most"}, {title: "New", kind: "new"}];
     this.subCategories = [
       { icon: "fa-user", title: "Accounting" },
       { icon: "fa-car", title: "Automative/Cars" },
@@ -28,14 +28,10 @@ export class CategoryPage {
       { icon: "fa-id-card", title: "Carpet" }
     ];
   }
-
-  goToCategoryListingPage(title) {
-    // this.navCtrl.push(CategoryListingPage, {title: title});
-    let categoryListingModal = this.modalCtrl.create(CategoryListingPage, {title: title});
-    categoryListingModal.onDidDismiss(data => {
-      console.log(data);
-    });
-    categoryListingModal.present();
+  
+  goToCategoryListingPage(kind) {
+    let categoryModal = this.modalCtrl.create(CategoryListingPage, {kind: kind});
+    categoryModal.present();
   }
 
   goToSubCategoryPage(sub) {

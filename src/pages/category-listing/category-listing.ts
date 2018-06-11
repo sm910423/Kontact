@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
-import { HttpProvider } from '../../providers/http/http';
 import { Storage } from '@ionic/storage';
 
 import { CategoryPage } from '../category/category';
 import { CompanyProfilePage } from '../company-profile/company-profile';
+import { HttpProvider } from '../../providers/http/http';
 
 @Component({
   selector: 'page-category-listing',
