@@ -30,10 +30,11 @@ export class CategoryListingPage {
   getCategoryList() {
     this.lists = [];
     this.storage.get("userInfo").then((data) => {
+      let loading = this.loadingCtrl.create();
+      loading.present();
       this.http.getAllCompanies({kind: this.kind, limit: "-1", email: data.user_email}).then((value: any) => {
         let lists = value.list;
-        // console.log(lists["1"]);
-
+        
         for (let i = 0; i < lists.length; i += 2) {
           let obj = [];
           let objA = lists[i.toString()];
@@ -49,7 +50,9 @@ export class CategoryListingPage {
           this.lists.push(obj);
         }
 
-        console.log(this.lists);
+        loading.dismiss();
+      }).catch(() => {
+        loading.dismiss();
       });
     });
   }

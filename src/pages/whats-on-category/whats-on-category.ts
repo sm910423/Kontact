@@ -29,6 +29,8 @@ export class WhatsOnCategoryPage {
   getCategoryList() {
     this.lists = [];
     this.storage.get("userInfo").then((data) => {
+      let loading = this.loadingCtrl.create();
+      loading.present();
       this.http.getAllEvents({kind: this.kind, limit: "-1", email: data.user_email}).then((value: any) => {
         let lists = value.list;
 
@@ -44,7 +46,10 @@ export class WhatsOnCategoryPage {
             obj.push(objB);
           }
           this.lists.push(obj);
+          loading.dismiss();
         }
+      }).catch(() => {
+        loading.dismiss();
       });
     });
   }
