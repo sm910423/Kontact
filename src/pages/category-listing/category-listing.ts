@@ -11,9 +11,12 @@ import { HttpProvider } from '../../providers/http/http';
   templateUrl: 'category-listing.html',
 })
 export class CategoryListingPage {
-  title = {featured: "Featured Businesses", most: "Most Popular", new: "New"};
+  kinds = {featured: "Featured Businesses", most: "Most Popular", new: "New"};
+  title;
   kind;
   lists: any;
+  category;
+  sub_category;
   
   constructor (
     public navCtrl: NavController, 
@@ -24,15 +27,28 @@ export class CategoryListingPage {
     private loadingCtrl: LoadingController
   ) {
     this.kind = this.navParams.get("kind");
-    this.getCategoryList();
+    if (this.kind) {
+      this.title = this.kinds[this.kind];
+    } else {
+      this.category = this.navParams.get("category");
+      this.sub_category = this.navParams.get("sub_category");
+      this.title = this.category.title + " -> " + this.sub_category.title;
+    }
+    this.getList();
   }
   
-  getCategoryList() {
+  getList() {
     this.lists = [];
     this.storage.get("userInfo").then((data) => {
       let loading = this.loadingCtrl.create();
       loading.present();
-      this.http.getAllCompanies({kind: this.kind, limit: "-1", email: data.user_email}).then((value: any) => {
+      let json;
+      if (this.kind) {
+        json = {kind: this.kind, limit: "-1", email: data.user_email};
+      } else {
+        json = {email: data.user_email, sub_category_id: this.sub_category.id}
+      }
+      this.http.getDataByPost(this.http.COMPANY_LIST, json).then((value: any) => {
         let lists = value.list;
         
         for (let i = 0; i < lists.length; i += 2) {
@@ -41,7 +57,7 @@ export class CategoryListingPage {
           console.log(objA);
           objA.image_url = this.http.SITE + "/uploads/" + objA.title + "_image.png";
           obj.push(objA);
-
+          
           if (i + 1 != lists.length) {
             let objB = lists[(i + 1).toString()];
             objB.image_url = this.http.SITE + "/uploads/" + objB.title + "_image.png";
@@ -49,7 +65,7 @@ export class CategoryListingPage {
           }
           this.lists.push(obj);
         }
-
+        
         loading.dismiss();
       }).catch(() => {
         loading.dismiss();

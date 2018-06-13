@@ -16,12 +16,12 @@
 
 <ion-content class="category-content">
   <div class="category-box">
-    <p *ngFor="let cat of categories;" (click)="goToCategoryListingPage(cat.kind)">{{ cat.title }}</p>
+    <p *ngFor="let k of kinds;" (click)="goToCategoryListingPage(k.kind)">{{ k.title }}</p>
   </div>
   <div class="sub-category-box">
-    <ion-row *ngFor="let category of subCategories" (click)="goToSubCategoryPage(category)">
+    <ion-row *ngFor="let category of categories" (click)="goToSubCategoryPage(category)">
       <ion-col text-left>
-        <i class="fa {{category.icon}}" aria-hidden="true"></i>
+        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
       </ion-col>
       <ion-col text-left>
         {{ category.title }}

@@ -60,7 +60,7 @@ export class SignupPage {
   signupViaHttp(json) {
     this.loading = this.loadingCtrl.create();
     this.loading.present();
-    this.httpProvider.signUp(json).then((data:any) => {
+    this.httpProvider.getDataByPost(this.httpProvider.SIGNUP, json).then((data:any) => {
       this.loading.dismiss();
       if (data.status === 200) {
         this.storage.set("userInfo", data.userinfo);

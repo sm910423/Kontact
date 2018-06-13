@@ -59,7 +59,7 @@ export class LoginPage {
     console.log(json);
     this.loading = this.loadingCtrl.create();
     this.loading.present();
-    this.httpProvider.login(json).then((data:any) => {
+    this.httpProvider.getDataByPost(this.httpProvider.LOGIN, json).then((data:any) => {
       this.loading.dismiss();
       if (data.status === 200) {
         this.storage.set("userInfo", data.userinfo);

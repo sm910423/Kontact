@@ -17,15 +17,15 @@
 
 <ion-content class="sub-category-content">
   <div class="category-box">
-    <p>{{title}}</p>
+    <p>{{ category.title }}</p>
   </div>
   <div class="sub-category-box">
-    <ion-row *ngFor="let category of subCategories" (click)="goToSubCategoryPage(category)">
+    <ion-row *ngFor="let c of subCategories" (click)="goToCategoryListPage(c)">
       <ion-col text-left>
-        <i class="fa {{category.icon}}" aria-hidden="true"></i>
+        <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
       </ion-col>
       <ion-col text-left>
-        {{ category.title }}
+        {{ c.title }}
       </ion-col>
       <ion-col text-right>
         <i class="fa fa-chevron-right" aria-hidden="true"></i>

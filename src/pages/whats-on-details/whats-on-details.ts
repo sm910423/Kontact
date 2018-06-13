@@ -32,7 +32,7 @@ export class WhatsOnDetailsPage {
     loading.present();
     this.storage.get("userInfo").then((info) => {
       let json = {email: info.user_email, id: this.event_id};
-      this.http.getEventInfo(json).then((data: any) => {
+      this.http.getDataByPost(this.http.EVENT, json).then((data: any) => {
         loading.dismiss();
         this.event = data.info;
         this.event.image_url = this.http.SITE + "/uploads/" + this.event.image;

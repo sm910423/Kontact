@@ -70,7 +70,7 @@ export class MainPage {
     this.loading.present();
     
     this.storage.get("userInfo").then((data) => {
-      this.httpProvider.getAllCompanies({kind: "most", email: data.user_email, limit: this.limit}).then((value: any) => {
+      this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "most", email: data.user_email, limit: this.limit}).then((value: any) => {
         this.mostList = value.list;
         this.mostList.forEach(element => {
           element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
@@ -80,7 +80,7 @@ export class MainPage {
         this.events.publish('company:http_call_end');
       });
 
-      this.httpProvider.getAllCompanies({kind: "featured", email: data.user_email, limit: this.limit}).then((value: any) => {
+      this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "featured", email: data.user_email, limit: this.limit}).then((value: any) => {
         this.featuredList = value.list;
         this.featuredList.forEach(element => {
           element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
@@ -90,7 +90,7 @@ export class MainPage {
         this.events.publish('company:http_call_end');
       });
 
-      this.httpProvider.getAllCompanies({kind: "new", email: data.user_email, limit: this.limit}).then((value: any) => {
+      this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "new", email: data.user_email, limit: this.limit}).then((value: any) => {
         this.newList = value.list;
         this.newList.forEach(element => {
           element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";

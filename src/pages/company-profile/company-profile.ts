@@ -32,7 +32,7 @@ export class CompanyProfilePage {
     loading.present();
     this.storage.get("userInfo").then((info) => {
       let json = {email: info.user_email, id: this.company_id};
-      this.http.getCompanyInfo(json).then((data: any) => {
+      this.http.getDataByPost(this.http.COMPANY, json).then((data: any) => {
         loading.dismiss();
         this.company = data.info;
         this.company.image_url = this.http.SITE + "/uploads/" + this.company.title + "_image.png";

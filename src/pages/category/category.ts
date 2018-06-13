@@ -1,32 +1,44 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ModalController, LoadingController } from 'ionic-angular';
 import { SubCategoryPage } from '../sub-category/sub-category';
 import { CategoryListingPage } from '../category-listing/category-listing';
+import { HttpProvider } from '../../providers/http/http';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-category',
   templateUrl: 'category.html',
 })
 export class CategoryPage {
-  categories:any;
-  subCategories: any;
+  kinds:any;
+  categories: any;
 
   constructor (
     public navCtrl: NavController, 
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    private loadingCtrl: LoadingController,
+    private http: HttpProvider,
+    private storage: Storage
   ) {
-    this.categories = [{title: "Featured Businesses", kind: "featured"}, {title: "Most Popular Businesses", kind: "most"}, {title: "New", kind: "new"}];
-    this.subCategories = [
-      { icon: "fa-user", title: "Accounting" },
-      { icon: "fa-car", title: "Automative/Cars" },
-      { icon: "fa-male", title: "Aged Care" },
-      { icon: "fa-asterisk", title: "Architects" },
-      { icon: "fa-gavel", title: "Artists" },
-      { icon: "fa-building", title: "Building Supplies" },
-      { icon: "fa-id-card", title: "Carpet" }
-    ];
+    this.kinds = [{title: "Featured Businesses", kind: "featured"}, {title: "Most Popular Businesses", kind: "most"}, {title: "New", kind: "new"}];
+
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.categories = [];
+    this.storage.get("userInfo").then((data) => {
+      let loading = this.loadingCtrl.create();
+      loading.present();
+      this.http.getDataByPost(this.http.CATEGORIES, {email: data.user_email}).then((values: any) => {
+        this.categories = values.categories;
+        loading.dismiss();
+      }).catch(() => {
+        loading.dismiss();
+      });
+    });
   }
   
   goToCategoryListingPage(kind) {
@@ -34,12 +46,8 @@ export class CategoryPage {
     categoryModal.present();
   }
 
-  goToSubCategoryPage(sub) {
-    // this.navCtrl.push(SubCategoryPage, {subCategory: sub});
-    let subCategoryModal = this.modalCtrl.create(SubCategoryPage, {subCategory: sub});
-    subCategoryModal.onDidDismiss(data => {
-      console.log(data);
-    });
+  goToSubCategoryPage(category) {
+    let subCategoryModal = this.modalCtrl.create(SubCategoryPage, {category: category});
     subCategoryModal.present();
   }
 

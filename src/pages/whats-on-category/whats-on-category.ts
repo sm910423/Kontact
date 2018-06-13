@@ -31,7 +31,7 @@ export class WhatsOnCategoryPage {
     this.storage.get("userInfo").then((data) => {
       let loading = this.loadingCtrl.create();
       loading.present();
-      this.http.getAllEvents({kind: this.kind, limit: "-1", email: data.user_email}).then((value: any) => {
+      this.http.getDataByPost(this.http.EVENT_LIST, {kind: this.kind, limit: "-1", email: data.user_email}).then((value: any) => {
         let lists = value.list;
 
         for (let i = 0; i < lists.length; i += 2) {
