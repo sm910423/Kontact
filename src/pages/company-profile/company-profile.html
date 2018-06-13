@@ -19,9 +19,16 @@
     </ion-segment-button>
   </ion-segment>
   
-  <div *ngIf="company.title">
+  <ion-item *ngIf="company.title" class="image-box">
     <img class="company-image" [src]="company.image_url" />
-  </div>
+    <div class="logo-image-box">
+      <div class="border-box">
+        <div class="padding-box">
+          <img class="logo-image" id="logo-image" [src]="company.logo_url" />
+        </div>
+      </div>
+    </div>
+  </ion-item>
   
   <ion-row class="action-row">
     <ion-col>

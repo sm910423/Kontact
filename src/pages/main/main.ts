@@ -136,4 +136,7 @@ export class MainPage {
     categoryModal.present();
   }
   
+  ionViewWillLeave() {
+    this.events.unsubscribe('company:http_call_end');
+  }
 }

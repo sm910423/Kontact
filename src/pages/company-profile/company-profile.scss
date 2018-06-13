@@ -1,7 +1,55 @@
 page-company-profile {
     .company-profile-content {
-        .company-image {
-            width: 100%;
+        .image-box {
+            padding: 0px;
+
+            .item-inner {
+                padding: 0px;
+                border: none;
+
+                ion-label {
+                    margin: 0px;
+                }
+            }
+
+            .company-image {
+                width: 100%;
+            }
+            
+            .logo-image-box {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                right: 0px;
+                bottom: 0px;
+                background: rgba(255, 255, 255, 0.3);
+                text-align: center;
+                display: flex;
+                align-items: center;
+
+                .border-box {
+                    margin: auto;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    border: 2px solid $theme-color-9;
+                    border-radius: 50%;
+                }
+
+                .padding-box {
+                    background-color: rgba($white, 0.7);
+                    border: 10px solid transparent;
+                    border-radius: 50%;
+                    margin: auto;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .logo-image {
+                    margin: auto;
+                }
+            }
         }
         
         .segments {

@@ -12,6 +12,8 @@ export class HttpProvider {
   // COMPANY      = this.SERVER + "/company/details";
   // EVENT_LIST   = this.SERVER + "/event/list";
   // EVENT        = this.SERVER + "/event/details";
+  // COMMUNITY_LIST = this.SERVER + "/proxy_api/community/list";
+  // COMMUNITY    = this.SERVER + "/proxy_api/community/details";
   // CATEGORIES   = this.SERVER + "/company/categories";
   // SUBCATEGORIES= this.SERVER + "/company/subcategories";
   
@@ -21,6 +23,8 @@ export class HttpProvider {
   COMPANY      = "/proxy_api/company/details";
   EVENT_LIST   = "/proxy_api/event/list";
   EVENT        = "/proxy_api/event/details";
+  COMMUNITY_LIST = "/proxy_api/community/list";
+  COMMUNITY    = "/proxy_api/community/details";
   CATEGORIES   = "/proxy_api/company/categories";
   SUBCATEGORIES= "/proxy_api/company/subcategories";
   

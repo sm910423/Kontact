@@ -88,5 +88,9 @@ export class WhatsOnPage {
     let modal = this.modalCtrl.create(WhatsOnDetailsPage, {event_id: id});
     modal.present();
   }
+
+  ionViewWillLeave() {
+    this.events.unsubscribe("event:http_call_end");
+  }
   
 }
