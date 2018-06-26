@@ -1,24 +1,3 @@
-@mixin header-styles-ios($background, $color){
-	background-color: $background;
-	padding-top: 20px;
-	padding-left: 10px;
-	padding-right: 10px;
-	height: 77px !important;
-
-	.toolbar-background
-	{
-		border: none !important;
-		background-color: transparent;
-	}
-
-	.toolbar-title,
-	.back-button,
-	.bar-button
-	{
-		color: $color;
-	}
-}
-
 @mixin header-styles($background, $color){
 	background-color: $background;
 	padding-left: 10px;
@@ -38,6 +17,27 @@
 	}
 }
 
+@mixin header-styles-ios($background, $color){
+	background-color: $background;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 77px !important;
+	
+	.toolbar-background
+	{
+		border: none !important;
+		background-color: transparent;
+	}
+	
+	.toolbar-title,
+	.back-button,
+	.bar-button
+	{
+		color: $color;
+	}
+}
+
 ion-header {
 	@include header-styles(color($colors, header, base), color($colors, header, contrast));
 
@@ -47,6 +47,6 @@ ion-header {
 	}
 }
 
-ion-header.ios {
+.platform-ios ion-header {
 	@include header-styles-ios(color($colors, header, base), color($colors, header, contrast));
 }
