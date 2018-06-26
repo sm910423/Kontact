@@ -12,7 +12,7 @@
       </ion-col>
       <ion-col width-50>
         <button ion-button class="categories-btn" (click)="goToCategoryPage()">
-          Categories&nbsp;
+          CATEGORIES&nbsp;
           <i class="fa fa-list" aria-hidden="true"></i>
         </button>
       </ion-col>
@@ -38,6 +38,7 @@
     <ion-scroll scrollX class="scroll-box">
       <div class="scroll-item" (click)="goToCompanyProfilePage(company.id)" *ngFor="let company of featuredList">
         <img [src]="company.image_url" class="image-box" />
+        <div class="company-title">{{company.title}}</div>
       </div>
     </ion-scroll>
   </ion-item>
@@ -54,6 +55,7 @@
     <ion-scroll scrollX class="scroll-box">
       <div class="scroll-item" (click)="goToCompanyProfilePage(company.id)" *ngFor="let company of mostList">
         <img [src]="company.image_url" class="image-box" />
+        <div class="company-title">{{company.title}}</div>
       </div>
     </ion-scroll>
   </ion-item>
@@ -70,6 +72,7 @@
     <ion-scroll scrollX class="scroll-box">
       <div class="scroll-item" (click)="goToCompanyProfilePage(company.id)" *ngFor="let company of newList">
         <img [src]="company.image_url" class="image-box" />
+        <div class="company-title">{{company.title}}</div>
       </div>
     </ion-scroll>
   </ion-item>

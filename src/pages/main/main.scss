@@ -62,11 +62,6 @@ page-main {
       margin: 6px 0px !important;
       width: 100% !important;
       height: 36px !important;
-
-      .fa {
-        position: absolute;
-        right: 10px;
-      }
     }
   }
   
@@ -89,12 +84,12 @@ page-main {
     
     .category-box {
       padding: 0px;
-      margin: 20px 0px 0px 0px !important;
+      margin: 4px 0px 0px 0px !important;
       
       .item-inner {
         background-color: $white;
         margin: 0px;
-        padding: 0px 16px 7px 16px !important;
+        padding: 0px 16px 4px 16px !important;
       }
       
       ion-row {
@@ -114,18 +109,23 @@ page-main {
     }
     
     .category-box:first-child {
-      margin: 27px 0px 0px 0px !important;
+      margin: 16px 0px 0px 0px !important;
     }
     
     .scroll-box {
-      height: 120px;
+      height: 138px;
       margin: 0px !important;
     }
     
     .image-box {
-      margin-top: 10px;
+      margin-top: 4px;
       width: auto;
       height: 110px;
+    }
+
+    .company-title {
+      font-size: 12px;
+      font-weight: bold;
     }
   }
 }
