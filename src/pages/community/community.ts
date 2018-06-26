@@ -5,6 +5,7 @@ import { CommunityViewPage } from '../community-view/community-view';
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
 import { Storage } from '@ionic/storage';
+import moment from 'moment';
 
 @Component({
   selector: 'page-community',
@@ -48,6 +49,8 @@ export class CommunityPage {
       this.httpProvider.getDataByPost(this.httpProvider.COMMUNITY_LIST, {kind: "most", email: data.user_email, limit: this.limit}).then((value: any) => {
         this.mostList = value.list;
         this.mostList.forEach(element => {
+          let st = element.created.split(" ").join("T");
+          element.created_str = moment(st).format("DD-MMM-YYYY");
           element.image_url = this.httpProvider.SITE + "/uploads/" + element.image;
         });
         this.events.publish('community:http_call_end');
@@ -58,6 +61,9 @@ export class CommunityPage {
       this.httpProvider.getDataByPost(this.httpProvider.COMMUNITY_LIST, {kind: "featured", email: data.user_email, limit: this.limit}).then((value: any) => {
         this.featuredList = value.list;
         this.featuredList.forEach(element => {
+          let st = element.created.split(" ").join("T");
+          console.log(st);
+          element.created_str = moment(st).format("DD-MMM-YYYY");
           element.image_url = this.httpProvider.SITE + "/uploads/" + element.image;
         });
         this.events.publish('community:http_call_end');
@@ -68,6 +74,9 @@ export class CommunityPage {
       this.httpProvider.getDataByPost(this.httpProvider.COMMUNITY_LIST, {kind: "new", email: data.user_email, limit: this.limit}).then((value: any) => {
         this.newList = value.list;
         this.newList.forEach(element => {
+          let st = element.created.split(" ").join("T");
+          console.log(st);
+          element.created_str = moment(st).format("DD-MMM-YYYY");
           element.image_url = this.httpProvider.SITE + "/uploads/" + element.image;
         });
         this.events.publish('community:http_call_end');

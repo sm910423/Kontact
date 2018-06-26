@@ -26,7 +26,7 @@
       <div class="scroll-item" *ngFor="let community of featuredList" (click)="goToCommunityViewPage(community.id)">
         <img [src]="community.image_url" class="image-box" />
         <p class="title">{{ community.title }}</p>
-        <p class="date">{{ community.created }}</p>
+        <p class="date">{{ community.created_str }}</p>
       </div>
     </ion-scroll>
   </ion-item>
@@ -44,7 +44,7 @@
       <div class="scroll-item" *ngFor="let community of mostList" (click)="goToCommunityViewPage(community.id)">
         <img [src]="community.image_url" class="image-box" />
         <p class="title">{{ community.title }}</p>
-        <p class="date">{{ community.created }}</p>
+        <p class="date">{{ community.created_str }}</p>
       </div>
     </ion-scroll>
   </ion-item>
@@ -62,7 +62,7 @@
       <div class="scroll-item" *ngFor="let community of newList" (click)="goToCommunityViewPage(community.id)">
         <img [src]="community.image_url" class="image-box" />
         <p class="title">{{ community.title }}</p>
-        <p class="date">{{ community.created }}</p>
+        <p class="date">{{ community.created_str }}</p>
       </div>
     </ion-scroll>
   </ion-item>
