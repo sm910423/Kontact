@@ -15,11 +15,14 @@
     </show-hide-container>
     <show-hide-container>
       <ion-item>
-        <ion-input type="password" placeholder="Password" formControlName="confirm_password" show-hide-input></ion-input>
+        <ion-input type="password" placeholder="Confirm Password" formControlName="confirm_password" show-hide-input></ion-input>
       </ion-item>
     </show-hide-container>
     <ion-item>
       <ion-input type="phone" placeholder="Phone" formControlName="mobile" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Full Name" formControlName="fullname" required></ion-input>
     </ion-item>
     <button ion-button block class="auth-action-button" (click)="doSignup()" [disabled]="!signup.valid">Sign Up</button>
     <button ion-button clear block class="back-btn" (click)="goBack()">Back</button>

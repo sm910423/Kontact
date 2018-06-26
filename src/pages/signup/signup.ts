@@ -34,6 +34,7 @@ export class SignupPage {
       password: new FormControl('', Validators.compose([Validators.minLength(6), Validators.required])),
       confirm_password: new FormControl('', Validators.required),
       mobile: new FormControl('', Validators.required),
+      fullname: new FormControl('', Validators.required)
     });
     
     this.loading = this.loadingCtrl.create();
@@ -52,7 +53,7 @@ export class SignupPage {
       this.messageProvider.showMessage("Passwords do not match. Please try again.");
     } else {
       let rawValue = this.signup.getRawValue();
-      let jsonData: any = {email: rawValue.email, password: rawValue.password, phonenumber: rawValue.mobile};
+      let jsonData: any = {email: rawValue.email, password: rawValue.password, phonenumber: rawValue.mobile, fullname: rawValue.fullname};
       this.signupViaHttp(jsonData);
     }
   }
