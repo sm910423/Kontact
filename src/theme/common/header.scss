@@ -1,9 +1,28 @@
-@mixin header-styles($background, $color){
+@mixin header-styles-ios($background, $color){
 	background-color: $background;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
 	height: 77px !important;
+
+	.toolbar-background
+	{
+		border: none !important;
+		background-color: transparent;
+	}
+
+	.toolbar-title,
+	.back-button,
+	.bar-button
+	{
+		color: $color;
+	}
+}
+
+@mixin header-styles($background, $color){
+	background-color: $background;
+	padding-left: 10px;
+	padding-right: 10px;
 
 	.toolbar-background
 	{
@@ -26,4 +45,8 @@ ion-header {
 		padding-left: 0px !important;
 		padding-right: 0px !important;
 	}
+}
+
+ion-header.ios {
+	@include header-styles-ios(color($colors, header, base), color($colors, header, contrast));
 }
