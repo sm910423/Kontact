@@ -44,6 +44,17 @@ page-community {
             .scroll-item {
                 margin-right: 10px;
                 display: inline-block;
+
+                .title {
+                    color: $theme-color-7;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                .date {
+                    color: $theme-color-8;
+                    font-size: 12px;
+                }
             }
         }
         
@@ -54,12 +65,12 @@ page-community {
         
         .category-box {
             padding: 0px;
-            margin: 20px 0px 0px 0px !important;
+            margin: 10px 0px 0px 0px !important;
             
             .item-inner {
                 background-color: $white;
                 margin: 0px;
-                padding: 0px 16px 7px 16px !important;
+                padding: 0px 16px 6px 16px !important;
             }
             
             ion-row {
@@ -79,11 +90,11 @@ page-community {
         }
         
         .category-box:first-child {
-            margin: 27px 0px 0px 0px !important;
+            margin: 16px 0px 0px 0px !important;
         }
         
         .scroll-box {
-            height: 120px;
+            height: 160px;
             margin: 0px !important;
         }
         

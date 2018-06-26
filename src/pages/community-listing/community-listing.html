@@ -10,30 +10,11 @@
 </ion-header>
 
 <ion-content class="community-listing-content">
-  <div class="history-box">
-    <p class="title-row">History 1</p>
+  <div class="history-box" *ngFor="let community of lists">
+    <p class="title-row">{{ community.title }}</p>
     <p class="content-row">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-      1500s, when an unknown printer took a galley of type 
+      {{ community.content }}
     </p>
-    <button ion-button clear class="action-row" (click)="goToCommunityViewPage()">Read More &nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></button>
-  </div>
-  
-  <div class="history-box">
-    <p class="title-row">History 2</p>
-    <p class="content-row">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-      1500s, when an unknown printer took a galley of type 
-    </p>
-    <button ion-button clear class="action-row" (click)="goToCommunityViewPage()">Read More &nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></button>
-  </div>
-  
-  <div class="history-box">
-    <p class="title-row">History 3</p>
-    <p class="content-row">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-      1500s, when an unknown printer took a galley of type 
-    </p>
-    <button ion-button clear class="action-row" (click)="goToCommunityViewPage()">Read More &nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+    <button ion-button clear class="action-row" (click)="goToCommunityViewPage(community.id)">Read More &nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></button>
   </div>
 </ion-content>

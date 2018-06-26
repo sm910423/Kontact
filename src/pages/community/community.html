@@ -19,12 +19,14 @@
         Featured Businesses
       </ion-col>
       <ion-col text-right>
-        <span (click)="showViewAll('featured')">View All></span>
+        <span (click)="goToCommunityListingPage('featured')">View All></span>
       </ion-col>
     </ion-row>
     <ion-scroll scrollX class="scroll-box">
-      <div class="scroll-item" *ngFor="let event of featuredList" (click)="goToWhatsOnDetailsPage(event.id)">
-        <img [src]="event.image_url" class="image-box" />
+      <div class="scroll-item" *ngFor="let community of featuredList" (click)="goToCommunityViewPage(community.id)">
+        <img [src]="community.image_url" class="image-box" />
+        <p class="title">{{ community.title }}</p>
+        <p class="date">{{ community.created }}</p>
       </div>
     </ion-scroll>
   </ion-item>
@@ -35,12 +37,14 @@
         Most Popular
       </ion-col>
       <ion-col text-right>
-        <span (click)="showViewAll('most')" class="view-all-button">View All></span>
+        <span (click)="goToCommunityListingPage('most')" class="view-all-button">View All></span>
       </ion-col>
     </ion-row>
     <ion-scroll scrollX class="scroll-box">
-      <div class="scroll-item" *ngFor="let event of mostList" (click)="goToWhatsOnDetailsPage(event.id)">
-        <img [src]="event.image_url" class="image-box" />
+      <div class="scroll-item" *ngFor="let community of mostList" (click)="goToCommunityViewPage(community.id)">
+        <img [src]="community.image_url" class="image-box" />
+        <p class="title">{{ community.title }}</p>
+        <p class="date">{{ community.created }}</p>
       </div>
     </ion-scroll>
   </ion-item>
@@ -51,12 +55,14 @@
         New
       </ion-col>
       <ion-col text-right>
-        <span (click)="showViewAll('new')" class="view-all-button">View All></span>
+        <span (click)="goToCommunityListingPage('new')" class="view-all-button">View All></span>
       </ion-col>
     </ion-row>
     <ion-scroll scrollX class="scroll-box">
-      <div class="scroll-item" *ngFor="let event of newList" (click)="goToWhatsOnDetailsPage(event.id)">
-        <img [src]="event.image_url" class="image-box" />
+      <div class="scroll-item" *ngFor="let community of newList" (click)="goToCommunityViewPage(community.id)">
+        <img [src]="community.image_url" class="image-box" />
+        <p class="title">{{ community.title }}</p>
+        <p class="date">{{ community.created }}</p>
       </div>
     </ion-scroll>
   </ion-item>

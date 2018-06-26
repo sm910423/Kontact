@@ -79,7 +79,12 @@ export class CategoryListingPage {
   }
   
   goToCategoryPage() {
-    this.navCtrl.popTo(CategoryPage);
+    if (this.kind) {
+      let categoryModal = this.modalCtrl.create(CategoryPage);
+      categoryModal.present();
+    } else {
+      this.navCtrl.pop();
+    }
   }
   
   goBack() {

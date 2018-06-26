@@ -12,20 +12,18 @@
 
 <ion-content class="community-view-content">
   <p class="title-row">
-    Story 1 about…
+    {{ community.title }}
   </p>
-  <img src="./assets/images/item1.jpg" class="image-row" />
+  <img [src]="community.image_url" *ngIf="community.image_url" class="image-row" />
   <p class="comment-row">
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-    1500s, when an unknown printer took a galley of type 
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the Industry's standard dummy text ever since the 1500s, 
+    {{ community.content }} 
   </p>
   <ion-row class="auth-row">
     <ion-col text-left>
-      23.04.2018
+      {{ community.created }}
     </ion-col>
     <ion-col text-right>
-      Alex Varberg
+      {{ community.author }}
     </ion-col>
   </ion-row>
 </ion-content>

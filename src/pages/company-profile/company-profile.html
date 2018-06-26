@@ -35,7 +35,7 @@
       <button ion-button class="mail-button"><i class="fa fa-envelope" aria-hidden="true"></i></button>
     </ion-col>
     <ion-col>
-      <button ion-button class="call-button">
+      <button ion-button class="call-button" (click)="callPhone(company.phone)">
         {{ company.phone }}
         <i class="fa fa-phone" aria-hidden="true"></i>
       </button>
@@ -43,7 +43,7 @@
   </ion-row>
   
   <p class="url-row">
-    <button ion-button clear (click)="goToWebsitePage()">{{ company.site }}</button>
+    <button ion-button clear (click)="goToWebsitePage(company.site)">{{ company.site }}</button>
   </p>
   
   <div *ngIf="segments == 'en'">
@@ -51,16 +51,19 @@
       Services:
     </p>
     <p class="service-row">
-      - Lorem lpsum is simply dummy text.
+      - {{ company.services_en }}
+    </p>
+    <p class="sub-title-row">
+      About:
     </p>
     <p class="service-row">
-      - Of the printing and typesetting industry.
+      - {{ company.about_en }}
+    </p>
+    <p class="sub-title-row">
+      Contacts:
     </p>
     <p class="service-row">
-      - Lorem lpsum has been the industry's standard.
-    </p>
-    <p class="service-row">
-      - Dummy text ever since the 1500s.
+      - {{ company.contacts_en }}
     </p>
   </div>
   
@@ -69,16 +72,19 @@
       Сервисы:
     </p>
     <p class="service-row">
-      - Lorem lpsum is simply dummy text.
+      - {{ company.services_rn }}
+    </p>
+    <p class="sub-title-row">
+      Около:
     </p>
     <p class="service-row">
-      - Of the printing and typesetting industry.
+      - {{ company.about_rn }}
+    </p>
+    <p class="sub-title-row">
+      Контакты:
     </p>
     <p class="service-row">
-      - Lorem lpsum has been the industry's standard.
-    </p>
-    <p class="service-row">
-      - Dummy text ever since the 1500s.
+      - {{ company.contacts_rn }}
     </p>
   </div>
 </ion-content>

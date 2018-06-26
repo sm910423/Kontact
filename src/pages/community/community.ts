@@ -77,19 +77,13 @@ export class CommunityPage {
     });
   }
 
-  goToCommunityListingPage() {
-    let listingModal = this.modalCtrl.create(CommunityListingPage);
-    listingModal.onDidDismiss(data => {
-      console.log(data);
-    });
+  goToCommunityListingPage(kind) {
+    let listingModal = this.modalCtrl.create(CommunityListingPage, {kind: kind});
     listingModal.present();
   }
 
-  goToCommunityViewPage() {
-    let viewModal = this.modalCtrl.create(CommunityViewPage);
-    viewModal.onDidDismiss(data => {
-      console.log(data);
-    });
+  goToCommunityViewPage(id) {
+    let viewModal = this.modalCtrl.create(CommunityViewPage, {community_id: id});
     viewModal.present();
   }
 

@@ -46,8 +46,9 @@ export class WhatsOnCategoryPage {
             obj.push(objB);
           }
           this.lists.push(obj);
-          loading.dismiss();
         }
+
+        loading.dismiss();
       }).catch(() => {
         loading.dismiss();
       });

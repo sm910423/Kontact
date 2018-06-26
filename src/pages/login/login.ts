@@ -56,7 +56,7 @@ export class LoginPage {
   }
   
   loginViaHttp(json) {
-    console.log(json);
+    console.log(this.httpProvider.LOGIN);
     this.loading = this.loadingCtrl.create();
     this.loading.present();
     this.httpProvider.getDataByPost(this.httpProvider.LOGIN, json).then((data:any) => {

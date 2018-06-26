@@ -35,12 +35,13 @@ import { Rating } from '../components/rating/rating';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 // import { Keyboard } from '@ionic-native/keyboard';
-import { IonicStorageModule } from '@ionic/storage';
 import { OneSignal } from '@ionic-native/onesignal';
-
+import { CallNumber } from '@ionic-native/call-number';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { HttpProvider } from '../providers/http/http';
 import { MessageProvider } from '../providers/message/message';
@@ -116,9 +117,11 @@ import { MessageProvider } from '../providers/message/message';
 	  SplashScreen,
     StatusBar,
     OneSignal,
+    CallNumber,
     // Keyboard,
     HttpProvider, 
     MessageProvider, 
+    InAppBrowser,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
