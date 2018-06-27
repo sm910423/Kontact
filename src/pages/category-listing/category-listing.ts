@@ -54,7 +54,6 @@ export class CategoryListingPage {
         for (let i = 0; i < lists.length; i += 2) {
           let obj = [];
           let objA = lists[i.toString()];
-          console.log(objA);
           objA.image_url = this.http.SITE + "/uploads/" + objA.title + "_image.png";
           obj.push(objA);
           

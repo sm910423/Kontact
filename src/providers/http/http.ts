@@ -4,7 +4,6 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class HttpProvider {
-  isBrowser = false;
   SITE        = "http://kontaktsite.wpengine.com";
   SERVER      = this.SITE + "/Kontakt_API/index.php";
   SIGNUP       = this.SERVER + "/user/user_signup";
@@ -24,19 +23,6 @@ export class HttpProvider {
   constructor (
     public http: Http
   ) {
-    if (this.isBrowser) {
-      this.SIGNUP       = "/proxy_api/user/user_signup";
-      this.LOGIN        = "/proxy_api/user/user_login";
-      this.COMPANY_LIST = "/proxy_api/company/list";
-      this.COMPANY      = "/proxy_api/company/details";
-      this.COMPANY_UPDATE = "/proxy_api/company/update";
-      this.EVENT_LIST   = "/proxy_api/event/list";
-      this.EVENT        = "/proxy_api/event/details";
-      this.COMMUNITY_LIST = "/proxy_api/community/list";
-      this.COMMUNITY    = "/proxy_api/community/details";
-      this.CATEGORIES   = "/proxy_api/company/categories";
-      this.SUBCATEGORIES= "/proxy_api/company/subcategories";
-    }
   }
 
   getDataByPost(url, json) {

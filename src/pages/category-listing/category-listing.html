@@ -6,7 +6,7 @@
       </ion-col>
       <ion-col width-50>
         <button ion-button class="categories-btn" (click)="goToCategoryPage()">
-          Categories&nbsp;
+          CATEGORIES&nbsp;
           <i class="fa fa-list" aria-hidden="true"></i>
         </button>
       </ion-col>
@@ -16,7 +16,8 @@
 
 <ion-content class="category-listing-content">
   <div class="back-box">
-    <p><span (click)="goBack()"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;{{ title }}</span></p>
+    <p><span (click)="goBack()"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</span></p>
+    <p>{{ title }}</p>
   </div>
   <div class="category-listing-box">
     <ion-row *ngFor="let list of lists">
