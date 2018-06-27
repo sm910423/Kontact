@@ -70,8 +70,8 @@ export class MyApp {
     ];
 
     this.pushPages = [
-      { title: 'About us', icon: 'home', component: AboutUsPage },
-      { title: 'Advertise with us', icon: 'home', component: AdvertisePage },
+      { title: 'About us', icon: 'people', component: AboutUsPage },
+      { title: 'Advertise with us', icon: 'megaphone', component: AdvertisePage },
       { title: 'temp Notification 1', icon: 'home', component: NotificationAPage },
       { title: 'temp Notification 2', icon: 'home', component: NotificationBPage },
     ];

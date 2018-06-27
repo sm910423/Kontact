@@ -1,7 +1,7 @@
 ion-menu {
 	.menu-header {
-		background-color: $theme-color-4;
-		height: 20vh;
+		background-color: $theme-color-4 !important;
+		height: 20vh !important;
 
 		.menu-icon {
 			width: 30vw;
@@ -64,6 +64,10 @@ ion-menu {
 					color: $white;
 				}
 			}
+		}
+
+		.logout-button {
+			padding-left: 40px;
 		}
 	}
 }
