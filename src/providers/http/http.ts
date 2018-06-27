@@ -17,6 +17,8 @@ export class HttpProvider {
   COMMUNITY    = this.SERVER + "/community/details";
   CATEGORIES   = this.SERVER + "/company/categories";
   SUBCATEGORIES= this.SERVER + "/company/subcategories";
+  ABOUT        = this.SERVER + "/other/about";
+  ADVERTISE    = this.SERVER + "/other/advertise";
   
   contentHeader: Headers = new Headers({"Content-Type": "application/json"});
   
