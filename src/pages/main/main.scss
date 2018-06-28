@@ -44,11 +44,11 @@ page-main {
       }
       
       .searchbar-search-icon {
-        left: 6px;
-        top: 8px;
+        left: 8px;
+        top: 12px;
         width: 21px;
         height: 21px;
-        background-size: 20px;
+        background-size: 14px;
         color: $white !important;
       }
       
@@ -58,10 +58,11 @@ page-main {
     }
     
     .categories-btn {
-      font-size: 13px;
+      font-size: 11px;
       margin: 6px 0px !important;
       width: 100% !important;
       height: 36px !important;
+      background-color: $theme-color-6;
     }
   }
   
@@ -124,9 +125,9 @@ page-main {
     }
 
     .company-title {
-      font-size: 12px;
-      font-weight: bold;
-      text-align: center;
+      font-size: 11px;
+      // font-weight: bold;
+      // text-align: center;
     }
   }
 }
