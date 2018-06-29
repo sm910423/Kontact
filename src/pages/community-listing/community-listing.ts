@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, ModalController, LoadingController } from 'ionic-angular';
 import { CommunityViewPage } from '../community-view/community-view';
 import { HttpProvider } from '../../providers/http/http';
-
-import { Storage } from '@ionic/storage';
+import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
   selector: 'page-community-listing',
@@ -13,7 +12,7 @@ export class CommunityListingPage {
   title = {featured: "Featured Businesses", most: "Most Popular", new: "New"};
   kind;
   lists: any;
-
+  
   constructor (
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -21,7 +20,7 @@ export class CommunityListingPage {
     public modalCtrl: ModalController,
     private http: HttpProvider,
     private loadingCtrl: LoadingController,
-    private storage: Storage
+    private global: GlobalProvider
   ) {
     this.kind = this.navParams.get("kind");
     this.getCategoryList();
@@ -29,19 +28,16 @@ export class CommunityListingPage {
   
   getCategoryList() {
     this.lists = [];
-    this.storage.get("userInfo").then((data) => {
-      let loading = this.loadingCtrl.create();
-      loading.present();
-      this.http.getDataByPost(this.http.COMMUNITY_LIST, {kind: this.kind, limit: "-1", email: data.user_email}).then((value: any) => {
-        this.lists = value.list;
-
-        loading.dismiss();
-      }).catch(() => {
-        loading.dismiss();
-      });
+    let loading = this.loadingCtrl.create();
+    loading.present();
+    this.http.getDataByPost(this.http.COMMUNITY_LIST, {kind: this.kind, limit: "-1", email: this.global.user_email}).then((value: any) => {
+      this.lists = value.list;
+      loading.dismiss();
+    }).catch(() => {
+      loading.dismiss();
     });
   }
-
+  
   goToBack() {
     this.viewCtrl.dismiss();
   }
@@ -50,5 +46,5 @@ export class CommunityListingPage {
     let viewModal = this.modalCtrl.create(CommunityViewPage, {community_id: id});
     viewModal.present();
   }
-
+  
 }

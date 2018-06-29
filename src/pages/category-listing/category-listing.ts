@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 
 import { CategoryPage } from '../category/category';
 import { CompanyProfilePage } from '../company-profile/company-profile';
 import { HttpProvider } from '../../providers/http/http';
+import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
   selector: 'page-category-listing',
@@ -23,8 +23,8 @@ export class CategoryListingPage {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     private http: HttpProvider,
-    private storage: Storage,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private global: GlobalProvider
   ) {
     this.kind = this.navParams.get("kind");
     if (this.kind) {
@@ -39,36 +39,34 @@ export class CategoryListingPage {
   
   getList() {
     this.lists = [];
-    this.storage.get("userInfo").then((data) => {
-      let loading = this.loadingCtrl.create();
-      loading.present();
-      let json;
-      if (this.kind) {
-        json = {kind: this.kind, limit: "-1", email: data.user_email};
-      } else {
-        json = {email: data.user_email, sub_category_id: this.sub_category.id}
-      }
-      this.http.getDataByPost(this.http.COMPANY_LIST, json).then((value: any) => {
-        let lists = value.list;
+    let loading = this.loadingCtrl.create();
+    loading.present();
+    let json;
+    if (this.kind) {
+      json = {kind: this.kind, limit: "-1", email: this.global.user_email};
+    } else {
+      json = {email: this.global.user_email, sub_category_id: this.sub_category.id}
+    }
+    this.http.getDataByPost(this.http.COMPANY_LIST, json).then((value: any) => {
+      let lists = value.list;
+      
+      for (let i = 0; i < lists.length; i += 2) {
+        let obj = [];
+        let objA = lists[i.toString()];
+        objA.image_url = this.http.SITE + "/uploads/" + objA.title + "_image.png";
+        obj.push(objA);
         
-        for (let i = 0; i < lists.length; i += 2) {
-          let obj = [];
-          let objA = lists[i.toString()];
-          objA.image_url = this.http.SITE + "/uploads/" + objA.title + "_image.png";
-          obj.push(objA);
-          
-          if (i + 1 != lists.length) {
-            let objB = lists[(i + 1).toString()];
-            objB.image_url = this.http.SITE + "/uploads/" + objB.title + "_image.png";
-            obj.push(objB);
-          }
-          this.lists.push(obj);
+        if (i + 1 != lists.length) {
+          let objB = lists[(i + 1).toString()];
+          objB.image_url = this.http.SITE + "/uploads/" + objB.title + "_image.png";
+          obj.push(objB);
         }
-        
-        loading.dismiss();
-      }).catch(() => {
-        loading.dismiss();
-      });
+        this.lists.push(obj);
+      }
+      
+      loading.dismiss();
+    }).catch(() => {
+      loading.dismiss();
     });
   }
   

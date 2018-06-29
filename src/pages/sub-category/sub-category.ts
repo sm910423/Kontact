@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http';
-import { Storage } from '@ionic/storage';
+import { GlobalProvider } from '../../providers/global/global';
 import { CategoryListingPage } from '../category-listing/category-listing';
 
 @Component({
@@ -11,7 +11,7 @@ import { CategoryListingPage } from '../category-listing/category-listing';
 export class SubCategoryPage {
   category: any;
   subCategories: any;
-
+  
   constructor (
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -19,33 +19,31 @@ export class SubCategoryPage {
     private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
     private http: HttpProvider,
-    private storage: Storage
+    private global: GlobalProvider
   ) {
     this.category = navParams.get("category");
     this.getSubCategories(this.category);
   }
-
+  
   getSubCategories(category) {
     this.subCategories = [];
-    this.storage.get("userInfo").then((data) => {
-      let loading = this.loadingCtrl.create();
-      loading.present();
-      this.http.getDataByPost(this.http.SUBCATEGORIES, {email: data.user_email, category_id: category.id}).then((values: any) => {
-        this.subCategories = values.subcategories;
-        loading.dismiss();
-      }).catch(() => {
-        loading.dismiss();
-      });
+    let loading = this.loadingCtrl.create();
+    loading.present();
+    this.http.getDataByPost(this.http.SUBCATEGORIES, {email: this.global.user_email, category_id: category.id}).then((values: any) => {
+      this.subCategories = values.subcategories;
+      loading.dismiss();
+    }).catch(() => {
+      loading.dismiss();
     });
   }
-
+  
   goToCategoryListPage(subCategory) {
     let modal = this.modalCtrl.create(CategoryListingPage, {category: this.category, sub_category: subCategory});
     modal.present();
   }
-
+  
   closePage() {
     this.viewCtrl.dismiss();
   }
-
+  
 }

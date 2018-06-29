@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Platform, NavController, NavParams, LoadingController, AlertController, App, ModalController, Events } from 'ionic-angular';
+import { Platform, NavController, NavParams, LoadingController, App, ModalController, Events } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
+import { GlobalProvider } from '../../providers/global/global';
 import { CategoryPage } from '../category/category';
 import { CategoryListingPage } from '../category-listing/category-listing';
 import { CompanyProfilePage } from '../company-profile/company-profile';
@@ -24,19 +24,18 @@ export class MainPage {
   didCallCount = 0;
   
   constructor (
-    public platform: Platform,
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public menuCtrl: MenuController,
-    public storage: Storage,
-    public httpProvider: HttpProvider,
-    public messageProvider: MessageProvider,
-    public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController,
-    public modalCtrl: ModalController,
-    public app: App,
-    public onesignal: OneSignal,
-    public events: Events
+    private platform: Platform,
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private menuCtrl: MenuController,
+    private global: GlobalProvider,
+    private httpProvider: HttpProvider,
+    private messageProvider: MessageProvider,
+    private loadingCtrl: LoadingController,
+    private modalCtrl: ModalController,
+    private app: App,
+    private onesignal: OneSignal,
+    private events: Events
   ) {
     /*this.platform.ready().then(() => {
       if (this.platform.is('ios') || this.platform.is('android')) {
@@ -53,7 +52,7 @@ export class MainPage {
         this.onesignal.endInit();
       }
     });*/
-
+    
     this.events.subscribe('company:http_call_end', () => {
       this.didCallCount ++;
       if (this.totalCallCount === this.didCallCount) {
@@ -61,44 +60,43 @@ export class MainPage {
       }
     });
     this.getData();
+    this.global.setCategory();
   }
-
+  
   getData() {
     this.newList = this.featuredList = this.mostList = [];
     this.didCallCount = 0;
     this.loading = this.loadingCtrl.create();
     this.loading.present();
     
-    this.storage.get("userInfo").then((data) => {
-      this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "most", email: data.user_email, limit: this.limit}).then((value: any) => {
-        this.mostList = value.list;
-        this.mostList.forEach(element => {
-          element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
-        });
-        this.events.publish('company:http_call_end');
-      }).catch(() => {
-        this.events.publish('company:http_call_end');
+    this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "most", email: this.global.user_email, limit: this.limit}).then((value: any) => {
+      this.mostList = value.list;
+      this.mostList.forEach(element => {
+        element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
       });
-
-      this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "featured", email: data.user_email, limit: this.limit}).then((value: any) => {
-        this.featuredList = value.list;
-        this.featuredList.forEach(element => {
-          element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
-        });
-        this.events.publish('company:http_call_end');
-      }).catch(() => {
-        this.events.publish('company:http_call_end');
+      this.events.publish('company:http_call_end');
+    }).catch(() => {
+      this.events.publish('company:http_call_end');
+    });
+    
+    this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "featured", email: this.global.user_email, limit: this.limit}).then((value: any) => {
+      this.featuredList = value.list;
+      this.featuredList.forEach(element => {
+        element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
       });
-
-      this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "new", email: data.user_email, limit: this.limit}).then((value: any) => {
-        this.newList = value.list;
-        this.newList.forEach(element => {
-          element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
-        });
-        this.events.publish('company:http_call_end');
-      }).catch(() => {
-        this.events.publish('company:http_call_end');
+      this.events.publish('company:http_call_end');
+    }).catch(() => {
+      this.events.publish('company:http_call_end');
+    });
+    
+    this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "new", email: this.global.user_email, limit: this.limit}).then((value: any) => {
+      this.newList = value.list;
+      this.newList.forEach(element => {
+        element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
       });
+      this.events.publish('company:http_call_end');
+    }).catch(() => {
+      this.events.publish('company:http_call_end');
     });
   }
   

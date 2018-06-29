@@ -11,6 +11,7 @@ import { WalkthroughPage } from '../walkthrough/walkthrough';
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
 import { NotificationAPage } from '../notification-a/notification-a';
+import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
   selector: 'login-page',
@@ -26,7 +27,8 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     public httpProvider: HttpProvider,
     public storage: Storage,
-    public messageProvider: MessageProvider
+    public messageProvider: MessageProvider,
+    public global: GlobalProvider
   ) {
     this.storage.get("visibleBackButton").then((value) => {
       this.visibleBackButton = value === true ? true : false;
@@ -56,13 +58,14 @@ export class LoginPage {
   }
   
   loginViaHttp(json) {
-    console.log(this.httpProvider.LOGIN);
+    this.global.user_email = "";
     this.loading = this.loadingCtrl.create();
     this.loading.present();
     this.httpProvider.getDataByPost(this.httpProvider.LOGIN, json).then((data:any) => {
       this.loading.dismiss();
       if (data.status === 200) {
         this.storage.set("userInfo", data.userinfo);
+        this.global.user_email = data.userinfo.user_email;
         this.nav.setRoot(TabsNavigationPage);
       } else if (data.status === 600) {
         this.messageProvider.showMessage("ERR_CUSTOMER_SIGNUP_FAILED");

@@ -9,6 +9,9 @@ import { TabsNavigationPage } from '../pages/tabs-navigation/tabs-navigation';
 import { WalkthroughPage } from '../pages/walkthrough/walkthrough';
 import { AdvertisePage } from '../pages/advertise/advertise';
 import { AboutUsPage } from '../pages/about-us/about-us';
+
+import { GlobalProvider } from '../providers/global/global';
+
 //will be removed
 import { NotificationAPage } from '../pages/notification-a/notification-a';
 import { NotificationBPage } from '../pages/notification-b/notification-b';
@@ -34,6 +37,7 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public statusBar: StatusBar,
     public storage: Storage,
+    public global: GlobalProvider
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -52,11 +56,14 @@ export class MyApp {
         this.storage.set("visibleBackButton", false);
         this.storage.get("userInfo").then((value) => {
           if (value && value.user_email && value.user_email.length > 0) {
+            this.global.user_email = value.user_email;
             this.rootPage = TabsNavigationPage;
           } else {
+            this.global.user_email = "";
             this.rootPage = LoginPage;
           }
         }).catch(() => {
+          this.global.user_email = "";
           this.rootPage = LoginPage;
         });
       }

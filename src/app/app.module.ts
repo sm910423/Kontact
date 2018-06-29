@@ -45,6 +45,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { HttpProvider } from '../providers/http/http';
 import { MessageProvider } from '../providers/message/message';
+import { GlobalProvider } from '../providers/global/global';
 
 
 @NgModule({
@@ -122,6 +123,7 @@ import { MessageProvider } from '../providers/message/message';
     HttpProvider, 
     MessageProvider, 
     InAppBrowser,
+    GlobalProvider,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, LoadingController, Events } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
-// import { WebsitePage } from '../website/website';
 import { HttpProvider } from '../../providers/http/http';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
   selector: 'page-company-profile',
@@ -20,11 +19,11 @@ export class CompanyProfilePage {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
-    private storage: Storage,
     private http: HttpProvider,
     private events: Events,
     private callNumber: CallNumber,
-    private iab: InAppBrowser
+    private iab: InAppBrowser,
+    private global: GlobalProvider
   ) {
     this.company_id = this.navParams.get("company_id");
     this.getCompanyInfo();
@@ -50,17 +49,15 @@ export class CompanyProfilePage {
     let loading = this.loadingCtrl.create();
     
     loading.present();
-    this.storage.get("userInfo").then((info) => {
-      let json = {email: info.user_email, id: this.company_id};
-      this.http.getDataByPost(this.http.COMPANY, json).then((data: any) => {
-        loading.dismiss();
-        this.company = data.info;
-        this.company.image_url = this.http.SITE + "/uploads/" + this.company.title + "_image.png";
-        this.company.logo_url = this.http.SITE + "/uploads/" + this.company.title + "_logo.png";
-        this.events.publish("logo-loaded");
-      }).catch(() => {
-        loading.dismiss();
-      });
+    let json = {email: this.global.user_email, id: this.company_id};
+    this.http.getDataByPost(this.http.COMPANY, json).then((data: any) => {
+      loading.dismiss();
+      this.company = data.info;
+      this.company.image_url = this.http.SITE + "/uploads/" + this.company.title + "_image.png";
+      this.company.logo_url = this.http.SITE + "/uploads/" + this.company.title + "_logo.png";
+      this.events.publish("logo-loaded");
+    }).catch(() => {
+      loading.dismiss();
     });
   }
   
@@ -69,19 +66,17 @@ export class CompanyProfilePage {
   
   callPhone(num) {
     this.callNumber.callNumber(num, true).then((res) => {
-        console.log("Launched dialer!", res);
-        this.updateProfile();
-      }).catch((err) => console.log("Error launching dialer", err));
+      console.log("Launched dialer!", res);
+      this.updateProfile();
+    }).catch((err) => console.log("Error launching dialer", err));
   }
-
+  
   updateProfile() {
-    this.storage.get("userInfo").then((info) => {
-      let json = {email: info.user_email, id: this.company_id};
-      this.http.getDataByPost(this.http.COMPANY_UPDATE, json).then(() => {
-
-      }).catch(() => {
-
-      });
+    let json = {email: this.global.user_email, id: this.company_id};
+    this.http.getDataByPost(this.http.COMPANY_UPDATE, json).then(() => {
+      
+    }).catch(() => {
+      
     });
   }
   

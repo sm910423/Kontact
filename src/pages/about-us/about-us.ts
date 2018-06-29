@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http';
-import { Storage } from '@ionic/storage';
+import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
   selector: 'page-about-us',
@@ -17,7 +17,7 @@ export class AboutUsPage {
     public navParams: NavParams,
     private loadingCtrl: LoadingController,
     private http: HttpProvider,
-    private storage: Storage
+    private global: GlobalProvider
   ) {
     this.getData();
   }
@@ -26,19 +26,15 @@ export class AboutUsPage {
     this.sub_title = "";
     this.content = "";
     this.image_src = "";
-    this.storage.get("userInfo").then((data) => {
-      let loading = this.loadingCtrl.create();
-      loading.present();
-      this.http.getDataByPost(this.http.ABOUT, {email: data.user_email}).then((value: any) => {
-        loading.dismiss();
-        if (value.info) {
-          this.sub_title = value.info.title;
-          this.content = value.info.content;
-          this.image_src = this.http.SITE + "/uploads/aboutus.png";
-        }
-      }).catch(() => {
-        loading.dismiss();
-      });
+    let loading = this.loadingCtrl.create();
+    loading.present();
+    this.http.getDataByPost(this.http.ABOUT, {email: this.global.user_email}).then((value: any) => {
+      loading.dismiss();
+      if (value.info) {
+        this.sub_title = value.info.title;
+        this.content = value.info.content;
+        this.image_src = this.http.SITE + "/uploads/aboutus.png";
+      }
     });
   }
   

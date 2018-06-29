@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, LoadingController, Events } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 
 import { WhatsOnCategoryPage } from '../whats-on-category/whats-on-category';
 import { WhatsOnDetailsPage } from '../whats-on-details/whats-on-details';
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
+import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
   selector: 'page-whats-on',
@@ -21,12 +21,12 @@ export class WhatsOnPage {
   loading;
   
   constructor (
-    public navCtrl: NavController, 
-    public navParams: NavParams,
-    public modalCtrl: ModalController,
-    public storage: Storage,
-    public httpProvider: HttpProvider,
-    public messageProvider: MessageProvider,
+    private navCtrl: NavController, 
+    private navParams: NavParams,
+    private modalCtrl: ModalController,
+    private httpProvider: HttpProvider,
+    private messageProvider: MessageProvider,
+    private global: GlobalProvider,
     private loadingCtrl: LoadingController,
     private events: Events
   ) {
@@ -45,8 +45,7 @@ export class WhatsOnPage {
     this.loading = this.loadingCtrl.create();
     this.loading.present();
     
-    this.storage.get("userInfo").then((data) => {
-      this.httpProvider.getDataByPost(this.httpProvider.EVENT_LIST, {kind: "most", email: data.user_email, limit: this.limit}).then((value: any) => {
+      this.httpProvider.getDataByPost(this.httpProvider.EVENT_LIST, {kind: "most", email: this.global.user_email, limit: this.limit}).then((value: any) => {
         this.mostList = value.list;
         this.mostList.forEach(element => {
           element.image_url = this.httpProvider.SITE + "/uploads/" + element.image;
@@ -56,7 +55,7 @@ export class WhatsOnPage {
         this.events.publish('event:http_call_end');
       });
 
-      this.httpProvider.getDataByPost(this.httpProvider.EVENT_LIST, {kind: "featured", email: data.user_email, limit: this.limit}).then((value: any) => {
+      this.httpProvider.getDataByPost(this.httpProvider.EVENT_LIST, {kind: "featured", email: this.global.user_email, limit: this.limit}).then((value: any) => {
         this.featuredList = value.list;
         this.featuredList.forEach(element => {
           element.image_url = this.httpProvider.SITE + "/uploads/" + element.image;
@@ -66,7 +65,7 @@ export class WhatsOnPage {
         this.events.publish('event:http_call_end');
       });
 
-      this.httpProvider.getDataByPost(this.httpProvider.EVENT_LIST, {kind: "new", email: data.user_email, limit: this.limit}).then((value: any) => {
+      this.httpProvider.getDataByPost(this.httpProvider.EVENT_LIST, {kind: "new", email: this.global.user_email, limit: this.limit}).then((value: any) => {
         this.newList = value.list;
         this.newList.forEach(element => {
           element.image_url = this.httpProvider.SITE + "/uploads/" + element.image;
@@ -75,7 +74,6 @@ export class WhatsOnPage {
       }).catch(() => {
         this.events.publish('event:http_call_end');
       });
-    });
   }
   
   showViewAll(title) {
