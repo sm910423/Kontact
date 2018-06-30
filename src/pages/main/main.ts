@@ -22,6 +22,8 @@ export class MainPage {
   limit = 5;
   totalCallCount = 3;
   didCallCount = 0;
+  search_string = "";
+  categories = [];
   
   constructor (
     private platform: Platform,
@@ -117,6 +119,24 @@ export class MainPage {
   
   showMenu() {
     this.menuCtrl.open();
+  }
+  
+  searchCategory(event) {
+    this.categories = [];
+    this.global.categories.forEach((category: any) => {
+      if (category.sub_categories) {
+        let c = {id: category.id, title: category.title, sub_categories: []};
+        category.sub_categories.forEach(element => {
+          let src: string = element.title.toLowerCase();
+          if (src.includes(this.search_string.toLowerCase())) {
+            c.sub_categories.push(element);
+          }
+        });
+        if (c.sub_categories.length > 0) {
+          this.categories.push(c);
+        }
+      }
+    });
   }
   
   goToCategoryListingPage(kind) {

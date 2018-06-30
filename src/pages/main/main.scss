@@ -129,5 +129,39 @@ page-main {
       // font-weight: bold;
       // text-align: center;
     }
+
+    .search-result-box {
+      background-color: $white-a;
+      color: $theme-color-1;
+      font-size: 14px;
+
+      ion-row {
+        ion-col {
+          padding: 0px;
+        }
+      }
+
+      .category-row {
+        height: 36px;
+        background-color: $white-b;
+        font-weight: bold;
+        padding: 10px 16px;
+      }
+
+      .sub-category-row {
+        height: 32px;
+        border-bottom: 1px solid #cccccc;
+        padding: 10px 16px 8px 32px;
+
+        ion-col:first-child {
+          flex: 0 0 80%;
+          max-width: 80%;
+        }
+      }
+
+      .sub-category-row:last-child {
+        border-bottom: none;
+      }
+    }
   }
 }
