@@ -23,7 +23,9 @@ export class MainPage {
   totalCallCount = 3;
   didCallCount = 0;
   search_string = "";
-  categories = [];
+  searched_categories = [];
+  companiesList = [];
+  searched_companies = [];
   
   constructor (
     private platform: Platform,
@@ -31,7 +33,7 @@ export class MainPage {
     private navParams: NavParams,
     private menuCtrl: MenuController,
     private global: GlobalProvider,
-    private httpProvider: HttpProvider,
+    private http: HttpProvider,
     private messageProvider: MessageProvider,
     private loadingCtrl: LoadingController,
     private modalCtrl: ModalController,
@@ -62,6 +64,7 @@ export class MainPage {
       }
     });
     this.getData();
+    this.getCompaniesList();
     this.global.setCategory();
   }
   
@@ -71,34 +74,41 @@ export class MainPage {
     this.loading = this.loadingCtrl.create();
     this.loading.present();
     
-    this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "most", email: this.global.user_email, limit: this.limit}).then((value: any) => {
+    this.http.getDataByPost(this.http.COMPANY_LIST, {kind: "most", email: this.global.user_email, limit: this.limit}).then((value: any) => {
       this.mostList = value.list;
       this.mostList.forEach(element => {
-        element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
+        element.image_url = this.http.SITE + "/uploads/" + element.title + "_image.png";
       });
       this.events.publish('company:http_call_end');
     }).catch(() => {
       this.events.publish('company:http_call_end');
     });
     
-    this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "featured", email: this.global.user_email, limit: this.limit}).then((value: any) => {
+    this.http.getDataByPost(this.http.COMPANY_LIST, {kind: "featured", email: this.global.user_email, limit: this.limit}).then((value: any) => {
       this.featuredList = value.list;
       this.featuredList.forEach(element => {
-        element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
+        element.image_url = this.http.SITE + "/uploads/" + element.title + "_image.png";
       });
       this.events.publish('company:http_call_end');
     }).catch(() => {
       this.events.publish('company:http_call_end');
     });
     
-    this.httpProvider.getDataByPost(this.httpProvider.COMPANY_LIST, {kind: "new", email: this.global.user_email, limit: this.limit}).then((value: any) => {
+    this.http.getDataByPost(this.http.COMPANY_LIST, {kind: "new", email: this.global.user_email, limit: this.limit}).then((value: any) => {
       this.newList = value.list;
       this.newList.forEach(element => {
-        element.image_url = this.httpProvider.SITE + "/uploads/" + element.title + "_image.png";
+        element.image_url = this.http.SITE + "/uploads/" + element.title + "_image.png";
       });
       this.events.publish('company:http_call_end');
     }).catch(() => {
       this.events.publish('company:http_call_end');
+    });
+  }
+  
+  getCompaniesList() {
+    this.companiesList = [];
+    this.http.getDataByPost(this.http.COMPANY_LIST, {kind: "new", email: this.global.user_email, limit: "-1"}).then((data: any) => {
+      this.companiesList = data.list;
     });
   }
   
@@ -122,7 +132,8 @@ export class MainPage {
   }
   
   searchCategory(event) {
-    this.categories = [];
+    this.searched_categories = [];
+    this.searched_companies = [];
     this.global.categories.forEach((category: any) => {
       if (category.sub_categories) {
         let c = {id: category.id, title: category.title, sub_categories: []};
@@ -133,8 +144,15 @@ export class MainPage {
           }
         });
         if (c.sub_categories.length > 0) {
-          this.categories.push(c);
+          this.searched_categories.push(c);
         }
+      }
+    });
+    
+    this.companiesList.forEach((company: any) => {
+      let src: string = company.title.toLowerCase();
+      if (src.includes(this.search_string.toLowerCase())) {
+        this.searched_companies.push({title: company.title, id: company.id});
       }
     });
   }

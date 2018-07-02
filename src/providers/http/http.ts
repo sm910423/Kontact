@@ -30,8 +30,8 @@ export class HttpProvider {
   getDataByPost(url, json) {
     return new Promise((resolve, reject) => {
       this.http.post(url, JSON.stringify(json), {headers: this.contentHeader}).map(res => res.json()).subscribe(data => {
-        console.log("get http success");
-        console.log(data);
+        // console.log("get http success");
+        // console.log(data);
         resolve(data);
       }, err => {
         console.log("get http failure");
