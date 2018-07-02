@@ -164,6 +164,8 @@ export class MainPage {
         this.searched_companies.push({title: company.title, id: company.id});
       }
     });
+
+    this.searched_companies.sort(function(a,b) {return (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : ((b.title.toLowerCase() > a.title.toLowerCase()) ? -1 : 0);});
   }
   
   goToCategoryListingPage(kind) {
