@@ -39,19 +39,18 @@ export class CategoryPage {
     });
   }
   
-  goToCategoryListingPage(kind) {
+  /*goToCategoryListingPage(kind) {
     let categoryModal = this.modalCtrl.create(CategoryListingPage, {kind: kind});
     categoryModal.present();
-  }
+  }*/
   
   goToSubCategoryPage(category) {
     let subCategoryModal = this.modalCtrl.create(SubCategoryPage, {category: category});
     subCategoryModal.present();
   }
   
-  closePage() {
-    let data = {};
-    this.viewCtrl.dismiss(data);
+  goToBack() {
+    this.navCtrl.pop();
   }
   
 }

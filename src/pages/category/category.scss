@@ -1,78 +1,20 @@
 page-category {
     .category-header {
-        border-bottom: 1px solid $border-color-1;
-        
-        ion-row {
-            margin: 0px;
-            padding: 0px;
-            
-            ion-col:first-child {
-                margin: 0px;
-                padding: 0px 5px 0px 0px;
-                height: 48px !important;
-                flex: 0 0 60%;
-                max-width: 60%;
-            }
-            
-            ion-col:last-child {
-                margin: 0px;
-                padding: 0px 0px 0px 5px;
-                height: 48px !important;
-                flex: 0 0 40%;
-                max-width: 40%;
-            }
-        }
-        
-        .search-places {
-            margin: 6px 0px;
-            padding: 0px;
-            width: 100%;
-            border: none;
-            min-height: 36px;
-            
-            .searchbar-input-container {
-                border: none;
-            }
-            
-            input {
-                font-size: 13px;
-                background-color: $theme-color-5;
-                border-radius: 4px;
-                color: $theme-color-7;
-                height: 36px !important;
-                padding: 6px 4px 6px 29px !important;
-            }
-            
-            .searchbar-search-icon {
-                left: 6px;
-                top: 8px;
-                width: 21px;
-                height: 21px;
-                background-size: 20px;
-                color: $white !important;
-            }
-            
-            .searchbar-ios {
-                margin-left: 4px !important;
-            }
-        }
-        
-        .categories-btn {
-            font-size: 13px;
-            margin: 6px 0px !important;
-            width: 100% !important;
-            height: 36px !important;
-            background-color: $theme-color-6;
-            
-            .fa {
-                position: absolute;
-                right: 10px;
-            }
-        }
+        @include header-styles(color($colors, header-alt, base), color($colors, header-alt, contrast));
+        // border-bottom: 1px solid $border-color-1;
+        // background-color: $theme-color-10;
+        // color: $white;
     }
     
     .category-content {
         background-color: $white !important;
+
+        .category-image {
+            padding: 0px;
+            img {
+                width: 100%;
+            }
+        }
         
         .category-box {
             padding: 0px 16px;
@@ -84,7 +26,7 @@ page-category {
         
         .sub-category-box {
             color: $theme-color-1;
-            padding: 10px 0px;
+            padding: 0px 0px;
             font-size: 14px;
             
             ion-row {
@@ -95,14 +37,16 @@ page-category {
                 ion-col {
                     margin: 0px;
                     padding: 0px;
-                    flex: 0 0 calc(100% - 60px);
-                    max-width: calc(100% - 60px);
+                    flex: 0 0 calc(100% - 30px);
+                    max-width: calc(100% - 30px);
+                    // flex: 0 0 calc(100% - 60px);
+                    // max-width: calc(100% - 60px);
                 }
                 
-                ion-col:first-child {
-                    flex: 0 0 30px;
-                    max-width: 30px;
-                }
+                // ion-col:first-child {
+                //     flex: 0 0 30px;
+                //     max-width: 30px;
+                // }
                 
                 ion-col:last-child {
                     flex: 0 0 30px;

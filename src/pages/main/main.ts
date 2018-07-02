@@ -179,8 +179,7 @@ export class MainPage {
   }
   
   goToCategoryPage() {
-    let categoryModal = this.modalCtrl.create(CategoryPage);
-    categoryModal.present();
+    this.navCtrl.push(CategoryPage);
   }
   
   ionViewWillLeave() {
