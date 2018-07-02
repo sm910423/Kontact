@@ -1,8 +1,7 @@
 @mixin header-styles($background, $color){
-	// background: linear-gradient(to top, $background 0%, lighten($background, 10%) 100%);
 	background-color: $background;
-	padding-left: 6px;
-	padding-right: 6px;
+	padding-left: 10px;
+	padding-right: 10px;
 
 	.toolbar-background
 	{
@@ -14,26 +13,45 @@
 	.back-button,
 	.bar-button
 	{
-		overflow: visible;
 		color: $color;
 	}
+}
 
-	ion-title {
-		// position: absolute;
-		// top: 10px;
-		left: 0px;
-		width: 100%;
-		// height: calc(100% - 10px);
-		padding-left: 0px !important;
-		padding-right: 0px !important;
-		text-align: center;
+@mixin header-styles-ios($background, $color){
+	background-color: $background;
+	// padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	// height: 77px;
+	
+	.toolbar-background
+	{
+		border: none !important;
+		background-color: transparent;
 	}
 
-	// .title-md {
-	// 	top: 16px !important;
-	// }
+	.toolbar {
+		// height: 56px;
+	}
+	
+	.toolbar-title,
+	.back-button,
+	.bar-button
+	{
+		color: $color;
+	}
 }
 
 ion-header {
 	@include header-styles(color($colors, header, base), color($colors, header, contrast));
+
+	ion-title {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+		text-align: center;
+	}
+}
+
+.platform-ios ion-header {
+	@include header-styles-ios(color($colors, header, base), color($colors, header, contrast));
 }
