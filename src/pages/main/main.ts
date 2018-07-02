@@ -60,12 +60,10 @@ export class MainPage {
     this.events.subscribe('company:http_call_end', () => {
       this.didCallCount ++;
       if (this.totalCallCount === this.didCallCount) {
-        this.loading.dismiss();
+        this.getCompaniesList();
       }
     });
     this.getData();
-    this.getCompaniesList();
-    this.global.setCategory();
   }
   
   getData() {
@@ -109,6 +107,17 @@ export class MainPage {
     this.companiesList = [];
     this.http.getDataByPost(this.http.COMPANY_LIST, {kind: "new", email: this.global.user_email, limit: "-1"}).then((data: any) => {
       this.companiesList = data.list;
+      this.getCategories();
+    }).catch(() => {
+      this.getCategories();
+    });
+  }
+  
+  getCategories() {
+    this.global.setCategory().then(() => {
+      this.loading.dismiss();
+    }).catch(() => {
+      this.loading.dismiss();
     });
   }
   

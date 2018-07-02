@@ -78,6 +78,7 @@
   </ion-item>
   
   <div class="search-result-box" *ngIf="search_string">
+    <div class="title-row" *ngIf="searched_categories.length > 0">Categories</div>
     <div class="category-result-box" *ngFor="let c of searched_categories">
       <ion-row class="category-row">
         <ion-col>
@@ -94,6 +95,7 @@
       </ion-row>
     </div>
     
+    <div class="title-row" *ngIf="searched_companies.length > 0">Companies</div>
     <div class="category-result-box">
       <ion-row class="category-row company-row" *ngFor="let c of searched_companies">
         <ion-col>
