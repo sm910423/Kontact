@@ -44,9 +44,8 @@ export class CategoryPage {
     categoryModal.present();
   }*/
   
-  goToSubCategoryPage(category) {
-    let subCategoryModal = this.modalCtrl.create(SubCategoryPage, {category: category});
-    subCategoryModal.present();
+  goToSubCategoryPage(category, index) {
+    this.navCtrl.push(SubCategoryPage, {category: category, index: index});
   }
   
   goToBack() {

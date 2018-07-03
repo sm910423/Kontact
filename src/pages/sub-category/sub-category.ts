@@ -10,7 +10,10 @@ import { CategoryListingPage } from '../category-listing/category-listing';
 })
 export class SubCategoryPage {
   category: any;
+  index;
+  category_image = "";
   subCategories: any;
+
   
   constructor (
     public navCtrl: NavController, 
@@ -22,6 +25,13 @@ export class SubCategoryPage {
     private global: GlobalProvider
   ) {
     this.category = navParams.get("category");
+    this.index = navParams.get("index");
+    if (this.index < 9) {
+      this.category_image = this.http.SITE + "/uploads/category_0" + (this.index + 1).toString() + ".png";
+    } else {
+      this.category_image = this.http.SITE + "/uploads/category_" + (this.index + 1).toString() + ".png";
+    }
+    
     this.getSubCategories(this.category);
   }
   
@@ -41,9 +51,9 @@ export class SubCategoryPage {
     let modal = this.modalCtrl.create(CategoryListingPage, {category: this.category, sub_category: subCategory});
     modal.present();
   }
-  
-  closePage() {
-    this.viewCtrl.dismiss();
+
+  goToBack() {
+    this.navCtrl.pop();
   }
   
 }

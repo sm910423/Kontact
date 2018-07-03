@@ -17,7 +17,7 @@
     <img src="./assets/images/category.png" />
   </div>
   <div class="sub-category-box">
-    <ion-row *ngFor="let category of categories" (click)="goToSubCategoryPage(category)">
+    <ion-row *ngFor="let category of categories; let i = index" (click)="goToSubCategoryPage(category, i)">
       <!-- <ion-col text-left>
         <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
       </ion-col> -->

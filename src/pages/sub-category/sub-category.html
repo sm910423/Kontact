@@ -1,29 +1,24 @@
 <ion-header class="sub-category-header">
   <ion-navbar hideBackButton>
-    <ion-row>
-      <ion-col width-50>
-        <ion-searchbar #searchbox id="searchbox" class="search-places" placeholder="Search"></ion-searchbar>
-      </ion-col>
-      <ion-col width-50>
-        <button ion-button class="categories-btn" (click)="closePage()">
-          Close&nbsp;
-          <i class="fa fa-times" aria-hidden="true"></i>
-        </button>
-      </ion-col>
-    </ion-row>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goToBack()">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Back
+      </button>
+    </ion-buttons>
+    <ion-title>{{ category.title }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content class="sub-category-content">
-  <div class="category-box">
-    <p>{{ category.title }}</p>
+  <div class="category-image">
+    <img [src]="category_image" />
   </div>
   <div class="sub-category-box">
-    <ion-row *ngFor="let c of subCategories" (click)="goToCategoryListPage(c)">
-      <ion-col text-left>
+    <ion-row *ngFor="let c of subCategories; let i = index" (click)="goToCategoryListPage(c, i)">
+      <!-- <ion-col text-left>
         <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-      </ion-col>
+      </ion-col> -->
       <ion-col text-left>
         {{ c.title }}
       </ion-col>
