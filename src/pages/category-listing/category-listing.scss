@@ -1,83 +1,21 @@
 page-category-listing {
     .category-listing-header {
-        border-bottom: 1px solid $border-color-1;
-        
-        ion-row {
-            margin: 0px;
-            padding: 0px;
-            
-            ion-col:first-child {
-                margin: 0px;
-                padding: 0px 5px 0px 0px;
-                height: 48px !important;
-                flex: 0 0 60%;
-                max-width: 60%;
-            }
-            
-            ion-col:last-child {
-                margin: 0px;
-                padding: 0px 0px 0px 5px;
-                height: 48px !important;
-                flex: 0 0 40%;
-                max-width: 40%;
-            }
-        }
-        
-        .search-places {
-            margin: 6px 0px;
-            padding: 0px;
-            width: 100%;
-            border: none;
-            min-height: 36px;
-            
-            .searchbar-input-container {
-                border: none;
-            }
-            
-            input {
-                font-size: 13px;
-                background-color: $theme-color-5;
-                border-radius: 4px;
-                color: $theme-color-7;
-                height: 36px !important;
-                padding: 6px 4px 6px 29px !important;
-            }
-            
-            .searchbar-search-icon {
-                left: 6px;
-                top: 8px;
-                width: 21px;
-                height: 21px;
-                background-size: 20px;
-                color: $white !important;
-            }
-            
-            .searchbar-ios {
-                margin-left: 4px !important;
-            }
-        }
-        
-        .categories-btn {
-            font-size: 11px;
-            margin: 6px 0px !important;
-            width: 100% !important;
-            height: 36px !important;
-            background-color: $theme-color-6;
-        }
+        @include header-styles(color($colors, header-alt, base), color($colors, header-alt, contrast));
     }
     
     .category-listing-content {
-        background-color: $white !important;
-        
-        .back-box {
-            padding: 10px 16px 0px;
-            color: $theme-color-1;
-            font-size: 14px;
-            font-weight: 600;
+        background-color: $white-b !important;
+
+        .category-image {
+            padding: 0px;
+            img {
+                width: 100%;
+            }
         }
         
         .category-listing-box {
-            padding: 0px 12px;
+            // background-color: $white-a !important;
+            padding: 11px 12px;
             
             ion-row:last-child {
                 height: calc(50vw);
@@ -86,7 +24,13 @@ page-category-listing {
             
             .image-box {
                 width: calc(50vw - 12px);
-                height: calc(50vw - 12px - 10px);
+                // height: calc(50vw - 12px - 10px);
+                border-radius: 4px;
+            }
+
+            .company-title {
+                font-size: 12px;
+                font-weight: bold;
             }
             
             .featured-image {

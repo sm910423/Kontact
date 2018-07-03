@@ -47,9 +47,8 @@ export class SubCategoryPage {
     });
   }
   
-  goToCategoryListPage(subCategory) {
-    let modal = this.modalCtrl.create(CategoryListingPage, {category: this.category, sub_category: subCategory});
-    modal.present();
+  goToCategoryListPage(subCategory, index) {
+    this.navCtrl.push(CategoryListingPage, {category: this.category, sub_category: subCategory, ctg_index: this.index, sub_index: index});
   }
 
   goToBack() {

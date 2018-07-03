@@ -17,6 +17,7 @@ export class CategoryListingPage {
   lists: any;
   category;
   sub_category;
+  sub_category_image;
   
   constructor (
     public navCtrl: NavController, 
@@ -32,7 +33,12 @@ export class CategoryListingPage {
     } else {
       this.category = this.navParams.get("category");
       this.sub_category = this.navParams.get("sub_category");
-      this.title = this.category.title + " -> " + this.sub_category.title;
+      this.title = this.sub_category.title;
+      let ctg_index = this.navParams.get("ctg_index");
+      let sub_index = this.navParams.get("sub_index");
+      let ctg_index_str = ((ctg_index < 9) ? "0" : "") + (ctg_index + 1).toString();
+      let sub_index_str = ((sub_index < 9) ? "0" : "") + (sub_index + 1).toString();
+      this.sub_category_image = this.http.SITE + "/uploads/category_" + ctg_index_str + "_" + sub_index_str + ".png";
     }
     this.getList();
   }
@@ -75,16 +81,16 @@ export class CategoryListingPage {
     modal.present();
   }
   
-  goToCategoryPage() {
+  /*goToCategoryPage() {
     if (this.kind) {
       let categoryModal = this.modalCtrl.create(CategoryPage);
       categoryModal.present();
     } else {
       this.navCtrl.pop();
     }
-  }
+  }*/
   
-  goBack() {
+  goToBack() {
     this.navCtrl.pop();
   }
 }
