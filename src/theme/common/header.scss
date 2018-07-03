@@ -15,30 +15,19 @@
 	{
 		color: $color;
 	}
-}
 
-@mixin header-styles-ios($background, $color){
-	background-color: $background;
-	// padding-top: 20px;
-	padding-left: 10px;
-	padding-right: 10px;
-	// height: 77px;
-	
-	.toolbar-background
-	{
-		border: none !important;
-		background-color: transparent;
+	ion-title {
+		position: absolute;
+		top: 10px;
+		left: 0px;
+		width: 100%;
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+		text-align: center;
 	}
 
-	.toolbar {
-		// height: 56px;
-	}
-	
-	.toolbar-title,
-	.back-button,
-	.bar-button
-	{
-		color: $color;
+	.title-md {
+		top: 16px !important;
 	}
 }
 
@@ -50,8 +39,4 @@ ion-header {
 		padding-right: 0px !important;
 		text-align: center;
 	}
-}
-
-.platform-ios ion-header {
-	@include header-styles-ios(color($colors, header, base), color($colors, header, contrast));
 }
