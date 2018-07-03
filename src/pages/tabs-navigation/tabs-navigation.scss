@@ -26,6 +26,10 @@ tabs-navigation {
 			}
 		}
 	}
+
+	.tab-nav {
+		margin-bottom: constant(safe-area-inset-bottom);
+	}
 	
 	.fa-icons-general {
 		display: inline-block;

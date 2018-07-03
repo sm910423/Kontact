@@ -40,3 +40,9 @@ ion-header {
 		text-align: center;
 	}
 }
+
+.platform-ios ion-header {
+	ion-title {
+		top: 0px !important;
+	}
+}
