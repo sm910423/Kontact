@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, NavController, NavParams, LoadingController, App, ModalController, Events } from 'ionic-angular';
+import { Platform, NavController, NavParams, LoadingController, App, Events } from 'ionic-angular';
 import { MenuController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
@@ -36,7 +36,6 @@ export class MainPage {
     private http: HttpProvider,
     private messageProvider: MessageProvider,
     private loadingCtrl: LoadingController,
-    private modalCtrl: ModalController,
     private app: App,
     private onesignal: OneSignal,
     private events: Events
@@ -64,6 +63,10 @@ export class MainPage {
       }
     });
     this.getData();
+  }
+  
+  ionViewWillLeave() {
+    this.events.unsubscribe('company:http_call_end');
   }
   
   getData() {
@@ -143,12 +146,13 @@ export class MainPage {
   searchCategory(event) {
     this.searched_categories = [];
     this.searched_companies = [];
-    this.global.categories.forEach((category: any) => {
+    this.global.categories.forEach((category: any, ctg_index) => {
       if (category.sub_categories) {
-        let c = {id: category.id, title: category.title, sub_categories: []};
-        category.sub_categories.forEach(element => {
+        let c = {id: category.id, title: category.title, sub_categories: [], index: ctg_index};
+        category.sub_categories.forEach((element: any, sub_index) => {
           let src: string = element.title.toLowerCase();
           if (src.includes(this.search_string.toLowerCase())) {
+            element.index = sub_index;
             c.sub_categories.push(element);
           }
         });
@@ -168,21 +172,19 @@ export class MainPage {
     this.searched_companies.sort(function(a,b) {return (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : ((b.title.toLowerCase() > a.title.toLowerCase()) ? -1 : 0);});
   }
   
-  goToCategoryListingPage(kind) {
-    let categoryModal = this.modalCtrl.create(CategoryListingPage, {kind: kind});
-    categoryModal.present();
+  goToCategoryListingPage(kind, sub_category, ctg_index, sub_index) {
+    if (kind) {
+      this.navCtrl.push(CategoryListingPage, {kind: kind});
+    } else {
+      this.navCtrl.push(CategoryListingPage, {sub_category: sub_category, ctg_index: ctg_index, sub_index: sub_index});
+    }
   }
   
   goToCompanyProfilePage(id) {
-    let modal = this.modalCtrl.create(CompanyProfilePage, {company_id: id});
-    modal.present();
+    this.navCtrl.push(CompanyProfilePage, {company_id: id})
   }
   
   goToCategoryPage() {
     this.navCtrl.push(CategoryPage);
-  }
-  
-  ionViewWillLeave() {
-    this.events.unsubscribe('company:http_call_end');
   }
 }

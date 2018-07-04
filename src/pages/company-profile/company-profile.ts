@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, LoadingController, Events } from 'ionic-angular';
+import { NavController, NavParams, ModalController, LoadingController/*, Events*/ } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -13,6 +13,8 @@ export class CompanyProfilePage {
   company_id;
   company;
   segments = "en";
+  category_title = "";
+  sub_category_title = "";
   
   constructor (
     public navCtrl: NavController, 
@@ -20,14 +22,15 @@ export class CompanyProfilePage {
     public modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
     private http: HttpProvider,
-    private events: Events,
+    // private events: Events,
     private callNumber: CallNumber,
     private iab: InAppBrowser,
     private global: GlobalProvider
   ) {
     this.company_id = this.navParams.get("company_id");
     this.getCompanyInfo();
-    this.events.subscribe("logo-loaded", () => {
+
+    /* this.events.subscribe("logo-loaded", () => {
       setTimeout(() => {
         let box = document.getElementsByClassName("logo-image-box")[0];
         let box_height = box.scrollHeight;
@@ -41,11 +44,17 @@ export class CompanyProfilePage {
         logo.setAttribute("width", logo_width.toString());
         logo.setAttribute("height", logo_height.toString());
       }, 50);
-    });
+    }); */
+  }
+  
+  ionViewWillLeave() {
+    // this.events.unsubscribe("logo-loaded");
   }
   
   getCompanyInfo() {
     this.company = {};
+    this.category_title = "";
+    this.sub_category_title = "";
     let loading = this.loadingCtrl.create();
     
     loading.present();
@@ -55,13 +64,19 @@ export class CompanyProfilePage {
       this.company = data.info;
       this.company.image_url = this.http.SITE + "/uploads/" + this.company.title + "_image.png";
       this.company.logo_url = this.http.SITE + "/uploads/" + this.company.title + "_logo.png";
-      this.events.publish("logo-loaded");
+      // this.events.publish("logo-loaded");
+
+      let category: any = this.global.categories.filter(category => category.id == this.company.category_id);
+      if (category && category.length > 0) {
+        this.category_title = category[0].title;
+        let sub_category: any = category[0].sub_categories.filter(sub_category => sub_category.id == this.company.sub_category_id);
+        if (sub_category && sub_category.length > 0) {
+          this.sub_category_title = sub_category[0].title;
+        }
+      }
     }).catch(() => {
       loading.dismiss();
     });
-  }
-  
-  ionViewDidEnter() {
   }
   
   callPhone(num) {
@@ -80,13 +95,7 @@ export class CompanyProfilePage {
     });
   }
   
-  ionViewWillLeave() {
-    this.events.unsubscribe("logo-loaded");
-  }
-  
   goToWebsitePage(url) {
-    // let modal = this.modalCtrl.create(WebsitePage);
-    // modal.present();
     const browser = this.iab.create(url);
     browser.show();
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http';
 import { GlobalProvider } from '../../providers/global/global';
 import { CategoryListingPage } from '../category-listing/category-listing';
@@ -19,7 +19,6 @@ export class SubCategoryPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
     private http: HttpProvider,
     private global: GlobalProvider
@@ -48,7 +47,7 @@ export class SubCategoryPage {
   }
   
   goToCategoryListPage(subCategory, index) {
-    this.navCtrl.push(CategoryListingPage, {category: this.category, sub_category: subCategory, ctg_index: this.index, sub_index: index});
+    this.navCtrl.push(CategoryListingPage, {sub_category: subCategory, ctg_index: this.index, sub_index: index});
   }
 
   goToBack() {

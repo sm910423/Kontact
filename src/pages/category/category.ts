@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, ModalController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { SubCategoryPage } from '../sub-category/sub-category';
-import { CategoryListingPage } from '../category-listing/category-listing';
 import { HttpProvider } from '../../providers/http/http';
 import { GlobalProvider } from '../../providers/global/global';
 
@@ -17,7 +16,6 @@ export class CategoryPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
     private http: HttpProvider,
     private global: GlobalProvider
@@ -38,11 +36,6 @@ export class CategoryPage {
       loading.dismiss();
     });
   }
-  
-  /*goToCategoryListingPage(kind) {
-    let categoryModal = this.modalCtrl.create(CategoryListingPage, {kind: kind});
-    categoryModal.present();
-  }*/
   
   goToSubCategoryPage(category, index) {
     this.navCtrl.push(SubCategoryPage, {category: category, index: index});

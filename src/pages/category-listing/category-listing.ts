@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
-
-import { CategoryPage } from '../category/category';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { CompanyProfilePage } from '../company-profile/company-profile';
 import { HttpProvider } from '../../providers/http/http';
 import { GlobalProvider } from '../../providers/global/global';
@@ -15,14 +13,12 @@ export class CategoryListingPage {
   title;
   kind;
   lists: any;
-  category;
   sub_category;
   sub_category_image;
   
   constructor (
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public modalCtrl: ModalController,
     private http: HttpProvider,
     private loadingCtrl: LoadingController,
     private global: GlobalProvider
@@ -31,7 +27,6 @@ export class CategoryListingPage {
     if (this.kind) {
       this.title = this.kinds[this.kind];
     } else {
-      this.category = this.navParams.get("category");
       this.sub_category = this.navParams.get("sub_category");
       this.title = this.sub_category.title;
       let ctg_index = this.navParams.get("ctg_index");
@@ -77,8 +72,7 @@ export class CategoryListingPage {
   }
   
   goToCompanyProfilePage(id) {
-    let modal = this.modalCtrl.create(CompanyProfilePage, {company_id: id});
-    modal.present();
+    this.navCtrl.push(CompanyProfilePage, {company_id: id});
   }
   
   /*goToCategoryPage() {

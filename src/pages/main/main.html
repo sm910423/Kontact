@@ -79,13 +79,13 @@
   
   <div class="search-result-box" *ngIf="search_string">
     <div class="title-row" *ngIf="searched_categories.length > 0">Categories</div>
-    <div class="category-result-box" *ngFor="let c of searched_categories">
+    <div class="category-result-box" *ngFor="let c of searched_categories;">
       <ion-row class="category-row">
         <ion-col>
           {{ c.title }}
         </ion-col>
       </ion-row>
-      <ion-row class="sub-category-row" *ngFor="let s of c.sub_categories">
+      <ion-row class="sub-category-row" *ngFor="let s of c.sub_categories;" (click)="goToCategoryListingPage('', s, c.index, s.index)">
         <ion-col>
           {{ s.title }}
         </ion-col>
@@ -97,7 +97,7 @@
     
     <div class="title-row" *ngIf="searched_companies.length > 0">Companies</div>
     <div class="category-result-box">
-      <ion-row class="category-row company-row" *ngFor="let c of searched_companies">
+      <ion-row class="category-row company-row" *ngFor="let c of searched_companies" (click)="goToCompanyProfilePage(c.id)">
         <ion-col>
           {{ c.title }}
         </ion-col>

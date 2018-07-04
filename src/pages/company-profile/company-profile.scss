@@ -1,8 +1,28 @@
 page-company-profile {
-    .company-profile-content {
-        .image-box {
-            padding: 0px;
+    .company-profile-header {
+        @include header-styles(color($colors, header-alt, base), color($colors, header-alt, contrast));
+    }
 
+    .company-profile-content {
+        .category-row {
+            margin-bottom: 4px;
+
+            ion-col {
+                padding: 0px;
+            }
+
+            ion-col:last-child {
+                margin-left: 8px;
+                font-weight: bold;
+                flex: 0 0 60%;
+                max-width: 60%;
+            }
+        }
+        
+        .image-box {
+            margin-top: 8px;
+            padding: 0px;
+            
             .item-inner {
                 padding: 0px;
                 border: none;
@@ -12,11 +32,21 @@ page-company-profile {
                 }
             }
 
+            div {
+                text-align: center;
+            }
+
             .company-image {
                 width: 100%;
+                border-radius: 8px;
+            }
+
+            .logo-image {
+                height: 40px;
+                border-radius: 4px;
             }
             
-            .logo-image-box {
+            /*.logo-image-box {
                 position: absolute;
                 top: 0px;
                 left: 0px;
@@ -49,16 +79,16 @@ page-company-profile {
                 .logo-image {
                     margin: auto;
                 }
-            }
+            }*/
         }
         
         .segments {
-            margin: 8px 16px 6px;
+            margin: 16px 16px 6px;
             width: calc(100% - 32px);
         }
         
         .action-row {
-            margin: 10px 16px;
+            margin: 10px 0px;
             padding: 0px;
             
             ion-col {
@@ -67,12 +97,12 @@ page-company-profile {
                 
                 button {
                     margin: 0px;
-                    height: 40px;
+                    height: 32px;
+                    background-color: $theme-color-6;
                 }
                 
                 .mail-button {
-                    background-color: $theme-color-6;
-                    width: 40px;
+                    width: 32px;
                 }
                 
                 .call-button {
@@ -80,14 +110,14 @@ page-company-profile {
                     
                     .fa {
                         position: absolute;
-                        right: 20px;
+                        left: 20px;
                     }
                 }
             }
             
-            ion-col:first-child {
-                flex: 0 0 54px;
-                max-width: 54px;
+            ion-col:first-child, ion-col:last-child {
+                flex: 0 0 40px;
+                max-width: 40px;
             }
         }
         
@@ -99,12 +129,13 @@ page-company-profile {
                 height: 18px;
                 margin: 0px;
                 font-size: 14px;
+                color: $theme-color-6;
             }
         }
 
         .sub-title-row {
             font-weight: bold;
-            margin: 10px 16px;
+            margin: 10px 0px;
             color: $theme-color-7;
         }
 

@@ -1,5 +1,5 @@
 <ion-header class="company-profile-header">
-  <ion-navbar>
+  <ion-navbar hideBackButton>
     <ion-buttons left>
       <button ion-button icon-only (click)="goToBack()">
         <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Back
@@ -9,24 +9,30 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="company-profile-content">
-  <ion-segment color="semi-dark" class="segments" [(ngModel)]="segments">
-    <ion-segment-button value="en">
-      English
-    </ion-segment-button>
-    <ion-segment-button value="ru">
-      Russian
-    </ion-segment-button>
-  </ion-segment>
+<ion-content class="company-profile-content" padding>
+  <ion-row class="category-row">
+    <ion-col text-right>Category:</ion-col>
+    <ion-col>{{ category_title }}</ion-col>
+  </ion-row>
+  <ion-row class="category-row">
+    <ion-col text-right>Sub-Category:</ion-col>
+    <ion-col>{{ sub_category_title }}</ion-col>
+  </ion-row>
   
   <ion-item *ngIf="company.title" class="image-box">
-    <img class="company-image" [src]="company.image_url" />
+    <!-- <img class="company-image" [src]="company.image_url" />
     <div class="logo-image-box">
       <div class="border-box">
         <div class="padding-box">
           <img class="logo-image" id="logo-image" [src]="company.logo_url" />
         </div>
       </div>
+    </div> -->
+    <div>
+      <img class="company-image" [src]="company.image_url" />
+    </div>
+    <div>
+      <img class="logo-image" [src]="company.logo_url" />
     </div>
   </ion-item>
   
@@ -40,11 +46,23 @@
         <i class="fa fa-phone" aria-hidden="true"></i>
       </button>
     </ion-col>
+    <ion-col text-right>
+      <button ion-button class="mail-button" (click)="goToWebsitePage(company.site)"><i class="fa fa-internet-explorer" aria-hidden="true"></i></button>
+    </ion-col>
   </ion-row>
   
-  <p class="url-row">
+  <!-- <p class="url-row">
     <button ion-button clear (click)="goToWebsitePage(company.site)">{{ company.site }}</button>
-  </p>
+  </p> -->
+  
+  <ion-segment color="semi-dark" class="segments" [(ngModel)]="segments">
+    <ion-segment-button value="en">
+      English
+    </ion-segment-button>
+    <ion-segment-button value="ru">
+      Russian
+    </ion-segment-button>
+  </ion-segment>
   
   <div *ngIf="segments == 'en'">
     <p class="sub-title-row">
@@ -88,3 +106,4 @@
     </p>
   </div>
 </ion-content>
+  
