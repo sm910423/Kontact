@@ -42,8 +42,25 @@ page-company-profile {
             }
 
             .logo-image {
-                height: 40px;
+                height: 30%;
+                padding: 4px;
                 border-radius: 4px;
+                position: absolute;
+                left: 20px;
+                top: 10%;
+                background-color: $white;
+            }
+
+            p {
+                font-size: 28px;
+                font-weight: bold;
+                color: $white;
+                position: absolute;
+                bottom: 10%;
+                left: 20px;
+                max-width: 80%;
+                white-space: normal;
+                text-align: left;
             }
             
             /*.logo-image-box {
@@ -87,7 +104,7 @@ page-company-profile {
             width: calc(100% - 32px);
         }
         
-        .action-row {
+        /*.action-row {
             margin: 10px 0px;
             padding: 0px;
             
@@ -119,9 +136,9 @@ page-company-profile {
                 flex: 0 0 40px;
                 max-width: 40px;
             }
-        }
+        }*/
         
-        .url-row {
+        /*.url-row {
             color: $theme-color-6;
             text-align: center;
 
@@ -131,12 +148,32 @@ page-company-profile {
                 font-size: 14px;
                 color: $theme-color-6;
             }
-        }
+        }*/
 
         .sub-title-row {
+            font-size: 16px;
             font-weight: bold;
             margin: 10px 0px;
             color: $theme-color-7;
+        }
+
+        .details-row {
+            font-size: 16px;
+            ion-col {
+                padding: 0px;
+            }
+            ion-col:first-child {
+                padding-top: 5px;
+                margin-left: 16px;
+                flex: 0 0 30px;
+                max-width: 30px;
+            }
+            button {
+                margin: 0px;
+                height: 16px;
+                padding: 0px;
+                font-size: 16px;
+            }
         }
 
         .service-row {
