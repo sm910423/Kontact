@@ -20,8 +20,9 @@ page-company-profile {
         }
         
         .image-box {
-            margin-top: 8px;
+            margin: -16px -16px 0px;
             padding: 0px;
+            width: calc(100% + 32px);
             
             .item-inner {
                 padding: 0px;
@@ -38,7 +39,7 @@ page-company-profile {
 
             .company-image {
                 width: 100%;
-                border-radius: 8px;
+                // border-radius: 8px;
             }
 
             .logo-image {
