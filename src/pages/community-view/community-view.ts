@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http';
 import { GlobalProvider } from '../../providers/global/global';
+import moment from 'moment';
 
 @Component({
   selector: 'page-community-view',
@@ -31,6 +32,8 @@ export class CommunityViewPage {
     this.http.getDataByPost(this.http.COMMUNITY, json).then((data: any) => {
       loading.dismiss();
       this.community = data.info;
+      let st = this.community.created.split(" ").join("T");
+      this.community.created_str = moment(st).format("DD-MMM-YYYY");
       this.community.image_url = this.http.SITE + "/uploads/" + this.community.image;
     }).catch(() => {
       loading.dismiss();
@@ -38,8 +41,9 @@ export class CommunityViewPage {
   }
   
   goToBack() {
-    let data = {};
-    this.viewCtrl.dismiss(data);
+    // let data = {};
+    // this.viewCtrl.dismiss(data);
+    this.navCtrl.pop();
   }
   
 }

@@ -47,7 +47,6 @@ export class MyApp {
     });
 
     this.storage.get("isNotFirstLoading").then(value => {
-      console.log("isNotFirstLoading", value);
       this.storage.set("isNotFirstLoading", true);
       if (value !== true) {
         this.storage.set("visibleBackButton", true);

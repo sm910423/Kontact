@@ -85,13 +85,15 @@ export class CommunityPage {
   }
   
   goToCommunityListingPage(kind) {
-    let listingModal = this.modalCtrl.create(CommunityListingPage, {kind: kind});
-    listingModal.present();
+    // let listingModal = this.modalCtrl.create(CommunityListingPage, {kind: kind});
+    // listingModal.present();
+    this.navCtrl.push(CommunityListingPage, {kind: kind});
   }
   
   goToCommunityViewPage(id) {
-    let viewModal = this.modalCtrl.create(CommunityViewPage, {community_id: id});
-    viewModal.present();
+    // let viewModal = this.modalCtrl.create(CommunityViewPage, {community_id: id});
+    // viewModal.present();
+    this.navCtrl.push(CommunityViewPage, {community_id: id});
   }
   
   ionViewWillLeave() {

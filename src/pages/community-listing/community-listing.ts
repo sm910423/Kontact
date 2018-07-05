@@ -39,12 +39,14 @@ export class CommunityListingPage {
   }
   
   goToBack() {
-    this.viewCtrl.dismiss();
+    // this.viewCtrl.dismiss();
+    this.navCtrl.pop();
   }
   
   goToCommunityViewPage(id) {
-    let viewModal = this.modalCtrl.create(CommunityViewPage, {community_id: id});
-    viewModal.present();
+    // let viewModal = this.modalCtrl.create(CommunityViewPage, {community_id: id});
+    // viewModal.present();
+    this.navCtrl.push(CommunityViewPage, {community_id: id});
   }
   
 }

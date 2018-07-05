@@ -1,29 +1,37 @@
 <ion-header class="community-view-header">
-  <ion-navbar>
+  <!-- <ion-navbar>
     <ion-buttons left>
       <button ion-button icon-only (click)="goToBack()">
         <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Back
       </button>
     </ion-buttons>
     <ion-title>Community</ion-title>
+  </ion-navbar> -->
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goToBack()">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Back
+      </button>
+    </ion-buttons>
+    <ion-title></ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content class="community-view-content">
+  <img [src]="community.image_url" *ngIf="community.image_url" class="image-row" />
   <p class="title-row">
     {{ community.title }}
   </p>
-  <img [src]="community.image_url" *ngIf="community.image_url" class="image-row" />
+  <ion-row class="auth-row">
+    <ion-col text-left>
+      Updated {{ community.created_str }}
+    </ion-col>
+    <ion-col text-right>
+      By {{ community.author }}
+    </ion-col>
+  </ion-row>
   <p class="comment-row">
     {{ community.content }} 
   </p>
-  <ion-row class="auth-row">
-    <ion-col text-left>
-      {{ community.created }}
-    </ion-col>
-    <ion-col text-right>
-      {{ community.author }}
-    </ion-col>
-  </ion-row>
 </ion-content>
