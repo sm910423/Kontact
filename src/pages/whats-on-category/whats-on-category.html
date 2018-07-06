@@ -1,11 +1,11 @@
 <ion-header class="whats-on-category-header">
-  <ion-navbar>
+  <ion-navbar hideBackButton>
     <ion-buttons left>
       <button ion-button icon-only (click)="goToBack()">
         <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Back
       </button>
     </ion-buttons>
-    <ion-title>What's On</ion-title>
+    <ion-title>{{ title[kind] }}</ion-title>
   </ion-navbar>
 </ion-header>
 

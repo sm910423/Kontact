@@ -13,7 +13,7 @@
         <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Back
       </button>
     </ion-buttons>
-    <ion-title>Community Listing</ion-title>
+    <ion-title>{{ title[kind] }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -25,4 +25,16 @@
     </p>
     <button ion-button clear class="action-row" (click)="goToCommunityViewPage(community.id)">Read More &nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></button>
   </div>
+
+  <!-- <div class="listing-box">
+    <ion-row *ngFor="let list of lists">
+      <ion-col width-50 *ngFor="let item of list" (click)="goToCompanyProfilePage(item.id)">
+        <img [src]="item.image_url" class="image-box" />
+        <img src="./assets/images/featured.png" class="featured-image" />
+        <div class="community-title">
+          {{ item.title }}
+        </div>
+      </ion-col>
+    </ion-row>
+  </div> -->
 </ion-content>

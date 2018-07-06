@@ -54,8 +54,7 @@ export class WhatsOnCategoryPage {
   }
   
   goToWhatsOnDetailsPage(id) {
-    let modal = this.modalCtrl.create(WhatsOnDetailsPage, {event_id: id});
-    modal.present();
+    this.navCtrl.push(WhatsOnDetailsPage, {event_id: id});
   }
   
   goToBack() {

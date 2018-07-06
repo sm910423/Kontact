@@ -77,14 +77,11 @@ export class WhatsOnPage {
   }
   
   showViewAll(title) {
-    let categoryModal = this.modalCtrl.create(WhatsOnCategoryPage, {kind: title});
-    
-    categoryModal.present();
+    this.navCtrl.push(WhatsOnCategoryPage, {kind: title});
   }
 
   goToWhatsOnDetailsPage(id) {
-    let modal = this.modalCtrl.create(WhatsOnDetailsPage, {event_id: id});
-    modal.present();
+    this.navCtrl.push(WhatsOnDetailsPage, {event_id: id});
   }
 
   ionViewWillLeave() {
