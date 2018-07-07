@@ -1,19 +1,19 @@
 <ion-header class="whats-on-category-header">
   <ion-navbar hideBackButton>
-    <ion-buttons left>
+    <!-- <ion-buttons left>
       <button ion-button icon-only (click)="goToBack()">
         <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Back
       </button>
-    </ion-buttons>
-    <ion-title>{{ title[kind] }}</ion-title>
+    </ion-buttons> -->
+    <ion-title>What's On</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="whats-on-category-content">
-  <div class="back-box">
+<ion-content class="whats-on-category-content" padding>
+  <!-- <div class="back-box">
     <p><span>{{ title[kind] }}</span></p>
-  </div>
-  <div class="category-listing-box">
+  </div> -->
+  <!-- <div class="category-listing-box">
     <ion-row *ngFor="let list of lists">
       <ion-col width-50 *ngFor="let item of list" (click)="goToWhatsOnDetailsPage(item.id)">
         <img [src]="item.image_url" class="image-box" />
@@ -22,6 +22,15 @@
         <p class="date">{{item.time}}</p>
       </ion-col>
     </ion-row>
-  </div>
-  
+  </div> -->
+  <ion-row *ngFor="let event of lists" class="event-row" (click)="goToWhatsOnDetailsPage(event.id)">
+    <ion-col class="image-col" id="image-col-{{ event.id }}">
+      <!-- <img [src]="event.image_url" class="event-image" /> -->
+    </ion-col>
+    <ion-col class="data-col">
+      <div class="date-time">{{ event.date_str }}</div>
+      <h2>{{ event.title }}</h2>
+      <div class="place">{{ event.place }}</div>
+    </ion-col>
+  </ion-row>
 </ion-content>

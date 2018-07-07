@@ -7,14 +7,14 @@ page-whats-on-category {
     .whats-on-category-content {
         background-color: $white !important;
         
-        .back-box {
+        /*.back-box {
             padding: 10px 16px 0px;
             color: $theme-color-1;
             font-size: 14px;
             font-weight: 600;
-        }
+        }*/
         
-        .category-listing-box {
+        /*.category-listing-box {
             padding: 0px 12px;
             
             ion-row:last-child {
@@ -46,6 +46,43 @@ page-whats-on-category {
             .date {
                 color: $theme-color-7;
             }
+        }*/
+        
+        .event-row {
+            margin-top: 12px;
+            height: 60px;
+
+            ion-col {
+                padding: 0px;
+            }
+
+            .data-col {
+                margin-left: 8px;
+
+                h2 {
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin: 4px 0px;
+                }
+
+                div {
+                    font-size: 12px;
+                }
+            }
+
+            .image-col {
+                flex: 0 0 80px;
+                max-width: 80px;
+
+                background-size: auto 60px;
+                background-repeat: no-repeat;
+                background-position: center;
+                // background-image: url('http://kontaktsite.wpengine.com/uploads/Whatson_MDK1LD1KEAC.png');
+            }
+        }
+
+        .event-row:first-child {
+            margin-top: 0px;
         }
     }
 }

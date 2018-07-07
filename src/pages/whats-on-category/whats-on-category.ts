@@ -5,6 +5,8 @@ import { WhatsOnDetailsPage } from '../whats-on-details/whats-on-details';
 import { HttpProvider } from '../../providers/http/http';
 import { GlobalProvider } from '../../providers/global/global';
 
+import moment from 'moment';
+
 @Component({
   selector: 'page-whats-on-category',
   templateUrl: 'whats-on-category.html',
@@ -22,7 +24,8 @@ export class WhatsOnCategoryPage {
     private loadingCtrl: LoadingController,
     private global: GlobalProvider
   ) {
-    this.kind = this.navParams.get("kind");
+    // this.kind = this.navParams.get("kind");
+    this.kind = 'new';
     this.getCategoryList();
   }
   
@@ -31,9 +34,9 @@ export class WhatsOnCategoryPage {
     let loading = this.loadingCtrl.create();
     loading.present();
     this.http.getDataByPost(this.http.EVENT_LIST, {kind: this.kind, limit: "-1", email: this.global.user_email}).then((value: any) => {
-      let lists = value.list;
+      // let lists = value.list;
       
-      for (let i = 0; i < lists.length; i += 2) {
+      /*for (let i = 0; i < lists.length; i += 2) {
         let obj = [];
         let objA = lists[i.toString()];
         objA.image_url = this.http.SITE + "/uploads/" + objA.image;
@@ -45,7 +48,22 @@ export class WhatsOnCategoryPage {
           obj.push(objB);
         }
         this.lists.push(obj);
-      }
+      }*/
+      
+      this.lists = value.list;
+      this.lists.forEach(event => {
+        event.image_url = this.http.SITE + "/uploads/" + event.image;
+        let st = event.time.split(" ").join("T");
+        event.date_str = moment(st).format("DD-MMM-YYYY");
+      });
+      console.log(this.lists);
+
+      setTimeout(() => {
+        this.lists.forEach(event => {
+          let id = "image-col-" + event.id;
+          document.getElementById(id).style["background-image"]="url(" + event.image_url + ")";
+        });
+      }, 30);
       
       loading.dismiss();
     }).catch(() => {

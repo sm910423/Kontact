@@ -2,8 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { MainPage } from '../main/main';
 import { NavController, NavParams } from 'ionic-angular';
 // import { CommunityPage } from '../community/community';
-import { WhatsOnPage } from '../whats-on/whats-on';
+// import { WhatsOnPage } from '../whats-on/whats-on';
 import { CommunityListingPage } from '../community-listing/community-listing';
+import { WhatsOnCategoryPage } from '../whats-on-category/whats-on-category';
 
 @Component({
   selector: 'tabs-navigation',
@@ -22,7 +23,7 @@ export class TabsNavigationPage {
   ) {
     this.tab1Root = MainPage;
     this.tab2Root = CommunityListingPage;
-    this.tab3Root = WhatsOnPage;
+    this.tab3Root = WhatsOnCategoryPage;
     this.tab4Root = MainPage;
   }
 
