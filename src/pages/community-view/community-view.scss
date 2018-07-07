@@ -7,8 +7,9 @@ page-community-view {
     .community-view-content {
         .title-row {
             margin: 16px;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center
         }
 
         .image-row {
@@ -17,19 +18,30 @@ page-community-view {
 
         .comment-row {
             margin: 16px;
-            font-size: 12px;
+            font-size: 14px;
         }
 
-        .auth-row {
-            padding: 0px;
-            margin: 16px;
-            color: $theme-color-1;
-            font-size: 12px;
-
+        ion-row {
             ion-col {
                 margin: 0px;
                 padding: 0px;
+
+                span {
+                    font-weight: bold;
+                }
             }
+        }
+
+        .date-row {
+            margin: 16px 20px 0px;
+            font-size: 12px;
+            color: $black;
+        }
+
+        .auth-row {
+            margin: 4px 20px 16px;
+            font-size: 12px;
+            color: $black;
         }
     }
 }

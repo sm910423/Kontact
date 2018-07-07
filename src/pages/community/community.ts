@@ -61,7 +61,6 @@ export class CommunityPage {
       this.featuredList = value.list;
       this.featuredList.forEach(element => {
         let st = element.created.split(" ").join("T");
-        console.log(st);
         element.created_str = moment(st).format("DD-MMM-YYYY");
         element.image_url = this.httpProvider.SITE + "/uploads/" + element.image;
       });
@@ -74,7 +73,6 @@ export class CommunityPage {
       this.newList = value.list;
       this.newList.forEach(element => {
         let st = element.created.split(" ").join("T");
-        console.log(st);
         element.created_str = moment(st).format("DD-MMM-YYYY");
         element.image_url = this.httpProvider.SITE + "/uploads/" + element.image;
       });

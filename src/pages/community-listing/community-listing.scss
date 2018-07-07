@@ -5,7 +5,7 @@ page-community-listing {
     }
 
     .community-listing-content {
-        .history-box {
+        /*.history-box {
             border-bottom: 1px solid $border-color-2;
             padding: 4px 16px 0px 16px;
 
@@ -26,10 +26,30 @@ page-community-listing {
                 margin: 4px 0px 20px 0px;
                 padding: 0px;
             }
+        }*/
+
+        /*.history-box:last-child {
+            border-bottom: none;
+        }*/
+
+        .listing-box {
+            margin-top: 12px;
+
+            ion-row {
+                ion-col {
+                    padding: 0px;
+                    flex: 0 0 calc(50% - 6px);
+                    max-width: calc(50% - 6px);
+                }
+
+                ion-col:last-child {
+                    margin-left: 12px;
+                }
+            }
         }
 
-        .history-box:last-child {
-            border-bottom: none;
+        .listing-box:first-child {
+            margin-top: 0px;
         }
     }
 }

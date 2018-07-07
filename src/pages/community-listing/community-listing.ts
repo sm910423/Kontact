@@ -31,7 +31,22 @@ export class CommunityListingPage {
     let loading = this.loadingCtrl.create();
     loading.present();
     this.http.getDataByPost(this.http.COMMUNITY_LIST, {kind: this.kind, limit: "-1", email: this.global.user_email}).then((value: any) => {
-      this.lists = value.list;
+      let lists = value.list;
+
+      for (let i = 0; i < lists.length; i += 2) {
+        let obj = [];
+        let objA = lists[i.toString()];
+        objA.image_url = this.http.SITE + "/uploads/" + objA.image;
+        obj.push(objA);
+        
+        if (i + 1 != lists.length) {
+          let objB = lists[(i + 1).toString()];
+          objB.image_url = this.http.SITE + "/uploads/" + objB.image;
+          obj.push(objB);
+        }
+        this.lists.push(obj);
+      }
+
       loading.dismiss();
     }).catch(() => {
       loading.dismiss();

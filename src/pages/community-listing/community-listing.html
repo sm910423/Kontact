@@ -17,24 +17,24 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="community-listing-content">
-  <div class="history-box" *ngFor="let community of lists">
+<ion-content class="community-listing-content" padding>
+  <!-- <div class="history-box" *ngFor="let community of lists">
     <p class="title-row">{{ community.title }}</p>
     <p class="content-row">
       {{ community.content }}
     </p>
     <button ion-button clear class="action-row" (click)="goToCommunityViewPage(community.id)">Read More &nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></button>
-  </div>
+  </div> -->
 
-  <!-- <div class="listing-box">
+  <div class="listing-box">
     <ion-row *ngFor="let list of lists">
       <ion-col width-50 *ngFor="let item of list" (click)="goToCompanyProfilePage(item.id)">
         <img [src]="item.image_url" class="image-box" />
-        <img src="./assets/images/featured.png" class="featured-image" />
+        <!-- <img src="./assets/images/featured.png" class="featured-image" /> -->
         <div class="community-title">
           {{ item.title }}
         </div>
       </ion-col>
     </ion-row>
-  </div> -->
+  </div>
 </ion-content>

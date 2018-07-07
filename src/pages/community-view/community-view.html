@@ -23,12 +23,14 @@
   <p class="title-row">
     {{ community.title }}
   </p>
-  <ion-row class="auth-row">
-    <ion-col text-left>
-      Updated {{ community.created_str }}
-    </ion-col>
+  <ion-row class="date-row">
     <ion-col text-right>
-      By {{ community.author }}
+      Updated <span>{{ community.created_str }}</span>
+    </ion-col>
+  </ion-row>
+  <ion-row class="auth-row">
+    <ion-col text-right>
+      By <span>{{ community.author }}</span>
     </ion-col>
   </ion-row>
   <p class="comment-row">
