@@ -22,7 +22,8 @@ export class CommunityListingPage {
     private loadingCtrl: LoadingController,
     private global: GlobalProvider
   ) {
-    this.kind = this.navParams.get("kind");
+    // this.kind = this.navParams.get("kind");
+    this.kind = 'new';
     this.getCategoryList();
   }
   

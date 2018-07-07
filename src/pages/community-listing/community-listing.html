@@ -8,12 +8,7 @@
     <ion-title>Community Listing</ion-title>
   </ion-navbar> -->
   <ion-navbar hideBackButton>
-    <ion-buttons left>
-      <button ion-button icon-only (click)="goToBack()">
-        <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Back
-      </button>
-    </ion-buttons>
-    <ion-title>{{ title[kind] }}</ion-title>
+    <ion-title>Your Community</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -28,7 +23,7 @@
 
   <div class="listing-box">
     <ion-row *ngFor="let list of lists">
-      <ion-col width-50 *ngFor="let item of list" (click)="goToCompanyProfilePage(item.id)">
+      <ion-col width-50 *ngFor="let item of list" (click)="goToCommunityViewPage(item.id)">
         <img [src]="item.image_url" class="image-box" />
         <!-- <img src="./assets/images/featured.png" class="featured-image" /> -->
         <div class="community-title">
