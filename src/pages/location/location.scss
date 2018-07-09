@@ -1,0 +1,10 @@
+page-location {
+    .location-header {
+        @include header-styles(color($colors, header-alt, base), color($colors, header-alt, contrast));
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+    }
+}

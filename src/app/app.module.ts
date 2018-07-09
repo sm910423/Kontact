@@ -22,8 +22,7 @@ import { WhatsOnDetailsPage } from '../pages/whats-on-details/whats-on-details';
 import { AdvertisePage } from '../pages/advertise/advertise';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { CompanyProfilePage } from '../pages/company-profile/company-profile';
-import { CallPage } from '../pages/call/call';
-import { WebsitePage } from '../pages/website/website';
+import { LocationPage } from '../pages/location/location';
 
 import { PreloadImage } from '../components/preload-image/preload-image';
 import { BackgroundImage } from '../components/background-image/background-image';
@@ -47,6 +46,7 @@ import { Calendar } from '@ionic-native/calendar';
 import { HttpProvider } from '../providers/http/http';
 import { MessageProvider } from '../providers/message/message';
 import { GlobalProvider } from '../providers/global/global';
+import { GoogleMapProvider } from '../providers/google-map/google-map';
 
 
 @NgModule({
@@ -72,8 +72,7 @@ import { GlobalProvider } from '../providers/global/global';
     AdvertisePage,
     AboutUsPage,
     CompanyProfilePage,
-    CallPage,
-    WebsitePage,
+    LocationPage,
 
     PreloadImage,
     BackgroundImage,
@@ -112,8 +111,7 @@ import { GlobalProvider } from '../providers/global/global';
     AdvertisePage,
     AboutUsPage,
     CompanyProfilePage,
-    CallPage,
-    WebsitePage,
+    LocationPage,
   ],
   providers: [
 	  SplashScreen,
@@ -126,6 +124,7 @@ import { GlobalProvider } from '../providers/global/global';
     MessageProvider, 
     InAppBrowser,
     GlobalProvider,
+    GoogleMapProvider,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

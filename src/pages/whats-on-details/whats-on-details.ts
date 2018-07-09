@@ -8,6 +8,7 @@ import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
 import { GlobalProvider } from '../../providers/global/global';
 import moment from 'moment';
+import { LocationPage } from '../location/location';
 
 @Component({
   selector: 'page-whats-on-details',
@@ -30,10 +31,10 @@ export class WhatsOnDetailsPage {
   ) {
     this.event_id = this.navParams.get("event_id");
     this.getEventInfo();
-    this.calendar.listCalendars().then(data => {
+    /*this.calendar.listCalendars().then(data => {
       console.log("calendars:", JSON.stringify(data));
       this.calendars = data;
-    });
+    });*/
   }
   
   getEventInfo() {
@@ -86,7 +87,7 @@ export class WhatsOnDetailsPage {
     browser.show();
   }
 
-  goToGoogleMapPage(address) {
-
+  goToLocationPage(address) {
+    this.navCtrl.push(LocationPage, {address: address});
   }
 }

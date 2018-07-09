@@ -1,0 +1,14 @@
+<ion-header class="location-header">
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goToBack()">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Back
+      </button>
+    </ion-buttons>
+    <ion-title>Location</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="location-content">
+  <div id="map" #map></div>
+</ion-content>
