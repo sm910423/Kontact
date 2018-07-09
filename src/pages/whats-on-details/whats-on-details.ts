@@ -55,11 +55,11 @@ export class WhatsOnDetailsPage {
     });
   }
 
-  addEvent(cal) {
-    let date = new Date();
-    let options = { calendarId: cal.id, calendarName: cal.name, url: 'https://ionicacademy.com', firstReminderMinutes: 15 };
+  addEvent(event) {
+    let st = this.event.time.split(" ").join("T");
+    let date = new Date(st);
  
-    this.calendar.createEventInteractivelyWithOptions('My new Event', 'Münster', 'Special Notes', date, date, options).then(res => {
+    this.calendar.createEvent(event.title, event.place, event.content, date, date).then(res => {
       console.log('created event in the calendar', JSON.stringify(res));
     }, err => {
       console.log('err: ', err);
@@ -67,13 +67,14 @@ export class WhatsOnDetailsPage {
   }
 
   openCal(cal) {
+    //ios
     this.calendar.findAllEventsInNamedCalendar(cal.name).then(data => {
       console.log("events", JSON.stringify(data));
     });
   }
 
   doAddCalendar(event) {
-    // this.addEvent();
+    this.addEvent(event);
   }
   
   goToBack() {
