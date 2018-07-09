@@ -42,6 +42,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { OneSignal } from '@ionic-native/onesignal';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Calendar } from '@ionic-native/calendar';
 
 import { HttpProvider } from '../providers/http/http';
 import { MessageProvider } from '../providers/message/message';
@@ -119,6 +120,7 @@ import { GlobalProvider } from '../providers/global/global';
     StatusBar,
     OneSignal,
     CallNumber,
+    Calendar,
     // Keyboard,
     HttpProvider, 
     MessageProvider, 

@@ -33,7 +33,7 @@
     </ion-col>
     <ion-col class="date-col">
       <div class="event-date">{{ event.date_str }}</div>
-      <button ion-button clear class="add-calendar-button">Add to Calendar</button>
+      <button ion-button clear class="add-calendar-button" (click)="doAddCalendar(event)">Add to Calendar</button>
     </ion-col>
   </ion-row>
   
@@ -55,4 +55,17 @@
   <button ion-button clear class="website-button event-address" (click)="goToWebsitePage(event.website)">
     {{ event.website }}
   </button>
+
+  <ion-list>
+    <ion-item *ngFor="let cal of calendars" tappable>
+      <button ion-button icon-only item-start clear (click)="addEvent(cal)">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      {{ cal.name }}
+      <p>{{ cal.type }}</p>
+      <button ion-button icon-only item-end clear (click)="openCal(cal)">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
 </ion-content>

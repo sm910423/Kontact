@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Calendar } from '@ionic-native/calendar';
+
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
 import { GlobalProvider } from '../../providers/global/global';
 import moment from 'moment';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-whats-on-details',
@@ -14,6 +16,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 export class WhatsOnDetailsPage {
   event_id;
   event;
+  calendars;
   
   constructor (
     public navCtrl: NavController, 
@@ -22,10 +25,15 @@ export class WhatsOnDetailsPage {
     private http: HttpProvider,
     private message: MessageProvider,
     private global: GlobalProvider,
+    private calendar: Calendar,
     private iab: InAppBrowser,
   ) {
     this.event_id = this.navParams.get("event_id");
     this.getEventInfo();
+    this.calendar.listCalendars().then(data => {
+      console.log("calendars:", JSON.stringify(data));
+      this.calendars = data;
+    });
   }
   
   getEventInfo() {
@@ -45,6 +53,27 @@ export class WhatsOnDetailsPage {
     }).catch(() => {
       loading.dismiss();
     });
+  }
+
+  addEvent(cal) {
+    let date = new Date();
+    let options = { calendarId: cal.id, calendarName: cal.name, url: 'https://ionicacademy.com', firstReminderMinutes: 15 };
+ 
+    this.calendar.createEventInteractivelyWithOptions('My new Event', 'Münster', 'Special Notes', date, date, options).then(res => {
+      console.log('created event in the calendar', JSON.stringify(res));
+    }, err => {
+      console.log('err: ', err);
+    });
+  }
+
+  openCal(cal) {
+    this.calendar.findAllEventsInNamedCalendar(cal.name).then(data => {
+      console.log("events", JSON.stringify(data));
+    });
+  }
+
+  doAddCalendar(event) {
+    // this.addEvent();
   }
   
   goToBack() {
