@@ -4,6 +4,8 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { HttpProvider } from '../../providers/http/http';
 import { MessageProvider } from '../../providers/message/message';
 import { GlobalProvider } from '../../providers/global/global';
+import moment from 'moment';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-whats-on-details',
@@ -19,7 +21,8 @@ export class WhatsOnDetailsPage {
     private loadingCtrl: LoadingController,
     private http: HttpProvider,
     private message: MessageProvider,
-    private global: GlobalProvider
+    private global: GlobalProvider,
+    private iab: InAppBrowser,
   ) {
     this.event_id = this.navParams.get("event_id");
     this.getEventInfo();
@@ -35,6 +38,10 @@ export class WhatsOnDetailsPage {
       loading.dismiss();
       this.event = data.info;
       this.event.image_url = this.http.SITE + "/uploads/" + this.event.image;
+      let st = this.event.time.split(" ").join("T");
+      this.event.month_str = moment(st).format("MMM");
+      this.event.day_str = moment(st).format("DD");
+      this.event.date_str = moment(st).format("LLLL");
     }).catch(() => {
       loading.dismiss();
     });
@@ -42,5 +49,14 @@ export class WhatsOnDetailsPage {
   
   goToBack() {
     this.navCtrl.pop();
+  }
+  
+  goToWebsitePage(url) {
+    const browser = this.iab.create(url);
+    browser.show();
+  }
+
+  goToGoogleMapPage(address) {
+
   }
 }

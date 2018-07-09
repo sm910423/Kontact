@@ -9,52 +9,50 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="whats-on-details-content">
-  <p class="sub-title-row title-row">
+<ion-content class="whats-on-details-content" padding>
+  <div *ngIf="event.image" class="image-box">
+    <img class="event-image" [src]="event.image_url" />
+  </div>
+  
+  <div class="event-title">
     {{ event.title }}
-  </p>
-  
-  <div *ngIf="event.image">
-    <img class="image-row" [src]="event.image_url" />
   </div>
   
-  <div class="rows-box">
-    <ion-row class="auth-row">
-      <ion-col text-left>
-        Where:
-      </ion-col>
-      <ion-col text-left>
-        {{ event.place }}
-      </ion-col>
-      <ion-col text-right>
-        Directions?
-      </ion-col>
-    </ion-row>
-    <ion-row class="auth-row">
-      <ion-col text-left>
-        When:
-      </ion-col>
-      <ion-col text-left>
-        {{ event.time }}
-      </ion-col>
-      <ion-col text-right>
-        Add to Calendar
-      </ion-col>
-    </ion-row>
-    <ion-row class="site-row">
-      <ion-col text-left>
-        Website:
-      </ion-col>
-      <ion-col text-left>
-        {{ event.website }}
-      </ion-col>
-    </ion-row>
-  </div>
-  
-  <p class="sub-title-row">
-    Description
-  </p>
-  <p class="comment-row">
+  <div class="event-content">
     {{ event.content }}
-  </p>
+  </div>
+  
+  <div class="sub-title">
+    Dates & Times
+  </div>
+  
+  <ion-row class="date-row">
+    <ion-col class="calendar-col">
+      <div class="event-month">{{ event.month_str }}</div>
+      <div class="event-day">{{ event.day_str }}</div>
+    </ion-col>
+    <ion-col class="date-col">
+      <div class="event-date">{{ event.date_str }}</div>
+      <button ion-button clear class="add-calendar-button">Add to Calendar</button>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row class="sub-title">
+    <ion-col>Address</ion-col>
+    <ion-col text-right>
+      <button ion-button clear class="google-map-button" (click)="goToGoogleMapPage(event.place)">Get Directions</button>
+    </ion-col>
+  </ion-row>
+  
+  <div class="event-address">
+    {{ event.place }}
+  </div>
+  
+  <div class="sub-title">
+    Website
+  </div>
+  
+  <button ion-button clear class="website-button event-address" (click)="goToWebsitePage(event.website)">
+    {{ event.website }}
+  </button>
 </ion-content>
