@@ -160,18 +160,21 @@ page-company-profile {
 
         .details-row {
             font-size: 16px;
+
             ion-col {
                 padding: 0px;
             }
+
             ion-col:first-child {
                 padding-top: 5px;
                 margin-left: 16px;
                 flex: 0 0 30px;
                 max-width: 30px;
             }
+
             button {
                 margin: 0px;
-                height: 16px;
+                height: 18px;
                 padding: 0px;
                 font-size: 16px;
             }
