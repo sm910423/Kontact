@@ -64,7 +64,6 @@ export class CompanyProfilePage {
     this.http.getDataByPost(this.http.COMPANY, json).then((data: any) => {
       loading.dismiss();
       this.company = data.info;
-      console.log(this.company);
       this.company.services_en_arr = this.company.services_en.split('\n');
       this.company.services_en_arr = this.company.services_en_arr.filter(element => element.length > 1);
       this.company.services_rn_arr = this.company.services_rn.split('\n');
