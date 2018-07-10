@@ -78,6 +78,8 @@ export class CompanyProfilePage {
       this.company.contacts_rn_arr = this.company.contacts_rn_arr.filter(element => element.length > 1);
       this.company.image_url = this.http.SITE + "/uploads/" + this.company.title + "_image.png";
       this.company.logo_url = this.http.SITE + "/uploads/" + this.company.title + "_logo.png";
+      
+      this.setTitleColor();
       // this.events.publish("logo-loaded");
       
       let category: any = this.global.categories.filter(category => category.id == this.company.category_id);
@@ -91,6 +93,16 @@ export class CompanyProfilePage {
     }).catch(() => {
       loading.dismiss();
     });
+  }
+  
+  setTitleColor() {
+    setTimeout(() => {
+      // this.company.title_color = "#000000";
+      if (this.company.title_color) {
+        this.company.title_color = ((this.company.title_color.substr(0, 1) != "#") ? "#" : "") + this.company.title_color;
+        document.getElementById("title-box").style["color"] = this.company.title_color;
+      }
+    }, 100);
   }
   
   callPhone(num) {
@@ -132,7 +144,7 @@ export class CompanyProfilePage {
           // body: 'How are you? Nice greetings from Leipzig',
           isHtml: true
         };
-
+        
         this.emailComposer.open(email);
       }
     });
