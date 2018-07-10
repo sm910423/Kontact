@@ -32,21 +32,21 @@ export class CompanyProfilePage {
     this.company_id = this.navParams.get("company_id");
     this.getCompanyInfo();
     
-    /* this.events.subscribe("logo-loaded", () => {
-      setTimeout(() => {
-        let box = document.getElementsByClassName("logo-image-box")[0];
-        let box_height = box.scrollHeight;
+    // this.events.subscribe("logo-loaded", () => {
+    //   setTimeout(() => {
+    //     let box = document.getElementsByClassName("logo-image-box")[0];
+    //     let box_height = box.scrollHeight;
         
-        let logo = document.getElementById("logo-image");
-        let logo_width = logo.scrollWidth;
-        let logo_height = logo.scrollHeight;
-        let logo_ratio = logo_width / logo_height;
-        logo_height = box_height / 4;
-        logo_width = logo_height * logo_ratio;
-        logo.setAttribute("width", logo_width.toString());
-        logo.setAttribute("height", logo_height.toString());
-      }, 50);
-    }); */
+    //     let logo = document.getElementById("logo-image");
+    //     let logo_width = logo.scrollWidth;
+    //     let logo_height = logo.scrollHeight;
+    //     let logo_ratio = logo_width / logo_height;
+    //     logo_height = box_height / 4;
+    //     logo_width = logo_height * logo_ratio;
+    //     logo.setAttribute("width", logo_width.toString());
+    //     logo.setAttribute("height", logo_height.toString());
+    //   }, 50);
+    // }); 
   }
   
   ionViewWillLeave() {
@@ -128,7 +128,7 @@ export class CompanyProfilePage {
   
   goToEmailPage(email_address) {
     this.emailComposer.isAvailable().then((available: boolean) =>{
-      console.log(available);
+      // console.log(available);
       if(available) {
         let email = {
           // to: '',
