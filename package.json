@@ -24,6 +24,7 @@
     "@ionic-native/calendar": "^4.9.0",
     "@ionic-native/call-number": "^4.7.0",
     "@ionic-native/core": "4.6.0",
+    "@ionic-native/flurry-analytics": "^4.9.1",
     "@ionic-native/in-app-browser": "^4.7.0",
     "@ionic-native/onesignal": "^4.7.0",
     "@ionic-native/splash-screen": "4.6.0",
@@ -36,7 +37,9 @@
     "cordova-browser": "5.0.3",
     "cordova-ios": "4.5.4",
     "cordova-plugin-calendar": "^5.1.2",
+    "cordova-plugin-cocoapod-support": "^1.5.0",
     "cordova-plugin-device": "^2.0.1",
+    "cordova-plugin-flurryanalytics": "^1.4.6",
     "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.19",
@@ -71,7 +74,8 @@
       "onesignal-cordova-plugin": {},
       "mx.ferreyra.callnumber": {},
       "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-calendar": {}
+      "cordova-plugin-calendar": {},
+      "cordova-plugin-flurryanalytics": {}
     },
     "platforms": [
       "android",

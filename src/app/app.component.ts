@@ -3,6 +3,7 @@ import { Platform, MenuController, Nav, App } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Storage } from '@ionic/storage';
+import { FlurryAnalytics, FlurryAnalyticsObject, FlurryAnalyticsOptions } from '@ionic-native/flurry-analytics';
 
 import { LoginPage } from '../pages/login/login';
 import { TabsNavigationPage } from '../pages/tabs-navigation/tabs-navigation';
@@ -23,13 +24,13 @@ import { NotificationBPage } from '../pages/notification-b/notification-b';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
+  
   // make LoginPage the root (or first) page
   rootPage: any;
-
+  
   pages: Array<{title: string, icon: string, component: any}>;
   pushPages: Array<{title: string, icon: string, component: any}>;
-
+  
   constructor(
     platform: Platform,
     public menu: MenuController,
@@ -37,15 +38,28 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public statusBar: StatusBar,
     public storage: Storage,
-    public global: GlobalProvider
+    public global: GlobalProvider,
+    private flurryAnalytics: FlurryAnalytics
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.splashScreen.hide();
       this.statusBar.styleDefault();
+      
+      const options: FlurryAnalyticsOptions = {
+        appKey: 'KWNZ4GJKGX29D9NBWTYM', // REQUIRED
+        reportSessionsOnClose: true,
+        enableLogging: true
+      };
+      
+      let fa: FlurryAnalyticsObject = this.flurryAnalytics.create(options);
+      
+      console.log("start");
+      fa.logEvent('event name').then(() => console.log('Logged an event!')).catch(e => console.log('Error logging the event', e));
+      console.log("End");
     });
-
+    
     this.storage.get("isNotFirstLoading").then(value => {
       this.storage.set("isNotFirstLoading", true);
       if (value !== true) {
@@ -70,11 +84,11 @@ export class MyApp {
       this.storage.set("isNotFirstLoading", true);
       this.rootPage = WalkthroughPage;
     });
-
+    
     this.pages = [
       { title: 'Home', icon: 'home', component: TabsNavigationPage },
     ];
-
+    
     this.pushPages = [
       { title: 'About us', icon: 'people', component: AboutUsPage },
       { title: 'Advertise with us', icon: 'megaphone', component: AdvertisePage },
@@ -82,17 +96,17 @@ export class MyApp {
       { title: 'temp Notification 2', icon: 'home', component: NotificationBPage },
     ];
   }
-
+  
   openPage(page) {
     this.menu.close();
     this.nav.setRoot(page.component);
   }
-
+  
   pushPage(page) {
     this.menu.close();
     this.app.getRootNav().push(page.component);
   }
-
+  
   logout() {
     this.menu.close();
     this.storage.set("visibleBackButton", false);

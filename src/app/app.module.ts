@@ -42,6 +42,7 @@ import { OneSignal } from '@ionic-native/onesignal';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Calendar } from '@ionic-native/calendar';
+import { FlurryAnalytics } from '@ionic-native/flurry-analytics';
 
 import { HttpProvider } from '../providers/http/http';
 import { MessageProvider } from '../providers/message/message';
@@ -119,6 +120,7 @@ import { GoogleMapProvider } from '../providers/google-map/google-map';
     OneSignal,
     CallNumber,
     Calendar,
+    FlurryAnalytics,
     // Keyboard,
     HttpProvider, 
     MessageProvider, 
