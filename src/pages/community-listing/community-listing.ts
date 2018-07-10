@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, ModalController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ModalController, LoadingController, MenuController } from 'ionic-angular';
 import { CommunityViewPage } from '../community-view/community-view';
 import { HttpProvider } from '../../providers/http/http';
 import { GlobalProvider } from '../../providers/global/global';
@@ -20,7 +20,8 @@ export class CommunityListingPage {
     public modalCtrl: ModalController,
     private http: HttpProvider,
     private loadingCtrl: LoadingController,
-    private global: GlobalProvider
+    private global: GlobalProvider,
+    private menuCtrl: MenuController
   ) {
     // this.kind = this.navParams.get("kind");
     this.kind = 'new';
@@ -57,6 +58,10 @@ export class CommunityListingPage {
   goToBack() {
     // this.viewCtrl.dismiss();
     this.navCtrl.pop();
+  }
+  
+  showMenu() {
+    this.menuCtrl.open();
   }
   
   goToCommunityViewPage(id) {

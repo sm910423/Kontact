@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, LoadingController, MenuController } from 'ionic-angular';
 
 import { WhatsOnDetailsPage } from '../whats-on-details/whats-on-details';
 import { HttpProvider } from '../../providers/http/http';
@@ -22,7 +22,8 @@ export class WhatsOnCategoryPage {
     public modalCtrl: ModalController,
     private http: HttpProvider,
     private loadingCtrl: LoadingController,
-    private global: GlobalProvider
+    private global: GlobalProvider,
+    private menuCtrl: MenuController
   ) {
     // this.kind = this.navParams.get("kind");
     this.kind = 'new';
@@ -69,6 +70,10 @@ export class WhatsOnCategoryPage {
     }).catch(() => {
       loading.dismiss();
     });
+  }
+  
+  showMenu() {
+    this.menuCtrl.open();
   }
   
   goToWhatsOnDetailsPage(id) {
