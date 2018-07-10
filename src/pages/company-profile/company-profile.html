@@ -99,20 +99,20 @@
       <p class="sub-title-row">
         Services:
       </p>
-      <p class="service-row">
-        - {{ company.services_en }}
+      <p class="service-row" *ngFor="let s1 of company.services_en_arr">
+        - {{ s1 }}
       </p>
       <p class="sub-title-row">
         About:
       </p>
-      <p class="service-row">
-        - {{ company.about_en }}
+      <p class="service-row" *ngFor="let s2 of company.about_en_arr">
+        - {{ s2 }}
       </p>
       <p class="sub-title-row">
         Contacts:
       </p>
-      <p class="service-row">
-        - {{ company.contacts_en }}
+      <p class="service-row" *ngFor="let s3 of company.contacts_en_arr">
+        - {{ s3 }}
       </p>
     </div>
     

@@ -64,6 +64,19 @@ export class CompanyProfilePage {
     this.http.getDataByPost(this.http.COMPANY, json).then((data: any) => {
       loading.dismiss();
       this.company = data.info;
+      console.log(this.company);
+      this.company.services_en_arr = this.company.services_en.split('\n');
+      this.company.services_en_arr = this.company.services_en_arr.filter(element => element.length > 1);
+      this.company.services_rn_arr = this.company.services_rn.split('\n');
+      this.company.services_rn_arr = this.company.services_rn_arr.filter(element => element.length > 1);
+      this.company.about_en_arr = this.company.about_en.split('\n');
+      this.company.about_en_arr = this.company.about_en_arr.filter(element => element.length > 1);
+      this.company.about_rn_arr = this.company.about_rn.split('\n');
+      this.company.about_rn_arr = this.company.about_rn_arr.filter(element => element.length > 1);
+      this.company.contacts_en_arr = this.company.contacts_en.split('\n');
+      this.company.contacts_en_arr = this.company.contacts_en_arr.filter(element => element.length > 1);
+      this.company.contacts_rn_arr = this.company.contacts_rn.split('\n');
+      this.company.contacts_rn_arr = this.company.contacts_rn_arr.filter(element => element.length > 1);
       this.company.image_url = this.http.SITE + "/uploads/" + this.company.title + "_image.png";
       this.company.logo_url = this.http.SITE + "/uploads/" + this.company.title + "_logo.png";
       // this.events.publish("logo-loaded");
