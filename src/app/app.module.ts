@@ -43,6 +43,7 @@ import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Calendar } from '@ionic-native/calendar';
 import { FlurryAnalytics } from '@ionic-native/flurry-analytics';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 import { HttpProvider } from '../providers/http/http';
 import { MessageProvider } from '../providers/message/message';
@@ -121,6 +122,7 @@ import { GoogleMapProvider } from '../providers/google-map/google-map';
     CallNumber,
     Calendar,
     FlurryAnalytics,
+    EmailComposer,
     // Keyboard,
     HttpProvider, 
     MessageProvider, 

@@ -3,6 +3,7 @@ import { NavController, NavParams, ModalController, LoadingController/*, Events*
 import { HttpProvider } from '../../providers/http/http';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { EmailComposer } from '@ionic-native/email-composer';
 import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
@@ -25,11 +26,12 @@ export class CompanyProfilePage {
     // private events: Events,
     private callNumber: CallNumber,
     private iab: InAppBrowser,
+    private emailComposer: EmailComposer,
     private global: GlobalProvider
   ) {
     this.company_id = this.navParams.get("company_id");
     this.getCompanyInfo();
-
+    
     /* this.events.subscribe("logo-loaded", () => {
       setTimeout(() => {
         let box = document.getElementsByClassName("logo-image-box")[0];
@@ -65,7 +67,7 @@ export class CompanyProfilePage {
       this.company.image_url = this.http.SITE + "/uploads/" + this.company.title + "_image.png";
       this.company.logo_url = this.http.SITE + "/uploads/" + this.company.title + "_logo.png";
       // this.events.publish("logo-loaded");
-
+      
       let category: any = this.global.categories.filter(category => category.id == this.company.category_id);
       if (category && category.length > 0) {
         this.category_title = category[0].title;
@@ -98,6 +100,30 @@ export class CompanyProfilePage {
   goToWebsitePage(url) {
     const browser = this.iab.create(url);
     browser.show();
+  }
+  
+  goToEmailPage(email_address) {
+    this.emailComposer.isAvailable().then((available: boolean) =>{
+      console.log(available);
+      if(available) {
+        let email = {
+          // to: '',
+          cc: email_address,
+          // bcc: ['john@doe.com', 'jane@doe.com'],
+          // attachments: [
+          //   'file://img/logo.png',
+          //   'res://icon.png',
+          //   'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
+          //   'file://README.pdf'
+          // ],
+          // subject: 'Cordova Icons',
+          // body: 'How are you? Nice greetings from Leipzig',
+          isHtml: true
+        };
+
+        this.emailComposer.open(email);
+      }
+    });
   }
   
   goToBack() {

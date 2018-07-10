@@ -74,7 +74,7 @@
         <i class="fa fa-envelope" aria-hidden="true"></i>
       </ion-col>
       <ion-col>
-        <button ion-button clear>{{ company.email }}</button>
+        <button ion-button clear (click)="goToEmailPage(company.email)">{{ company.email }}</button>
       </ion-col>
     </ion-row>
     <ion-row class="details-row">
