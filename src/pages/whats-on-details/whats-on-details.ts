@@ -58,7 +58,11 @@ export class WhatsOnDetailsPage {
 
   addEvent(event) {
     let st = this.event.time.split(" ").join("T");
+    // console.log(st);
     let date = new Date(st);
+    let userTimezoneOffset = date.getTimezoneOffset() * 60000;
+    date = new Date(date.getTime() + userTimezoneOffset);
+    // console.log(date.toString());
  
     this.calendar.createEvent(event.title, event.place, event.content, date, date).then(res => {
       console.log('created event in the calendar', JSON.stringify(res));

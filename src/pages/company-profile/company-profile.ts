@@ -36,7 +36,7 @@ export class CompanyProfilePage {
     //   setTimeout(() => {
     //     let box = document.getElementsByClassName("logo-image-box")[0];
     //     let box_height = box.scrollHeight;
-        
+    
     //     let logo = document.getElementById("logo-image");
     //     let logo_width = logo.scrollWidth;
     //     let logo_height = logo.scrollHeight;
@@ -126,28 +126,26 @@ export class CompanyProfilePage {
     browser.show();
   }
   
-  goToEmailPage(email_address) {
-    this.emailComposer.isAvailable().then((available: boolean) =>{
-      // console.log(available);
-      if(available) {
-        let email = {
-          // to: '',
-          cc: email_address,
-          // bcc: ['john@doe.com', 'jane@doe.com'],
-          // attachments: [
-          //   'file://img/logo.png',
-          //   'res://icon.png',
-          //   'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
-          //   'file://README.pdf'
-          // ],
-          // subject: 'Cordova Icons',
-          // body: 'How are you? Nice greetings from Leipzig',
-          isHtml: true
-        };
-        
-        this.emailComposer.open(email);
-      }
-    });
+  async goToEmailPage(email_address) {
+    let permission = await this.emailComposer.requestPermission();
+    if (permission) {
+      let email = {
+        to: email_address,
+        // cc: email_address,
+        // bcc: ['john@doe.com', 'jane@doe.com'],
+        // attachments: [
+        //   'file://img/logo.png',
+        //   'res://icon.png',
+        //   'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
+        //   'file://README.pdf'
+        // ],
+        // subject: 'Cordova Icons',
+        // body: 'How are you? Nice greetings from Leipzig',
+        isHtml: true
+      };
+      
+      this.emailComposer.open(email);
+    }
   }
   
   goToBack() {
