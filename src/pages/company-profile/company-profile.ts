@@ -140,6 +140,11 @@ export class CompanyProfilePage {
       }
     }, 100);
   }
+
+  convertAnchorToButton(str: string) {
+    str.replace(/<a /g, "<button ion-button clear (click)='goExternalSite(this)' ");
+    str.replace(/<\/a>/g, "</button>");
+  }
   
   callPhone(num) {
     this.callNumber.callNumber(num, true).then((res) => {
