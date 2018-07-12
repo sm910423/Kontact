@@ -76,9 +76,9 @@ export class CompanyProfilePage {
       // this.company.contacts_en_arr = this.company.contacts_en_arr.filter(element => element.length > 1);
       // this.company.contacts_rn_arr = this.company.contacts_rn.split('\n');
       // this.company.contacts_rn_arr = this.company.contacts_rn_arr.filter(element => element.length > 1);
-      this.company.services_en_de = atob(this.company.services_en);
-      this.company.about_en_de = atob(this.company.about_en);
-      this.company.contacts_en_de = atob(this.company.contacts_en);
+      this.company.services_en_de = this.convertAnchorToButton(atob(this.company.services_en));
+      this.company.about_en_de = this.convertAnchorToButton(atob(this.company.about_en));
+      this.company.contacts_en_de = this.convertAnchorToButton(atob(this.company.contacts_en));
       this.company.services_rn_de = atob(this.company.services_rn);
       this.company.about_rn_de = atob(this.company.about_rn);
       this.company.contacts_rn_de = atob(this.company.contacts_rn);
@@ -142,8 +142,17 @@ export class CompanyProfilePage {
   }
 
   convertAnchorToButton(str: string) {
-    str.replace(/<a /g, "<button ion-button clear (click)='goExternalSite(this)' ");
-    str.replace(/<\/a>/g, "</button>");
+    console.log(str);
+    str = str.replace(/\\'/g, "'");
+    str = str.replace(/<a /g, "<a target='_blank' ");
+    // str = str.replace(/<a /g, "<button ion-button clear (click)=\"goExternalSite(this)\" ");
+    // str = str.replace(/<\/a>/g, "</button>");
+    console.log(str);
+    return str;
+  }
+
+  goExternalSite(v) {
+    console.log(v);
   }
   
   callPhone(num) {
