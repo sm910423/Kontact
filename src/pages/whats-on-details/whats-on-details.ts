@@ -66,8 +66,10 @@ export class WhatsOnDetailsPage {
  
     this.calendar.createEvent(event.title, event.place, event.content, date, date).then(res => {
       console.log('created event in the calendar', JSON.stringify(res));
+      this.message.showMessage("created event in the calendar");
     }, err => {
       console.log('err: ', err);
+      alert(JSON.stringify(err));
     });
   }
 
