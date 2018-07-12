@@ -89,10 +89,10 @@
   </ion-row>
   
   <ion-segment color="semi-dark" class="segments" [(ngModel)]="segments">
-    <ion-segment-button value="en">
+    <ion-segment-button value="en" (click)="setContents()">
       English
     </ion-segment-button>
-    <ion-segment-button value="ru">
+    <ion-segment-button value="ru" (click)="setContents()">
       Русский
     </ion-segment-button>
   </ion-segment>
@@ -101,41 +101,47 @@
     <p class="sub-title-row">
       Services:
     </p>
-    <p class="service-row" *ngFor="let s1 of company.services_en_arr">
+    <!-- <p class="service-row" *ngFor="let s1 of company.services_en_arr">
       - {{ s1 }}
-    </p>
+    </p> -->
+    <p class="service-row" id="services_en"></p>
     <p class="sub-title-row">
       About:
     </p>
-    <p class="service-row" *ngFor="let s2 of company.about_en_arr">
+    <!-- <p class="service-row" *ngFor="let s2 of company.about_en_arr">
       - {{ s2 }}
-    </p>
+    </p> -->
+    <p class="service-row" id="about_en"></p>
     <p class="sub-title-row">
       Contacts:
     </p>
-    <p class="service-row" *ngFor="let s3 of company.contacts_en_arr">
+    <!-- <p class="service-row" *ngFor="let s3 of company.contacts_en_arr">
       - {{ s3 }}
-    </p>
+    </p> -->
+    <p class="service-row" id="contacts_en"></p>
   </div>
   
   <div *ngIf="segments == 'ru'">
     <p class="sub-title-row">
       Сервисы:
     </p>
-    <p class="service-row" *ngFor="let s1 of company.services_rn_arr">
+    <!-- <p class="service-row" *ngFor="let s1 of company.services_rn_arr">
       - {{ s1 }}
-    </p>
+    </p> -->
+    <p class="service-row" id="services_rn"></p>
     <p class="sub-title-row">
       Около:
     </p>
-    <p class="service-row" *ngFor="let s2 of company.about_rn_arr">
+    <!-- <p class="service-row" *ngFor="let s2 of company.about_rn_arr">
       - {{ s2 }}
-    </p>
+    </p> -->
+    <p class="service-row" id="about_rn"></p>
     <p class="sub-title-row">
       Контакты:
     </p>
-    <p class="service-row" *ngFor="let s3 of company.contacts_rn_arr">
+    <!-- <p class="service-row" *ngFor="let s3 of company.contacts_rn_arr">
       - {{ s3 }}
-    </p>
+    </p> -->
+    <p class="service-row" id="contacts_rn"></p>
   </div>
 </ion-content>

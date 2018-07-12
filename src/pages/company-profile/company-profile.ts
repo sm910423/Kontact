@@ -64,22 +64,29 @@ export class CompanyProfilePage {
     this.http.getDataByPost(this.http.COMPANY, json).then((data: any) => {
       loading.dismiss();
       this.company = data.info;
-      this.company.services_en_arr = this.company.services_en.split('\n');
-      this.company.services_en_arr = this.company.services_en_arr.filter(element => element.length > 1);
-      this.company.services_rn_arr = this.company.services_rn.split('\n');
-      this.company.services_rn_arr = this.company.services_rn_arr.filter(element => element.length > 1);
-      this.company.about_en_arr = this.company.about_en.split('\n');
-      this.company.about_en_arr = this.company.about_en_arr.filter(element => element.length > 1);
-      this.company.about_rn_arr = this.company.about_rn.split('\n');
-      this.company.about_rn_arr = this.company.about_rn_arr.filter(element => element.length > 1);
-      this.company.contacts_en_arr = this.company.contacts_en.split('\n');
-      this.company.contacts_en_arr = this.company.contacts_en_arr.filter(element => element.length > 1);
-      this.company.contacts_rn_arr = this.company.contacts_rn.split('\n');
-      this.company.contacts_rn_arr = this.company.contacts_rn_arr.filter(element => element.length > 1);
+      // this.company.services_en_arr = this.company.services_en.split('\n');
+      // this.company.services_en_arr = this.company.services_en_arr.filter(element => element.length > 1);
+      // this.company.services_rn_arr = this.company.services_rn.split('\n');
+      // this.company.services_rn_arr = this.company.services_rn_arr.filter(element => element.length > 1);
+      // this.company.about_en_arr = this.company.about_en.split('\n');
+      // this.company.about_en_arr = this.company.about_en_arr.filter(element => element.length > 1);
+      // this.company.about_rn_arr = this.company.about_rn.split('\n');
+      // this.company.about_rn_arr = this.company.about_rn_arr.filter(element => element.length > 1);
+      // this.company.contacts_en_arr = this.company.contacts_en.split('\n');
+      // this.company.contacts_en_arr = this.company.contacts_en_arr.filter(element => element.length > 1);
+      // this.company.contacts_rn_arr = this.company.contacts_rn.split('\n');
+      // this.company.contacts_rn_arr = this.company.contacts_rn_arr.filter(element => element.length > 1);
+      this.company.services_en_de = atob(this.company.services_en);
+      this.company.about_en_de = atob(this.company.about_en);
+      this.company.contacts_en_de = atob(this.company.contacts_en);
+      this.company.services_rn_de = atob(this.company.services_rn);
+      this.company.about_rn_de = atob(this.company.about_rn);
+      this.company.contacts_rn_de = atob(this.company.contacts_rn);
       this.company.image_url = this.http.SITE + "/uploads/" + this.company.title + "_image.png";
       this.company.logo_url = this.http.SITE + "/uploads/" + this.company.title + "_logo.png";
       
       this.setTitleColor();
+      this.setContents();
       // this.events.publish("logo-loaded");
       
       let category: any = this.global.categories.filter(category => category.id == this.company.category_id);
@@ -101,6 +108,35 @@ export class CompanyProfilePage {
       if (this.company.title_color) {
         this.company.title_color = ((this.company.title_color.substr(0, 1) != "#") ? "#" : "") + this.company.title_color;
         document.getElementById("title-box").style["color"] = this.company.title_color;
+      }
+    }, 100);
+  }
+
+  setContents() {
+    setTimeout(() => {
+      let element = document.getElementById("services_en");
+      if (element) {
+        element.innerHTML = this.company.services_en_de;
+      }
+      element = document.getElementById("about_en");
+      if (element) {
+        element.innerHTML = this.company.about_en_de;
+      }
+      element = document.getElementById("contacts_en");
+      if (element) {
+        element.innerHTML = this.company.contacts_en_de;
+      }
+      element = document.getElementById("services_rn");
+      if (element) {
+        element.innerHTML = this.company.services_rn_de;
+      }
+      element = document.getElementById("about_rn");
+      if (element) {
+        element.innerHTML = this.company.about_rn_de;
+      }
+      element = document.getElementById("contacts_rn");
+      if (element) {
+        element.innerHTML = this.company.contacts_rn_de;
       }
     }, 100);
   }
