@@ -12,6 +12,7 @@ import { AdvertisePage } from '../pages/advertise/advertise';
 import { AboutUsPage } from '../pages/about-us/about-us';
 
 import { GlobalProvider } from '../providers/global/global';
+import { NetworkConnectionProvider } from '../providers/network-connection/network-connection';
 
 //will be removed
 import { NotificationAPage } from '../pages/notification-a/notification-a';
@@ -39,6 +40,7 @@ export class MyApp {
     public statusBar: StatusBar,
     public storage: Storage,
     public global: GlobalProvider,
+    public networkConnection: NetworkConnectionProvider,
     private flurryAnalytics: FlurryAnalytics
   ) {
     platform.ready().then(() => {
@@ -46,6 +48,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.splashScreen.hide();
       this.statusBar.styleDefault();
+
+      this.networkConnection.init();
+      if (this.networkConnection.procNetworkError()) {
+        // this.nav.setRoot
+      }
       
       const options: FlurryAnalyticsOptions = {
         appKey: 'KWNZ4GJKGX29D9NBWTYM', // REQUIRED
