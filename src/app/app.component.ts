@@ -59,7 +59,7 @@ export class MyApp {
       fa.logEvent('event name').then(() => console.log('Logged an event!')).catch(e => console.log('Error logging the event', e));
       console.log("End");
     });
-    
+
     this.storage.get("isNotFirstLoading").then(value => {
       this.storage.set("isNotFirstLoading", true);
       if (value !== true) {

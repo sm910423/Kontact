@@ -1,13 +1,15 @@
+<ion-header></ion-header>
 <ion-content class="walkthrough-content">
-  <button ion-button primary class="start-btn" (click)="goToLogin()">GET STARTED</button>
   <ion-slides #slider (ionSlideDidChange)="onSlideChanged()" pager="true">
     <ion-slide class="slide-1">
+      <img src="http://kontaktsite.wpengine.com/uploads/intro_1.png" />
     </ion-slide>
     <ion-slide class="slide-2">
+      <img src="http://kontaktsite.wpengine.com/uploads/intro_2.png" />
     </ion-slide>
     <ion-slide class="slide-3">
-    </ion-slide>
-    <ion-slide class="slide-4">
+      <img src="http://kontaktsite.wpengine.com/uploads/intro_3.png" />
+      <button ion-button primary class="start-btn" (click)="goToLogin()">GET STARTED</button>
       <!-- <ion-row class="intro-image-row">
         <ion-col center width-64 no-padding>
           <preload-image [ratio]="{w:1, h:1}" src="./assets/images/slide-4-img.png" alt="slide 4 img" title="ion2FullApp"></preload-image>

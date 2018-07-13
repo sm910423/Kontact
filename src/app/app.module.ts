@@ -38,6 +38,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 // import { Keyboard } from '@ionic-native/keyboard';
+import { Network } from '@ionic-native/network';
 import { OneSignal } from '@ionic-native/onesignal';
 import { CallNumber } from '@ionic-native/call-number';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -49,6 +50,7 @@ import { HttpProvider } from '../providers/http/http';
 import { MessageProvider } from '../providers/message/message';
 import { GlobalProvider } from '../providers/global/global';
 import { GoogleMapProvider } from '../providers/google-map/google-map';
+import { NetworkConnectionProvider } from '../providers/network-connection/network-connection';
 
 
 @NgModule({
@@ -123,12 +125,14 @@ import { GoogleMapProvider } from '../providers/google-map/google-map';
     Calendar,
     FlurryAnalytics,
     EmailComposer,
+    Network,
     // Keyboard,
     HttpProvider, 
     MessageProvider, 
     InAppBrowser,
     GlobalProvider,
     GoogleMapProvider,
+    NetworkConnectionProvider
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
