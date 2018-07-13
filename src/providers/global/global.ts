@@ -34,5 +34,13 @@ export class GlobalProvider {
       });
     });
   }
+
+  convertAnchorToButton(str: string) {
+    str = str.replace(/\\'/g, "'");
+    str = str.replace(/<a /g, "<a target='_blank' ");
+    // str = str.replace(/<a /g, "<button ion-button clear (click)=\"goExternalSite(this)\" ");
+    // str = str.replace(/<\/a>/g, "</button>");
+    return str;
+  }
   
 }

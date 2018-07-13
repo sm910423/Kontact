@@ -15,6 +15,7 @@ export class WhatsOnCategoryPage {
   title = {featured: "Featured Businesses", most: "Most Popular", new: "New"};
   kind;
   lists: any;
+  refresher: any;
   
   constructor (
     public navCtrl: NavController, 
@@ -57,7 +58,7 @@ export class WhatsOnCategoryPage {
         let st = event.time.split(" ").join("T");
         event.date_str = moment(st).format("DD-MMM-YYYY");
       });
-      console.log(this.lists);
+      // console.log(this.lists);
 
       setTimeout(() => {
         this.lists.forEach(event => {
@@ -67,9 +68,23 @@ export class WhatsOnCategoryPage {
       }, 30);
       
       loading.dismiss();
+      this.doRefreshComplete();
     }).catch(() => {
       loading.dismiss();
+      this.doRefreshComplete();
     });
+  }
+  
+  doRefresh(event) {
+    this.refresher = event;
+    this.getCategoryList();
+  }
+  
+  doRefreshComplete() {
+    if (this.refresher != undefined && this.refresher != null) {
+      this.refresher.complete();
+      this.refresher = undefined;
+    }
   }
   
   showMenu() {

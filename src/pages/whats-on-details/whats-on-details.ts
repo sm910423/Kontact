@@ -46,14 +46,25 @@ export class WhatsOnDetailsPage {
     this.http.getDataByPost(this.http.EVENT, json).then((data: any) => {
       loading.dismiss();
       this.event = data.info;
+      this.event.content_de = this.global.convertAnchorToButton(atob(this.event.content));
       this.event.image_url = this.http.SITE + "/uploads/" + this.event.image;
       let st = this.event.time.split(" ").join("T");
       this.event.month_str = moment(st).format("MMM");
       this.event.day_str = moment(st).format("DD");
       this.event.date_str = moment(st).format("LLLL");
+      this.setContents();
     }).catch(() => {
       loading.dismiss();
     });
+  }
+
+  setContents() {
+    setTimeout(() => {
+      let element = document.getElementById("event-content");
+      if (element) {
+        element.innerHTML = this.event.content_de;
+      }
+    }, 100);
   }
 
   addEvent(event) {

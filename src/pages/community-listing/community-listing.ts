@@ -12,6 +12,7 @@ export class CommunityListingPage {
   title = {featured: "Featured Businesses", most: "Most Popular", new: "New"};
   kind;
   lists: any;
+  refresher: any;
   
   constructor (
     public navCtrl: NavController, 
@@ -50,9 +51,23 @@ export class CommunityListingPage {
       }
 
       loading.dismiss();
+      this.doRefreshComplete();
     }).catch(() => {
       loading.dismiss();
+      this.doRefreshComplete();
     });
+  }
+  
+  doRefresh(event) {
+    this.refresher = event;
+    this.getCategoryList();
+  }
+  
+  doRefreshComplete() {
+    if (this.refresher != undefined && this.refresher != null) {
+      this.refresher.complete();
+      this.refresher = undefined;
+    }
   }
   
   goToBack() {

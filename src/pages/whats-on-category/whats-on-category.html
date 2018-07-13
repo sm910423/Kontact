@@ -15,6 +15,11 @@
 </ion-header>
 
 <ion-content class="whats-on-category-content" padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
   <!-- <div class="back-box">
     <p><span>{{ title[kind] }}</span></p>
   </div> -->

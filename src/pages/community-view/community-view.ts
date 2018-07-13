@@ -32,12 +32,23 @@ export class CommunityViewPage {
     this.http.getDataByPost(this.http.COMMUNITY, json).then((data: any) => {
       loading.dismiss();
       this.community = data.info;
+      this.community.content_de = this.global.convertAnchorToButton(atob(this.community.content));
       let st = this.community.created.split(" ").join("T");
       this.community.created_str = moment(st).format("DD-MMM-YYYY");
       this.community.image_url = this.http.SITE + "/uploads/" + this.community.image;
+      this.setContents();
     }).catch(() => {
       loading.dismiss();
     });
+  }
+
+  setContents() {
+    setTimeout(() => {
+      let element = document.getElementById("community-content");
+      if (element) {
+        element.innerHTML = this.community.content_de;
+      }
+    }, 100);
   }
   
   goToBack() {
