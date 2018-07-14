@@ -78,7 +78,7 @@ export class MainPage {
     this.http.getDataByPost(this.http.COMPANY_LIST, {kind: "most", email: this.global.user_email, limit: this.limit}).then((value: any) => {
       this.mostList = value.list;
       this.mostList.forEach(element => {
-        element.image_url = this.http.SITE + "/uploads/" + element.title + "_image.png";
+        element.image_url = this.http.SITE + "/uploads/" + element.title + "_list_image.png";
       });
       this.events.publish('company:http_call_end');
     }).catch(() => {
@@ -88,7 +88,7 @@ export class MainPage {
     this.http.getDataByPost(this.http.COMPANY_LIST, {kind: "featured", email: this.global.user_email, limit: this.limit}).then((value: any) => {
       this.featuredList = value.list;
       this.featuredList.forEach(element => {
-        element.image_url = this.http.SITE + "/uploads/" + element.title + "_image.png";
+        element.image_url = this.http.SITE + "/uploads/" + element.title + "_list_image.png";
       });
       this.events.publish('company:http_call_end');
     }).catch(() => {
@@ -98,7 +98,7 @@ export class MainPage {
     this.http.getDataByPost(this.http.COMPANY_LIST, {kind: "new", email: this.global.user_email, limit: this.limit}).then((value: any) => {
       this.newList = value.list;
       this.newList.forEach(element => {
-        element.image_url = this.http.SITE + "/uploads/" + element.title + "_image.png";
+        element.image_url = this.http.SITE + "/uploads/" + element.title + "_list_image.png";
       });
       this.events.publish('company:http_call_end');
     }).catch(() => {
