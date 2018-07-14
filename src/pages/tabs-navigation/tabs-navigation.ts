@@ -5,6 +5,7 @@ import { NavController, NavParams } from 'ionic-angular';
 // import { WhatsOnPage } from '../whats-on/whats-on';
 import { CommunityListingPage } from '../community-listing/community-listing';
 import { WhatsOnCategoryPage } from '../whats-on-category/whats-on-category';
+import { OfferListPage } from '../offer-list/offer-list';
 
 @Component({
   selector: 'tabs-navigation',
@@ -24,7 +25,7 @@ export class TabsNavigationPage {
     this.tab1Root = MainPage;
     this.tab2Root = CommunityListingPage;
     this.tab3Root = WhatsOnCategoryPage;
-    this.tab4Root = MainPage;
+    this.tab4Root = OfferListPage;
   }
 
   ionViewDidLoad() {

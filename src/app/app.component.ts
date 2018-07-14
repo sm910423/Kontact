@@ -49,10 +49,7 @@ export class MyApp {
       this.splashScreen.hide();
       this.statusBar.styleDefault();
 
-      this.networkConnection.init();
-      if (this.networkConnection.procNetworkError()) {
-        // this.nav.setRoot
-      }
+      // this.networkConnection.init();
       
       const options: FlurryAnalyticsOptions = {
         appKey: 'KWNZ4GJKGX29D9NBWTYM', // REQUIRED

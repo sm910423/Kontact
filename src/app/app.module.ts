@@ -23,6 +23,8 @@ import { AdvertisePage } from '../pages/advertise/advertise';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { CompanyProfilePage } from '../pages/company-profile/company-profile';
 import { LocationPage } from '../pages/location/location';
+import { OfferListPage } from '../pages/offer-list/offer-list';
+import { OfferViewPage } from '../pages/offer-view/offer-view';
 
 import { PreloadImage } from '../components/preload-image/preload-image';
 import { BackgroundImage } from '../components/background-image/background-image';
@@ -77,6 +79,8 @@ import { NetworkConnectionProvider } from '../providers/network-connection/netwo
     AboutUsPage,
     CompanyProfilePage,
     LocationPage,
+    OfferListPage,
+    OfferViewPage,
 
     PreloadImage,
     BackgroundImage,
@@ -116,6 +120,8 @@ import { NetworkConnectionProvider } from '../providers/network-connection/netwo
     AboutUsPage,
     CompanyProfilePage,
     LocationPage,
+    OfferListPage,
+    OfferViewPage,
   ],
   providers: [
 	  SplashScreen,

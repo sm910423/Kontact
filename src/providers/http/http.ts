@@ -15,6 +15,8 @@ export class HttpProvider {
   EVENT        = this.SERVER + "/event/details";
   COMMUNITY_LIST = this.SERVER + "/community/list";
   COMMUNITY    = this.SERVER + "/community/details";
+  OFFER_LIST   = this.SERVER + "/offer/list";
+  OFFER        = this.SERVER + "/offer/details"
   CATEGORIES   = this.SERVER + "/company/categories";
   SUBCATEGORIES= this.SERVER + "/company/subcategories";
   ABOUT        = this.SERVER + "/other/about";

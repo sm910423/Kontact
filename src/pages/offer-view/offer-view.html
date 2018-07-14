@@ -1,0 +1,31 @@
+<ion-header class="offer-view-header">
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goToBack()">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>&nbsp;Back
+      </button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="offer-view-content">
+  <img [src]="offer.image_url" *ngIf="offer.image_url" class="image-row" />
+  <p class="title-row">
+    {{ offer.title }}
+  </p>
+  <ion-row class="date-row">
+    <ion-col text-right>
+      Updated <span>{{ offer.created_str }}</span>
+    </ion-col>
+  </ion-row>
+  <ion-row class="auth-row">
+    <ion-col text-right>
+      By <span>{{ offer.author }}</span>
+    </ion-col>
+  </ion-row>
+  <p class="comment-row" id="community-content">
+    <!-- {{ community.content }}  -->
+  </p>
+</ion-content>

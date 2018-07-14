@@ -1,0 +1,28 @@
+<ion-header class="offer-list-header">
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="showMenu()">
+        <img src="http://kontaktsite.wpengine.com/uploads/menu_button.png" width="22" height="22" />
+      </button>
+    </ion-buttons>
+    <ion-title>Your Offer</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="offer-list-content" padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div class="listing-box">
+    <ion-row *ngFor="let list of lists">
+      <ion-col width-50 *ngFor="let item of list" (click)="goToOfferViewPage(item.id)">
+        <img [src]="item.image_url" class="image-box" />
+        <div class="community-title">
+          {{ item.title }}
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
