@@ -10,8 +10,6 @@ import { CategoryListingPage } from '../category-listing/category-listing';
 })
 export class SubCategoryPage {
   category: any;
-  index;
-  category_image = "";
   subCategories: any;
 
   
@@ -24,12 +22,7 @@ export class SubCategoryPage {
     private global: GlobalProvider
   ) {
     this.category = navParams.get("category");
-    this.index = navParams.get("index");
-    if (this.index < 9) {
-      this.category_image = this.http.SITE + "/uploads/category_0" + (this.index + 1).toString() + ".png";
-    } else {
-      this.category_image = this.http.SITE + "/uploads/category_" + (this.index + 1).toString() + ".png";
-    }
+    this.category.image_url = this.http.SITE + "/uploads/" + this.category.picture;
     
     this.getSubCategories(this.category);
   }
@@ -46,8 +39,8 @@ export class SubCategoryPage {
     });
   }
   
-  goToCategoryListPage(subCategory, index) {
-    this.navCtrl.push(CategoryListingPage, {sub_category: subCategory, ctg_index: this.index, sub_index: index});
+  goToCategoryListPage(subCategory) {
+    this.navCtrl.push(CategoryListingPage, {sub_category: subCategory});
   }
 
   goToBack() {

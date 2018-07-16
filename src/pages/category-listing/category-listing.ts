@@ -14,7 +14,6 @@ export class CategoryListingPage {
   kind;
   lists: any;
   sub_category;
-  sub_category_image;
   
   constructor (
     public navCtrl: NavController, 
@@ -28,12 +27,8 @@ export class CategoryListingPage {
       this.title = this.kinds[this.kind];
     } else {
       this.sub_category = this.navParams.get("sub_category");
+      this.sub_category.image_url = this.http.SITE + "/uploads/" + this.sub_category.picture;
       this.title = this.sub_category.title;
-      let ctg_index = this.navParams.get("ctg_index");
-      let sub_index = this.navParams.get("sub_index");
-      let ctg_index_str = ((ctg_index < 9) ? "0" : "") + (ctg_index + 1).toString();
-      let sub_index_str = ((sub_index < 9) ? "0" : "") + (sub_index + 1).toString();
-      this.sub_category_image = this.http.SITE + "/uploads/category_" + ctg_index_str + "_" + sub_index_str + ".png";
     }
     this.getList();
   }
@@ -54,12 +49,12 @@ export class CategoryListingPage {
       for (let i = 0; i < lists.length; i += 2) {
         let obj = [];
         let objA = lists[i.toString()];
-        objA.image_url = this.http.SITE + "/uploads/" + objA.title + "_image.png";
+        objA.image_url = this.http.SITE + "/uploads/" + objA.title + "_list_image.png";
         obj.push(objA);
         
         if (i + 1 != lists.length) {
           let objB = lists[(i + 1).toString()];
-          objB.image_url = this.http.SITE + "/uploads/" + objB.title + "_image.png";
+          objB.image_url = this.http.SITE + "/uploads/" + objB.title + "_list_image.png";
           obj.push(objB);
         }
         this.lists.push(obj);

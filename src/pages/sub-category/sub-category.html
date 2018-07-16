@@ -11,11 +11,11 @@
 
 
 <ion-content class="sub-category-content">
-  <div class="category-image">
-    <img [src]="category_image" />
+  <div class="category-image" *ngIf="category.picture">
+    <img [src]="category.image_url" />
   </div>
   <div class="sub-category-box">
-    <ion-row *ngFor="let c of subCategories; let i = index" (click)="goToCategoryListPage(c, i)">
+    <ion-row *ngFor="let c of subCategories" (click)="goToCategoryListPage(c)">
       <!-- <ion-col text-left>
         <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
       </ion-col> -->

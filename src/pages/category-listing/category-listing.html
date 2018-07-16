@@ -10,8 +10,8 @@
 </ion-header>
 
 <ion-content class="category-listing-content">
-  <div class="category-image" *ngIf="sub_category_image">
-    <img [src]="sub_category_image" />
+  <div class="category-image" *ngIf="sub_category.picture">
+    <img [src]="sub_category.image_url" />
   </div>
   <div class="category-listing-box">
     <ion-row *ngFor="let list of lists">

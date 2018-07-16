@@ -37,8 +37,8 @@ export class CategoryPage {
     });
   }
   
-  goToSubCategoryPage(category, index) {
-    this.navCtrl.push(SubCategoryPage, {category: category, index: index});
+  goToSubCategoryPage(category) {
+    this.navCtrl.push(SubCategoryPage, {category: category});
   }
   
   goToBack() {
